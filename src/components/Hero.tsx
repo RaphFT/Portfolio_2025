@@ -2,52 +2,52 @@ import { motion } from 'framer-motion';
 
 export const Hero = () => {
   return (
-    <section id="home" className="min-h-screen relative overflow-hidden">
-      {/* Version number */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="absolute top-3 md:top-5 left-3 md:left-5 text-xs md:text-sm font-mono"
-      >
-        V-1.0.0
-      </motion.div>
-
-      {/* Contact info */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="absolute top-3 md:top-5 right-3 md:right-5 text-right"
-      >
-        <div className="text-xs md:text-sm mb-0.5 md:mb-1">@RAPHAELFREMONT</div>
-        <div className="text-xs md:text-sm">HELLO@RAPHAELFREMONT.COM</div>
-      </motion.div>
-
-      <div className="container min-h-screen flex items-center py-16 md:py-0">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center w-full">
-          {/* Right side content (now on the left) */}
+    <section id="home" className="relative min-h-screen overflow-hidden">
+      {/* Top bar with version and contact */}
+      <div className="absolute top-0 left-0 right-0 p-3 md:p-5">
+        <div className="relative flex items-center justify-between">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center md:text-left order-2 md:order-1"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="font-mono text-xs md:text-sm"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              FRONTEND DEV,
-              <br />
-              CONSTANT LEARNER
-              <br />
-              INDEPENDENT FREELANCER
-            </h1>
+            V-1.0.0
           </motion.div>
 
-          {/* Left side content (now on the right) */}
+          <motion.a
+            href="https://linkedin.com/in/raphaelfremont"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="absolute font-mono text-xs transition-colors -translate-x-1/2 left-1/2 md:text-sm hover:text-primary"
+          >
+            @RAPHAELFREMONT
+          </motion.a>
+
+          <motion.a
+            href="mailto:hello@raphaelfremont.com"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="font-mono text-xs transition-colors md:text-sm hover:text-primary"
+          >
+            HELLO@RAPHAELFREMONT.COM
+          </motion.a>
+        </div>
+      </div>
+
+      {/* Main content */}
+      <div className="container min-h-screen px-4 mx-auto">
+        <div className="relative flex flex-col items-center min-h-screen">
+          {/* Left side content */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="order-1 md:order-2"
+            className="absolute -translate-y-1/2 left-8 md:left-16 lg:left-24 top-1/2"
           >
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
@@ -62,7 +62,7 @@ export const Hero = () => {
                 <span className="text-xs md:text-sm">↳</span>
                 <span className="text-xs md:text-sm">INTERACTION</span>
               </div>
-              <div className="flex items-center space-x-2 mt-4">
+              <div className="flex items-center mt-4 space-x-2">
                 <div className="relative w-1.5 md:w-2 h-1.5 md:h-2">
                   <motion.span
                     animate={{
@@ -80,6 +80,22 @@ export const Hero = () => {
                 <span className="text-xs md:text-sm">Open to work</span>
               </div>
             </div>
+          </motion.div>
+
+          {/* Center content */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl px-4 mx-auto mt-20 text-center md:mt-28"
+          >
+            <h1 className="text-3xl font-bold leading-tight md:text-4xl lg:text-5xl">
+              FRONTEND DEV,
+              <br />
+              CONSTANT LEARNER
+              <br />
+              INDEPENDENT FREELANCER
+            </h1>
           </motion.div>
         </div>
       </div>

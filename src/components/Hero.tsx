@@ -50,19 +50,7 @@ export const Hero = () => {
             className="absolute -translate-y-1/2 left-8 md:left-16 lg:left-24 top-1/2"
           >
             <div className="space-y-4">
-              <div className="flex items-center space-x-2">
-                <span className="text-xs md:text-sm">↳</span>
-                <span className="text-xs md:text-sm">UXUI DESIGN</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <span className="text-xs md:text-sm">↳</span>
-                <span className="text-xs md:text-sm">WEB DEVELOPMENT</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <span className="text-xs md:text-sm">↳</span>
-                <span className="text-xs md:text-sm">INTERACTION</span>
-              </div>
-              <div className="flex items-center mt-4 space-x-2">
+              <div className="flex items-center mb-4 space-x-2">
                 <div className="relative w-1.5 md:w-2 h-1.5 md:h-2">
                   <motion.span
                     animate={{
@@ -77,7 +65,13 @@ export const Hero = () => {
                     className="absolute inset-0 bg-green-500 rounded-full"
                   />
                 </div>
-                <span className="text-xs md:text-sm">Open to work</span>
+                <span className="text-xs md:text-sm">AVAILABLE FOR FREELANCE</span>
+              </div>
+              
+              <div className="max-w-xs text-xs leading-relaxed md:text-sm">
+                France-based creative developer, passionate about programming, creative coding, and constantly learning new things.
+                <br /><br />
+                Always looking for exciting freelance opportunities to craft unique and innovative digital experiences.
               </div>
             </div>
           </motion.div>
@@ -90,7 +84,7 @@ export const Hero = () => {
             className="max-w-4xl px-4 mx-auto mt-20 text-center md:mt-28"
           >
             <h1 className="text-3xl font-bold leading-tight md:text-4xl lg:text-5xl">
-              FRONTEND DEV,
+              FRONTEND DEV
               <br />
               CONSTANT LEARNER
               <br />

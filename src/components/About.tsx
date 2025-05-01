@@ -70,7 +70,7 @@ export const About = () => {
                 whileInView={{ opacity: 1 }}
                 transition={{ 
                   duration: 0.3,
-                  delay: i * 0.05,
+                  delay: i * 0.12,
                   ease: "easeInOut"
                 }}
                 viewport={{ once: true }}

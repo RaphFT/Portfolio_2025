@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { TypedTerminal } from './TypedTerminal';
 
 export const Hero = () => {
   return (
@@ -74,6 +75,24 @@ export const Hero = () => {
                 Always looking for exciting freelance opportunities to craft unique and innovative digital experiences.
               </div>
             </div>
+          </motion.div>
+
+          {/* Right side content - Terminal Animation */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="absolute hidden top-[352px] right-24 md:right-32 lg:right-40 md:block"
+          >
+            <TypedTerminal />
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 4, duration: 1 }}
+              className="mt-2 text-xs text-center text-gray-500"
+            >
+              (Click and type commands)
+            </motion.p>
           </motion.div>
 
           {/* Center content */}

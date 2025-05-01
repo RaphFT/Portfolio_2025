@@ -1,0 +1,14 @@
+Pour SEO optimal:
+
+Vous devez créer une image "og-image.jpg" ici avec les dimensions suivantes:
+- Taille recommandée: 1200 x 630 pixels
+- Format: JPG ou PNG
+
+Cette image apparaîtra lorsque votre site est partagé sur les réseaux sociaux.
+Elle doit inclure:
+- Votre nom: Raphael Fremont
+- Votre titre professionnel: Frontend Developer & Creative Coder
+- Possiblement un visuel représentatif de votre travail ou votre portrait professionnel
+- Des couleurs cohérentes avec votre charte graphique
+
+Une fois l'image créée, remplacez ce fichier texte par l'image, tout en conservant le même nom de fichier que celui référencé dans les balises meta (og:image et twitter:image) dans index.html. 

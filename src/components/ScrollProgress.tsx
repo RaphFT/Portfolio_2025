@@ -19,10 +19,12 @@ export const ScrollProgress = () => {
           initial={{ scale: 0.8 }}
           animate={{
             scale: 1,
-            backgroundColor: i === activeIndex ? '#000' : 'transparent',
           }}
           transition={{ duration: 0.2 }}
           className={`w-4 h-4 border border-black cursor-pointer transition-colors`}
+          style={{
+            backgroundColor: i === activeIndex ? '#000' : 'rgba(0, 0, 0, 0)'
+          }}
           onClick={() => {
             const scrollPercentage = (i / (totalIndicators - 1)) * 100;
             const scrollPosition = (scrollPercentage / 100) * (document.documentElement.scrollHeight - window.innerHeight);

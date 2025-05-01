@@ -29,7 +29,7 @@ export const Hero = () => {
           </motion.div>
 
           <motion.a
-            href="https://linkedin.com/in/raphaelfremont"
+            href="https://www.linkedin.com/in/raphael-fremont-63a91a1b3/"
             target="_blank"
             rel="noopener noreferrer"
             initial={{ opacity: 0 }}
@@ -42,7 +42,7 @@ export const Hero = () => {
           </motion.a>
 
           <motion.a
-            href="mailto:hello@raphaelfremont.com"
+            href="mailto:raph.frem@gmail.com"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}

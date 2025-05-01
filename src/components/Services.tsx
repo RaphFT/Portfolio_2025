@@ -3,7 +3,6 @@ import {
   SwatchIcon,
   MagnifyingGlassIcon,
   ComputerDesktopIcon,
-  RocketLaunchIcon,
   WrenchScrewdriverIcon
 } from '@heroicons/react/24/outline';
 
@@ -20,7 +19,7 @@ const ServiceCard = ({ title, description, Icon, delay, className, id }: {
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6, delay }}
     viewport={{ once: true }}
-    className={`p-8 transition-shadow bg-white shadow-sm rounded-2xl hover:shadow-md ${className || ''}`}
+    className={`p-8 transition-shadow bg-white shadow-sm rounded-2xl hover:shadow-md h-full ${className || ''}`}
     tabIndex={0}
     role="group"
     aria-labelledby={id}
@@ -56,19 +55,12 @@ const services = [
     Icon: ComputerDesktopIcon
   },
   {
-    id: 'service-bigproject',
-    title: 'BIG PROJECT',
-    description: "Complete digital transformation for your business. From needs analysis to deployment, I manage large-scale projects with proven methodology and rigorous monitoring to ensure your success.",
-    delay: 0.6,
-    Icon: RocketLaunchIcon
-  },
-  {
     id: 'service-smallproject',
     title: 'SMALL PROJECT',
     description: "Quick and efficient solutions for your specific needs. Landing pages, optimizations, or new features, I adapt to your budget while maintaining premium quality.",
-    delay: 0.8,
+    delay: 0.6,
     Icon: WrenchScrewdriverIcon
-  },
+  }
 ];
 
 export const Services = () => {
@@ -91,30 +83,26 @@ export const Services = () => {
         </motion.h2>
         
         <div 
-          className="grid grid-cols-1 gap-6 md:grid-cols-6"
+          className="grid grid-cols-1 gap-6 md:grid-cols-12"
           role="list"
           aria-label="Services offered"
         >
-          {/* Top row */}
-          <div className="space-y-6 md:col-span-2" role="listitem">
+          {/* Featured service card - spans 2 rows, takes up 50% width in desktop */}
+          <div className="md:col-span-6 md:row-span-2" role="listitem">
+            <ServiceCard {...services[2]} />
+          </div>
+
+          {/* Other services - arranged in a 2x2 grid to the right */}
+          <div className="md:col-span-6" role="listitem">
             <ServiceCard {...services[0]} />
+          </div>
+          
+          <div className="md:col-span-6" role="listitem">
             <ServiceCard {...services[1]} />
           </div>
 
-          {/* Website Design and Dev - Top right */}
-          <div role="listitem">
-            <ServiceCard {...services[2]} className="md:col-span-4" />
-          </div>
-
-          {/* Bottom row */}
-          {/* Big Project - Bottom left */}
-          <div role="listitem">
-            <ServiceCard {...services[3]} className="md:col-span-4" />
-          </div>
-
-          {/* Small Project - Bottom right */}
-          <div role="listitem">
-            <ServiceCard {...services[4]} className="md:col-span-2" />
+          <div className="md:col-span-6" role="listitem">
+            <ServiceCard {...services[3]} />
           </div>
         </div>
       </div>

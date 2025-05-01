@@ -35,7 +35,7 @@ export const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="absolute hidden font-mono text-xs transition-colors -translate-x-1/2 rounded left-1/2 md:text-sm hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary md:block"
+            className="absolute z-10 hidden font-mono text-xs transition-colors -translate-x-1/2 rounded cursor-pointer left-1/2 md:text-sm hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary md:block"
             aria-label="Visit LinkedIn profile, opens in a new tab"
           >
             @RAPHAELFREMONT
@@ -46,8 +46,8 @@ export const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="font-mono text-xs transition-colors rounded md:text-sm hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
-            aria-label="Send email to hello@raphaelfremont.com"
+            className="z-10 font-mono text-xs transition-colors rounded cursor-pointer md:text-sm hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+            aria-label="Send email to raph.frem@gmail.com"
           >
             HELLO@RAPHAELFREMONT.COM
           </motion.a>

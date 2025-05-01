@@ -8,6 +8,7 @@ import { Projects } from './components/Projects';
 import { Services } from './components/Services';
 import { Footer } from './components/Footer';
 import { ScrollProgress } from './components/ScrollProgress';
+import { Analytics } from '@vercel/analytics/react';
 // Removed react-helmet import to fix UNSAFE_componentWillMount warning
 // For proper SEO, this should be replaced with react-helmet-async
 
@@ -46,6 +47,7 @@ function App() {
         <Services />
         <Footer />
       </main>
+      <Analytics />
     </>
   );
 }

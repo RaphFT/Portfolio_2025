@@ -11,17 +11,20 @@
 
   body {
     font-family: 'Inter', sans-serif;
-    @apply bg-white text-black min-h-screen;
+    background-color: white;
+    color: black;
+    min-height: 100vh;
   }
 
   ::selection {
-    @apply bg-primary text-white;
+    background-color: #000000;
+    color: white;
   }
 }
 
 @layer components {
   .container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply px-4 mx-auto max-w-7xl sm:px-6 lg:px-8;
   }
 
   .section {
@@ -29,11 +32,11 @@
   }
 
   .heading-xl {
-    @apply text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight;
+    @apply text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl;
   }
 
   .heading-lg {
-    @apply text-3xl sm:text-4xl font-bold tracking-tight;
+    @apply text-3xl font-bold tracking-tight sm:text-4xl;
   }
 
   .paragraph {

@@ -1,9 +1,24 @@
 import { useState, useEffect } from 'react';
+import { usePassiveEventListeners } from './usePassiveEventListeners';
 
 export const useScrollProgress = () => {
   const [progress, setProgress] = useState(0);
   const [sections, setSections] = useState<HTMLElement[]>([]);
   const [activeSection, setActiveSection] = useState(0);
+
+  const calculateProgress = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    setProgress(scrollPercent);
+  };
+
+  usePassiveEventListeners(
+    typeof window !== 'undefined' ? window : null,
+    ['scroll', 'resize'],
+    calculateProgress,
+    { passive: true }
+  );
 
   useEffect(() => {
     // Récupérer toutes les sections

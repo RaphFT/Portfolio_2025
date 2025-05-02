@@ -1,10 +1,20 @@
 import { motion } from 'framer-motion';
 import { useScrollProgress } from '../hooks/useScrollProgress';
+import { useCallback } from 'react';
 
 export const ScrollProgress = () => {
   const { progress } = useScrollProgress();
   const totalIndicators = 10;
   const activeIndex = Math.floor((progress / 100) * (totalIndicators - 1));
+
+  const handleScroll = useCallback((index: number) => {
+    const scrollPercentage = (index / (totalIndicators - 1)) * 100;
+    const scrollPosition = (scrollPercentage / 100) * (document.documentElement.scrollHeight - window.innerHeight);
+    window.scrollTo({
+      top: scrollPosition,
+      behavior: 'smooth',
+    });
+  }, [totalIndicators]);
 
   return (
     <motion.div
@@ -25,13 +35,14 @@ export const ScrollProgress = () => {
           style={{
             backgroundColor: i === activeIndex ? '#000' : 'rgba(0, 0, 0, 0)'
           }}
-          onClick={() => {
-            const scrollPercentage = (i / (totalIndicators - 1)) * 100;
-            const scrollPosition = (scrollPercentage / 100) * (document.documentElement.scrollHeight - window.innerHeight);
-            window.scrollTo({
-              top: scrollPosition,
-              behavior: 'smooth',
-            });
+          onClick={() => handleScroll(i)}
+          role="button"
+          tabIndex={0}
+          aria-label={`Scroll to section ${i + 1}`}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              handleScroll(i);
+            }
           }}
         />
       ))}

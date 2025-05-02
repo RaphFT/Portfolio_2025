@@ -99,10 +99,10 @@ export const Hero = () => {
           </motion.div>
 
           {/* Mobile Layout - Only for mobile */}
-          <div className="flex flex-col items-center justify-center w-full min-h-screen md:hidden">
+          <div className="flex flex-col items-center justify-center w-full min-h-screen md:hidden -mt-16">
             {/* 1. H1 first - Optimized for mobile LCP */}
             <div
-              className="max-w-4xl px-4 mx-auto mt-8 text-center mb-14"
+              className="max-w-4xl px-4 mx-auto mt-8 text-center mb-8"
             >
               <h1 
                 className="text-2xl font-bold leading-tight"
@@ -113,11 +113,9 @@ export const Hero = () => {
                   opacity: 1
                 }}
               >
-                FRONTEND DEV
-                <br />
-                CONSTANT LEARNER
-                <br />
-                INDEPENDENT FREELANCER
+                <span className="block">FRONTEND DEV</span>
+                <span className="block mt-2">CONSTANT LEARNER</span>
+                <span className="block mt-2">INDEPENDENT FREELANCER</span>
               </h1>
             </div>
 
@@ -126,7 +124,7 @@ export const Hero = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="w-full mb-12"
+              className="w-full mb-8"
               aria-label="Interactive terminal section"
             >
               <Suspense fallback={
@@ -150,15 +148,15 @@ export const Hero = () => {
               </motion.p>
             </motion.div>
 
-            {/* 3. Available indicator and description last */}
+            {/* 3. Available indicator only */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="mb-8 text-center"
+              className="mb-4 text-center"
               aria-label="Mobile profile description"
             >
-              <div className="flex items-center justify-center mb-4 space-x-2">
+              <div className="flex items-center justify-center space-x-2">
                 <div className="relative w-2 h-2">
                   <motion.span
                     animate={{
@@ -176,10 +174,6 @@ export const Hero = () => {
                 </div>
                 <span className="text-xs">AVAILABLE FOR FREELANCE</span>
               </div>
-              
-              <p className="max-w-xs px-6 mx-auto text-xs leading-relaxed">
-                France-based creative developer, passionate about programming, creative coding, and constantly learning new things.
-              </p>
             </motion.div>
           </div>
 

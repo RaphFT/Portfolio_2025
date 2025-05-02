@@ -8,6 +8,7 @@ import { Projects } from './components/Projects';
 import { Services } from './components/Services';
 import { Footer } from './components/Footer';
 import { ScrollProgress } from './components/ScrollProgress';
+import { ScrollProgressMobile } from './components/ScrollProgressMobile';
 import { Analytics } from '@vercel/analytics/react';
 // Removed react-helmet import to fix UNSAFE_componentWillMount warning
 // For proper SEO, this should be replaced with react-helmet-async
@@ -37,7 +38,6 @@ function App() {
 
   return (
     <>
-      <ScrollProgress />
       <header className="fixed top-0 left-0 right-0 z-50" role="banner">
         <Navigation />
       </header>
@@ -67,6 +67,12 @@ function App() {
       <footer role="contentinfo">
         <Footer />
       </footer>
+
+      {/* Desktop Scroll Progress */}
+      <ScrollProgress />
+      
+      {/* Mobile Scroll Progress - Visible on all pages */}
+      <ScrollProgressMobile />
 
       <Analytics />
     </>

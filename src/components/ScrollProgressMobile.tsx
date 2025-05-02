@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 import { useScrollProgress } from '../hooks/useScrollProgress';
 import { useCallback } from 'react';
 
-export const ScrollProgress = () => {
+export const ScrollProgressMobile = () => {
   const { progress } = useScrollProgress();
-  const totalIndicators = 10;
+  const totalIndicators = 5; // Moins d'indicateurs pour mobile
   const activeIndex = Math.floor((progress / 100) * (totalIndicators - 1));
 
   const handleScroll = useCallback((index: number) => {
@@ -21,7 +21,7 @@ export const ScrollProgress = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.5 }}
-      className="fixed right-5 top-1/2 -translate-y-1/2 space-y-1 z-50 hidden md:block"
+      className="fixed bottom-4 right-4 flex flex-col space-y-2 z-50 block md:hidden"
     >
       {[...Array(totalIndicators)].map((_, i) => (
         <motion.div
@@ -31,7 +31,7 @@ export const ScrollProgress = () => {
             scale: 1,
           }}
           transition={{ duration: 0.2 }}
-          className={`w-4 h-4 border border-black cursor-pointer transition-colors`}
+          className={`w-2 h-2 rounded-full border border-black cursor-pointer transition-colors`}
           style={{
             backgroundColor: i === activeIndex ? '#000' : 'rgba(0, 0, 0, 0)'
           }}

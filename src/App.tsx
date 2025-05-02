@@ -37,16 +37,37 @@ function App() {
 
   return (
     <>
-      <main className="relative bg-white min-h-screen">
-        <ScrollProgress />
+      <ScrollProgress />
+      <header className="fixed top-0 left-0 right-0 z-50" role="banner">
         <Navigation />
-        <Hero />
-        <About />
-        <About2 />
-        <Projects />
-        <Services />
-        <Footer />
+      </header>
+
+      <main className="relative bg-white min-h-screen" role="main">
+        <section id="home" aria-label="Hero section">
+          <Hero />
+        </section>
+
+        <section id="about" aria-label="About section">
+          <About />
+        </section>
+
+        <section id="about2" aria-label="Additional information">
+          <About2 />
+        </section>
+
+        <section id="projects" aria-label="Projects showcase">
+          <Projects />
+        </section>
+
+        <section id="services" aria-label="Services offered">
+          <Services />
+        </section>
       </main>
+
+      <footer role="contentinfo">
+        <Footer />
+      </footer>
+
       <Analytics />
     </>
   );

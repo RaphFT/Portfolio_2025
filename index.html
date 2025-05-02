@@ -30,58 +30,40 @@
     <!-- Canonical Link -->
     <link rel="canonical" href="https://raphaelfremont.com/" />
     
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <!-- Preload critical fonts -->
     <link 
       rel="preload" 
-      href="/fonts/inter-var.woff2" 
-      as="font" 
-      type="font/woff2" 
-      crossorigin
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" 
+      as="style"
     />
     <link 
       rel="preload" 
-      href="/fonts/jetbrains-mono-var.woff2" 
-      as="font" 
-      type="font/woff2" 
-      crossorigin
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" 
+      as="style"
     />
     <link 
       rel="preload" 
-      href="/fonts/press-start-2p.woff2" 
-      as="font" 
-      type="font/woff2" 
-      crossorigin
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" 
+      as="style"
     />
 
-    <!-- Font declarations -->
-    <style>
-      /* Inter variable font */
-      @font-face {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 100 900;
-        font-display: swap;
-        src: url('/fonts/inter-var.woff2') format('woff2');
-      }
-
-      /* JetBrains Mono variable font */
-      @font-face {
-        font-family: 'JetBrains Mono';
-        font-style: normal;
-        font-weight: 100 900;
-        font-display: swap;
-        src: url('/fonts/jetbrains-mono-var.woff2') format('woff2');
-      }
-
-      /* Press Start 2P */
-      @font-face {
-        font-family: 'Press Start 2P';
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-        src: url('/fonts/press-start-2p.woff2') format('woff2');
-      }
-    </style>
+    <!-- Load fonts -->
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" 
+      rel="stylesheet"
+    />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" 
+      rel="stylesheet"
+    />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" 
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div id="root"></div>

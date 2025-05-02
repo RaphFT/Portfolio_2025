@@ -60,12 +60,10 @@ export const Projects = () => {
     setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
   };
   
-  // Update the status message for screen readers
   useEffect(() => {
     setStatusMessage(`Showing project ${currentIndex + 1} of ${projects.length}: ${projects[currentIndex].title}`);
   }, [currentIndex]);
   
-  // Handle keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!carouselRef.current) return;
@@ -85,7 +83,6 @@ export const Projects = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Handle swipe gestures for mobile
   useEffect(() => {
     if (!carouselRef.current) return;
     
@@ -102,14 +99,11 @@ export const Projects = () => {
     };
     
     const handleSwipe = () => {
-      // Minimum swipe distance (in px) to trigger navigation
       const minSwipeDistance = 50;
       
       if (touchStartX - touchEndX > minSwipeDistance) {
-        // Swiped left, go to next project
         nextProject();
       } else if (touchEndX - touchStartX > minSwipeDistance) {
-        // Swiped right, go to previous project
         prevProject();
       }
     };
@@ -127,7 +121,7 @@ export const Projects = () => {
   return (
     <section 
       id="projects" 
-      className="flex items-center min-h-screen py-16 md:py-0 md:h-screen bg-gray-50"
+      className="flex items-center min-h-[60vh] pt-2 pb-6 -mt-8 md:min-h-screen md:py-0 md:h-screen bg-gray-50"
       aria-labelledby="projects-heading"
     >
       <div className="container px-4 md:px-6">
@@ -137,7 +131,7 @@ export const Projects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-6 text-xl font-bold text-center md:text-2xl lg:text-4xl md:mb-12"
+          className="mb-4 text-xl font-bold text-center md:text-2xl lg:text-4xl md:mb-12"
         >
           Recent Projects
         </motion.h2>
@@ -150,7 +144,6 @@ export const Projects = () => {
           aria-label="Projects showcase"
           tabIndex={0}
         >
-          {/* Visually hidden live region for screen readers */}
           <div className="sr-only" aria-live="polite">
             {statusMessage}
           </div>
@@ -158,11 +151,11 @@ export const Projects = () => {
           <div className="flex items-center gap-2 md:gap-4">
             <button
               onClick={prevProject}
-              className="p-1.5 md:p-2 text-gray-600 transition-colors border border-gray-300 rounded-full hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+              className="p-2 md:p-2.5 text-gray-600 transition-colors border border-gray-300 rounded-full hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
               aria-label="Previous project"
               aria-controls="projects-carousel"
             >
-              <span aria-hidden="true" className="text-sm md:text-base">←</span>
+              <span aria-hidden="true" className="text-base md:text-lg">←</span>
             </button>
 
             <div 
@@ -178,16 +171,16 @@ export const Projects = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -100 }}
                   transition={{ duration: 0.5 }}
-                  className="space-y-3 md:space-y-4"
+                  className="space-y-2 md:space-y-4"
                   aria-roledescription="slide"
                   aria-label={`Project ${currentIndex + 1} of ${projects.length}`}
                 >
-                  <div className="space-y-1 md:space-y-2">
+                  <div className="space-y-1">
                     <motion.h3 
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 }}
-                      className="text-lg font-medium md:text-xl lg:text-2xl"
+                      className="text-base font-medium md:text-xl lg:text-2xl"
                     >
                       {projects[currentIndex].title}
                     </motion.h3>
@@ -201,8 +194,8 @@ export const Projects = () => {
                     </motion.p>
                   </div>
 
-                  <div className="overflow-hidden bg-white shadow-lg rounded-xl md:rounded-2xl">
-                    <div className="relative w-full aspect-video">
+                  <div className="overflow-hidden bg-white shadow-lg rounded-lg md:rounded-xl">
+                    <div className="relative w-full aspect-[4/3] md:aspect-video">
                       <img
                         src={projects[currentIndex].image}
                         alt={`${projects[currentIndex].title} - ${projects[currentIndex].description}`}
@@ -223,13 +216,13 @@ export const Projects = () => {
                     </motion.p>
                   )}
                   
-                  {/* Pagination indicators for mobile */}
-                  <div className="flex justify-center mt-4 space-x-2">
+                  {/* Pagination indicators */}
+                  <div className="flex justify-center mt-2 space-x-1.5 md:space-x-2">
                     {projects.map((_, idx) => (
                       <button
                         key={idx}
                         onClick={() => setCurrentIndex(idx)}
-                        className={`w-2 h-2 rounded-full ${idx === currentIndex ? 'bg-primary' : 'bg-gray-300'}`}
+                        className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full transition-colors ${idx === currentIndex ? 'bg-primary' : 'bg-gray-300'}`}
                         aria-label={`Go to project ${idx + 1}`}
                         aria-current={idx === currentIndex ? 'true' : 'false'}
                       />
@@ -241,17 +234,17 @@ export const Projects = () => {
 
             <button
               onClick={nextProject}
-              className="p-1.5 md:p-2 text-gray-600 transition-colors border border-gray-300 rounded-full hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+              className="p-2 md:p-2.5 text-gray-600 transition-colors border border-gray-300 rounded-full hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
               aria-label="Next project"
               aria-controls="projects-carousel"
             >
-              <span aria-hidden="true" className="text-sm md:text-base">→</span>
+              <span aria-hidden="true" className="text-base md:text-lg">→</span>
             </button>
           </div>
           
           {/* Swipe instruction for mobile */}
-          <p className="mt-2 text-xs text-center text-gray-500 md:hidden">
-            Swipe left or right to navigate
+          <p className="mt-1 text-xs text-center text-gray-500 md:hidden">
+            Swipe to navigate
           </p>
         </div>
       </div>

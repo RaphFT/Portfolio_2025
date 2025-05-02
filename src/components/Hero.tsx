@@ -99,13 +99,13 @@ export const Hero = () => {
           </motion.div>
 
           {/* Mobile Layout - Only for mobile */}
-          <div className="flex flex-col items-center justify-center w-full min-h-screen md:hidden -mt-16">
+          <div className="flex flex-col items-center justify-center w-full min-h-screen md:hidden -mt-8">
             {/* 1. H1 first - Optimized for mobile LCP */}
             <div
-              className="max-w-4xl px-4 mx-auto mt-8 text-center mb-8"
+              className="w-full px-4 mx-auto mt-4 text-center mb-4"
             >
               <h1 
-                className="text-2xl font-bold leading-tight"
+                className="text-2xl sm:text-3xl font-bold leading-tight"
                 aria-label="Developer profile headline"
                 tabIndex={0}
                 style={{ 
@@ -114,8 +114,8 @@ export const Hero = () => {
                 }}
               >
                 <span className="block">FRONTEND DEV</span>
-                <span className="block mt-2">CONSTANT LEARNER</span>
-                <span className="block mt-2">INDEPENDENT FREELANCER</span>
+                <span className="block mt-1">CONSTANT LEARNER</span>
+                <span className="block mt-1">INDEPENDENT FREELANCER</span>
               </h1>
             </div>
 
@@ -124,7 +124,7 @@ export const Hero = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="w-full mb-8"
+              className="w-full mb-4"
               aria-label="Interactive terminal section"
             >
               <Suspense fallback={
@@ -153,7 +153,7 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="mb-4 text-center"
+              className="mb-2 text-center"
               aria-label="Mobile profile description"
             >
               <div className="flex items-center justify-center space-x-2">

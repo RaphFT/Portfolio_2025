@@ -12,23 +12,37 @@ type Project = {
 const projects: Project[] = [
   {
     id: 1,
-    title: 'BIGPICTURE COMPANY',
-    category: 'UXUI, WEB DEVELOPMENT',
-    image: '/images/projects/work1.png',
+    title: 'PC GAMING GUIDE',
+    category: 'REACT, JAVASCRIPT, CSS',
+    image: '/images/projects/pcgg.webp',
     description: 'A modern web application for a creative agency'
   },
   {
     id: 2,
-    title: 'RAYRAYLAB',
-    category: 'WEB DEVELOPMENT',
-    image: '/images/projects/rayraylab.jpg',
+    title: 'KASA',
+    category: 'REACT, NODE.JS, EXPRESS, MONGO.DB',
+    image: '/images/projects/kasa.webp',
     description: 'Innovative laboratory management system'
   },
   {
     id: 3,
-    title: 'MUSINA PROJECT',
-    category: 'UXUI, INTERACTION',
-    image: '/images/projects/musina.jpg',
+    title: 'BOOKI',
+    category: 'HTML, CSS',
+    image: '/images/projects/booki.webp',
+    description: 'Interactive design platform for creative professionals'
+  },
+  {
+    id: 4,
+    title: 'Nina Carducci',
+    category: 'SEO, JAVASCRIPT',
+    image: '/images/projects/nc.webp',
+    description: 'Interactive design platform for creative professionals'
+  },
+  {
+    id: 5,
+    title: 'Sophie Bluel',
+    category: 'JAVASCRIPT, HTML, CSS',
+    image: '/images/projects/sb.webp',
     description: 'Interactive design platform for creative professionals'
   },
 ];

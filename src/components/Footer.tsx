@@ -33,9 +33,9 @@ export const Footer = () => {
           >
             <p className="text-xl">
               <a 
-                href="mailto:hello@raphaelfremont.com" 
+                href="mailto:raph.frem@gmail.com" 
                 className="hover:underline focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 rounded px-2"
-                aria-label="Send email to hello@raphaelfremont.com"
+                aria-label="Send email to raph.frem@gmail.com"
               >
                 hello@raphaelfremont.com
               </a>

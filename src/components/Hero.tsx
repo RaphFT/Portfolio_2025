@@ -100,17 +100,18 @@ export const Hero = () => {
 
           {/* Mobile Layout - Only for mobile */}
           <div className="flex flex-col items-center justify-center w-full min-h-screen md:hidden">
-            {/* 1. H1 first */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+            {/* 1. H1 first - Optimized for mobile LCP */}
+            <div
               className="max-w-4xl px-4 mx-auto mt-8 text-center mb-14"
             >
               <h1 
                 className="text-2xl font-bold leading-tight"
                 aria-label="Developer profile headline"
                 tabIndex={0}
+                style={{ 
+                  willChange: 'transform',
+                  opacity: 1
+                }}
               >
                 FRONTEND DEV
                 <br />
@@ -118,7 +119,7 @@ export const Hero = () => {
                 <br />
                 INDEPENDENT FREELANCER
               </h1>
-            </motion.div>
+            </div>
 
             {/* 2. Terminal in the middle */}
             <motion.div

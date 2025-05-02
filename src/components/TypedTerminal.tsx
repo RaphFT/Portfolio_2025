@@ -233,7 +233,7 @@ const MatrixAnimation = ({ onComplete }: { onComplete: () => void }) => {
     return () => {
       cancelAnimationFrame(frameRef.current);
     };
-  }, []);
+  }, [onComplete]);
   
   return (
     <div 

@@ -50,7 +50,7 @@ export const Footer = () => {
               </a>
             </p>
             <a
-              href="https://linkedin.com/in/raphaelfremont"
+              href="https://www.linkedin.com/in/raphael-fremont-63a91a1b3/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block text-xl hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 rounded px-2"

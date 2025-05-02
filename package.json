@@ -17,8 +17,10 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.27.1",
     "@eslint/js": "^9.22.0",
     "@heroicons/react": "^2.2.0",
+    "@types/babel__core": "^7.20.5",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",

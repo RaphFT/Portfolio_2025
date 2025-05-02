@@ -41,16 +41,18 @@ export const Hero = () => {
             @RAPHAELFREMONT
           </motion.a>
 
-          <motion.a
+          {/* Email link optimized for mobile LCP */}
+          <a
             href="mailto:raph.frem@gmail.com"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
             className="z-10 font-mono text-xs transition-colors rounded cursor-pointer md:text-sm hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
             aria-label="Send email to raph.frem@gmail.com"
+            style={{ 
+              willChange: 'opacity',
+              opacity: 1 
+            }}
           >
             HELLO@RAPHAELFREMONT.COM
-          </motion.a>
+          </a>
         </div>
       </div>
 

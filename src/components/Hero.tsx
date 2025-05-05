@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { lazy, Suspense } from 'react';
+import '../styles/fonts.css';
+import { TextMarquee } from './TextMarquee';
 
 // Lazy load the terminal component
 const TypedTerminal = lazy(() => import('./TypedTerminal').then(module => ({ default: module.TypedTerminal })));
@@ -59,58 +61,21 @@ export const Hero = () => {
       {/* Main content */}
       <div className="container min-h-screen px-4 mx-auto">
         <div className="relative flex flex-col items-center min-h-screen">
-          {/* Left side content - Hidden on small screens, visible from medium screens */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="absolute hidden -translate-y-1/2 md:block left-8 md:left-16 lg:left-24 top-1/2"
-            aria-label="Profile description"
-          >
-            <div className="space-y-4">
-              <div className="flex items-center mb-4 space-x-2">
-                <div className="relative w-1.5 md:w-2 h-1.5 md:h-2">
-                  <motion.span
-                    animate={{
-                      scale: [1, 1.5, 1],
-                      opacity: [1, 0.5, 1]
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                    className="absolute inset-0 bg-green-500 rounded-full"
-                    aria-hidden="true"
-                  />
-                </div>
-                <span className="text-xs md:text-sm">AVAILABLE FOR FREELANCE</span>
-              </div>
-              
-              <div 
-                className="max-w-xs text-xs leading-relaxed md:text-sm"
-                tabIndex={0}
-              >
-                France-based creative developer, passionate about programming, creative coding, and constantly learning new things.
-                <br /><br />
-                Always looking for exciting freelance opportunities to craft unique and innovative digital experiences.
-              </div>
-            </div>
-          </motion.div>
-
           {/* Mobile Layout - Only for mobile */}
           <div className="flex flex-col items-center justify-center w-full min-h-screen md:hidden -mt-8">
             {/* 1. H1 first - Optimized for mobile LCP */}
             <div
-              className="w-full px-4 mx-auto mt-4 text-center mb-4"
+              className="w-full px-4 mx-auto mt-4 text-center"
             >
               <h1 
-                className="text-2xl sm:text-3xl font-bold leading-tight"
+                className="text-2xl sm:text-3xl font-bold leading-tight font-clash"
                 aria-label="Developer profile headline"
                 tabIndex={0}
                 style={{ 
                   willChange: 'transform',
-                  opacity: 1
+                  opacity: 1,
+                  fontFamily: '"Clash Display", sans-serif',
+                  fontWeight: 600
                 }}
               >
                 <span className="block">FRONTEND DEV</span>
@@ -118,6 +83,16 @@ export const Hero = () => {
                 <span className="block mt-1">INDEPENDENT FREELANCER</span>
               </h1>
             </div>
+
+            {/* TextMarquee for mobile */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="w-full mt-2"
+            >
+              <TextMarquee />
+            </motion.div>
 
             {/* 2. Terminal in the middle */}
             <motion.div
@@ -129,7 +104,7 @@ export const Hero = () => {
             >
               <Suspense fallback={
                 <div 
-                  className="flex items-center justify-center w-full max-w-md mx-auto bg-white border border-gray-200 rounded-lg shadow-xl h-52"
+                  className="flex items-center justify-center w-full h-40 mx-auto bg-white border border-gray-200 rounded-lg shadow-xl sm:h-48 md:h-64"
                   aria-live="polite"
                 >
                   Loading terminal...
@@ -182,19 +157,21 @@ export const Hero = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="hidden md:block md:absolute md:right-24 md:top-[352px] md:w-auto lg:right-40 md:right-32"
+            className="hidden md:block md:absolute md:left-[26%] md:top-[40%] md:-translate-x-1/2 md:-translate-y-1/2 md:w-[600px]"
             aria-label="Interactive terminal section"
           >
-            <Suspense fallback={
-              <div 
-                className="flex items-center justify-center w-full h-48 max-w-md mx-auto bg-white border border-gray-200 rounded-lg shadow-xl md:h-64"
-                aria-live="polite"
-              >
-                Loading terminal...
-              </div>
-            }>
-              <TypedTerminal />
-            </Suspense>
+            <div className="w-full">
+              <Suspense fallback={
+                <div 
+                  className="flex items-center justify-center w-full h-48 bg-white border border-gray-200 rounded-lg shadow-xl sm:h-56 md:h-64"
+                  aria-live="polite"
+                >
+                  Loading terminal...
+                </div>
+              }>
+                <TypedTerminal />
+              </Suspense>
+            </div>
             <motion.p 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -214,9 +191,13 @@ export const Hero = () => {
             className="hidden max-w-4xl px-4 mx-auto mt-4 text-center md:block md:mt-28"
           >
             <h1 
-              className="text-3xl font-bold leading-tight lg:text-5xl"
+              className="text-3xl font-bold leading-tight lg:text-5xl font-clash"
               aria-label="Developer profile headline"
               tabIndex={0}
+              style={{
+                fontFamily: '"Clash Display", sans-serif',
+                fontWeight: 600
+              }}
             >
               FRONTEND DEV
               <br />
@@ -224,6 +205,16 @@ export const Hero = () => {
               <br />
               INDEPENDENT FREELANCER
             </h1>
+
+            {/* TextMarquee for desktop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="w-full mt-2"
+            >
+              <TextMarquee />
+            </motion.div>
           </motion.div>
         </div>
       </div>

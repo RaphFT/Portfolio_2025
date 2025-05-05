@@ -114,6 +114,18 @@ const commands: Record<string, { response: string[], isEasterEgg?: boolean, acti
     response: ['Wake up, Neo...', 'The Matrix has you...', 'Follow the white rabbit.', 'Knock, knock, Neo.'],
     isEasterEgg: true,
     action: 'MATRIX_ANIMATION'
+  },
+  'camille': {
+    response: [
+      'My heart is yours, forever and always. ❤️'
+    ],
+    isEasterEgg: true
+  },
+  'fps': {
+    response: [
+      'Because we all have a dormant chicken inside us, ready to rush B with rollerblades.'
+    ],
+    isEasterEgg: true
   }
 };
 
@@ -434,7 +446,7 @@ const TypedTerminal = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="w-full max-w-md mx-auto overflow-hidden font-mono text-xs text-black bg-white border border-gray-200 rounded-lg shadow-xl md:text-sm"
+      className="w-full overflow-hidden font-mono text-xs text-black bg-white border border-gray-200 rounded-lg shadow-xl md:text-sm"
       role="region"
       aria-label="Interactive terminal"
     >
@@ -455,7 +467,7 @@ const TypedTerminal = () => {
       {/* Terminal content */}
       <div 
         ref={terminalRef}
-        className="relative h-40 p-3 overflow-y-auto text-xs bg-white sm:h-48 md:h-64 md:p-4 md:text-sm"
+        className="relative h-48 p-3 overflow-y-auto text-xs bg-white sm:h-56 md:h-64 md:p-4 md:text-sm"
         tabIndex={0}
         role="log"
         aria-live="polite"

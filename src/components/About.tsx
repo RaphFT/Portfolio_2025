@@ -4,53 +4,61 @@ import { motion } from 'framer-motion';
 export const About = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const words = [
-    "Raphael Fremont",
-    "is",
+    "I'm",
+    "Raphael",
+    "Fremont,",
     "a",
     "freelance",
     "web",
     "developer",
-    "specializing",
-    "in",
-    "creating",
-    "dynamic",
-    "and",
-    "engaging",
-    "digital",
-    "experiences.",
-    "With",
-    "a",
-    "focus",
-    "on",
-    "understanding",
-    "each",
-    "brand's",
-    "identity,",
-    "Raphael",
-    "crafts",
-    "custom",
+    "crafting",
+    "custom,",
+    "high-performance",
     "websites",
     "that",
-    "go",
-    "beyond",
-    "simply",
-    "delivering",
-    "information.",
-    "His",
-    "mission",
-    "is",
-    "to",
-    "bring",
-    "brands",
-    "to",
-    "life",
+    "reflect",
+    "your",
+    "brand's",
+    "true",
+    "identity.",
+    "I",
+    "combine",
+    "clean",
+    "code,",
+    "SEO",
+    "best",
+    "practices,",
     "and",
-    "provide",
+    "creative",
+    "design",
+    "to",
+    "build",
+    "digital",
+    "experiences",
+    "that",
+    "engage",
     "users",
-    "with",
-    "memorable,",
-    "interactive",
-    "experiences."
+    "and",
+    "drive",
+    "results.",
+    "Whether",
+    "you're",
+    "launching",
+    "a",
+    "brand",
+    "or",
+    "leveling",
+    "up",
+    "your",
+    "online",
+    "presence,",
+    "I'm",
+    "here",
+    "to",
+    "help",
+    "you",
+    "stand",
+    "out."
   ];
 
   const renderWords = (startIndex: number, endIndex: number, isFirstParagraph = false) => {
@@ -101,17 +109,17 @@ export const About = () => {
             <div className="flex flex-col space-y-8">
               {/* First paragraph */}
               <div className="text-justify">
-                {renderWords(0, 14, true)}
+                {renderWords(0, 17, true)}
               </div>
               
               {/* Second paragraph */}
               <div className="text-justify">
-                {renderWords(14, 33)}
+                {renderWords(17, 38)}
               </div>
               
               {/* Third paragraph */}
               <div className="text-justify">
-                {renderWords(33, words.length)}
+                {renderWords(38, words.length)}
               </div>
             </div>
           </div>
@@ -128,7 +136,7 @@ export const About = () => {
           
           {/* Add hidden paragraph with full text for screen readers */}
           <div className="sr-only">
-            Raphael Fremont is a freelance web developer specializing in creating dynamic and engaging digital experiences. With a focus on understanding each brand's identity, Raphael crafts custom websites that go beyond simply delivering information. His mission is to bring brands to life and provide users with memorable, interactive experiences.
+            I'm Raphael Fremont, a freelance web developer crafting custom, high-performance websites that reflect your brand's true identity. I combine clean code, SEO best practices, and creative design to build digital experiences that engage users and drive results. Whether you're launching a brand or leveling up your online presence, I'm here to help you stand out.
           </div>
         </motion.div>
       </div>

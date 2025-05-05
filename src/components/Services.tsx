@@ -6,12 +6,11 @@ import {
   WrenchScrewdriverIcon
 } from '@heroicons/react/24/outline';
 
-const ServiceCard = ({ title, description, Icon, delay, className, id }: {
+const ServiceCard = ({ title, description, Icon, delay, id }: {
   title: string;
   description: string;
   Icon: React.ElementType;
   delay: number;
-  className?: string;
   id: string;
 }) => (
   <motion.div
@@ -19,16 +18,37 @@ const ServiceCard = ({ title, description, Icon, delay, className, id }: {
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6, delay }}
     viewport={{ once: true }}
-    className={`p-8 transition-shadow bg-white shadow-sm rounded-2xl hover:shadow-md h-full ${className || ''}`}
+    className="p-6 md:p-8 transition-all duration-300 bg-white border border-gray-100 rounded-lg hover:shadow-lg hover:border-gray-200 h-full"
     tabIndex={0}
     role="group"
     aria-labelledby={id}
   >
-    <div className="flex items-center gap-3 mb-4">
-      <Icon className="w-6 h-6 text-primary" aria-hidden="true" />
-      <h3 id={id} className="text-xl font-bold">{title}</h3>
+    <div className="flex flex-col h-full">
+      <div className="flex items-center gap-4 mb-6">
+        <div className="p-2 transition-colors duration-300 rounded-lg bg-gray-50 group-hover:bg-gray-100">
+          <Icon className="w-6 h-6 text-gray-600 transition-colors duration-300 group-hover:text-gray-900" aria-hidden="true" />
+        </div>
+        <h3 
+          id={id} 
+          className="text-lg md:text-xl font-clash"
+          style={{
+            fontFamily: '"Clash Display", sans-serif',
+            fontWeight: 500
+          }}
+        >
+          {title}
+        </h3>
+      </div>
+      <p 
+        className="text-sm md:text-base text-gray-600 font-clash"
+        style={{
+          fontFamily: '"Clash Display", sans-serif',
+          fontWeight: 400
+        }}
+      >
+        {description}
+      </p>
     </div>
-    <p className="text-secondary">{description}</p>
   </motion.div>
 );
 
@@ -50,7 +70,7 @@ const services = [
   {
     id: 'service-website',
     title: 'WEBSITE DESIGN AND DEV',
-    description: "Modern, fast, and optimized websites that convert. Expertise in React, Next.js, and TypeScript to create exceptional user experiences, perfectly aligned with your business goals. From responsive designs to seamless interactions, I blend aesthetic excellence with technical performance. My approach focuses on accessibility, SEO-friendly structure, and scalable architecture to future-proof your digital presence.",
+    description: "Modern, fast, and optimized websites that convert. Expertise in React, Next.js, and TypeScript to create exceptional user experiences, perfectly aligned with your business goals.",
     delay: 0.4,
     Icon: ComputerDesktopIcon
   },
@@ -67,7 +87,7 @@ export const Services = () => {
   return (
     <section 
       id="services" 
-      className="flex items-center min-h-screen py-20"
+      className="flex items-center min-h-screen py-20 bg-gray-50"
       aria-labelledby="services-heading"
     >
       <div className="container px-4">
@@ -77,33 +97,25 @@ export const Services = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-16 text-center heading-lg"
+          className="mb-16 text-2xl md:text-3xl lg:text-4xl text-center font-clash"
+          style={{
+            fontFamily: '"Clash Display", sans-serif',
+            fontWeight: 600
+          }}
         >
           What i do ?
         </motion.h2>
         
         <div 
-          className="grid grid-cols-1 gap-6 md:grid-cols-12"
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 max-w-6xl mx-auto"
           role="list"
           aria-label="Services offered"
         >
-          {/* Featured service card - spans 2 rows, takes up 50% width in desktop */}
-          <div className="md:col-span-6 md:row-span-2" role="listitem">
-            <ServiceCard {...services[2]} />
-          </div>
-
-          {/* Other services - arranged in a 2x2 grid to the right */}
-          <div className="md:col-span-6" role="listitem">
-            <ServiceCard {...services[0]} />
-          </div>
-          
-          <div className="md:col-span-6" role="listitem">
-            <ServiceCard {...services[1]} />
-          </div>
-
-          <div className="md:col-span-6" role="listitem">
-            <ServiceCard {...services[3]} />
-          </div>
+          {services.map((service) => (
+            <div key={service.id} role="listitem">
+              <ServiceCard {...service} />
+            </div>
+          ))}
         </div>
       </div>
     </section>

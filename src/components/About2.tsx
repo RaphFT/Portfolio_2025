@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
 export const About2 = () => {
-  const text = "Once\na Designer,\nThen\na Developer";
+  const text = "Design\n led me here.\n I'm\n a Developer.";
   const words = text.split('\n');
 
   return (
@@ -21,7 +21,7 @@ export const About2 = () => {
           {/* Desktop animation version */}
           <h2 
             id="journey-heading" 
-            className="hidden mb-8 text-5xl text-center md:block sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl md:mb-16"
+            className="hidden mb-8 text-4xl text-center md:block sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl md:mb-16"
             aria-label="Once a Designer, Then a Developer"
           >
             {words.map((word, wordIndex) => (
@@ -29,9 +29,13 @@ export const About2 = () => {
                 key={wordIndex} 
                 className={`block ${
                   wordIndex === 3 
-                    ? 'font-["Press_Start_2P"] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl tracking-wider' 
-                    : ''
+                    ? 'font-["Press_Start_2P"] text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-wider' 
+                    : 'font-clash'
                 }`}
+                style={{
+                  fontFamily: wordIndex === 3 ? '"Press Start 2P", sans-serif' : '"Clash Display", sans-serif',
+                  fontWeight: wordIndex === 3 ? 400 : 400
+                }}
                 aria-hidden="true"
               >
                 {word.split('').map((char, charIndex) => (
@@ -55,7 +59,7 @@ export const About2 = () => {
           
           {/* Mobile animation version with larger text - same animation as desktop */}
           <h2 
-            className="block mb-6 text-5xl text-center md:hidden sm:text-6xl"
+            className="block mb-6 text-4xl text-center md:hidden sm:text-5xl"
             aria-label="Once a Designer, Then a Developer"
           >
             {words.map((word, wordIndex) => (
@@ -63,9 +67,13 @@ export const About2 = () => {
                 key={wordIndex} 
                 className={`block mb-2 ${
                   wordIndex === 3 
-                    ? 'font-["Press_Start_2P"] text-3xl sm:text-4xl tracking-wider mt-3' 
-                    : ''
+                    ? 'font-["Press_Start_2P"] text-xl sm:text-2xl tracking-wider mt-3' 
+                    : 'font-clash'
                 }`}
+                style={{
+                  fontFamily: wordIndex === 3 ? '"Press Start 2P", sans-serif' : '"Clash Display", sans-serif',
+                  fontWeight: wordIndex === 3 ? 400 : 400
+                }}
                 aria-hidden="true"
               >
                 {word.split('').map((char, charIndex) => (
@@ -88,12 +96,14 @@ export const About2 = () => {
           </h2>
           
           <p 
-            className="max-w-xs mx-auto text-base text-center paragraph sm:text-lg md:text-base sm:max-w-sm md:max-w-3xl"
+            className="max-w-xs mx-auto text-base text-center paragraph sm:text-lg md:text-base sm:max-w-sm md:max-w-3xl font-clash"
+            style={{
+              fontFamily: '"Clash Display", sans-serif',
+              fontWeight: 400
+            }}
             tabIndex={0}
           >
-            Designing with an understanding of development by designers. Developing with an
-            understanding of design by developers allows for a more holistic and multidimensional
-            approach to a project, unlocking diverse perspectives and solutions.
+           Bridging the gap between designers and developers, I bring a dual perspective to every project. Designing with a developer's mindset, and coding with a designer's eye, I craft digital experiences that are both technically sound and visually compelling. This integrated approach leads to smarter, more cohesive solutions.
           </p>
         </motion.div>
       </div>

@@ -131,7 +131,11 @@ export const Projects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-4 text-xl font-bold text-center md:text-2xl lg:text-4xl md:mb-12"
+          className="mb-4 text-xl font-bold text-center md:text-2xl lg:text-4xl md:mb-12 font-clash"
+          style={{
+            fontFamily: '"Clash Display", sans-serif',
+            fontWeight: 600
+          }}
         >
           Recent Projects
         </motion.h2>
@@ -180,7 +184,11 @@ export const Projects = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 }}
-                      className="text-base font-medium md:text-xl lg:text-2xl"
+                      className="text-base font-medium md:text-xl lg:text-2xl font-clash"
+                      style={{
+                        fontFamily: '"Clash Display", sans-serif',
+                        fontWeight: 500
+                      }}
                     >
                       {projects[currentIndex].title}
                     </motion.h3>
@@ -188,7 +196,11 @@ export const Projects = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3 }}
-                      className="text-xs text-gray-600 md:text-sm lg:text-base"
+                      className="text-xs text-gray-600 md:text-sm lg:text-base font-clash"
+                      style={{
+                        fontFamily: '"Clash Display", sans-serif',
+                        fontWeight: 400
+                      }}
                     >
                       {projects[currentIndex].category}
                     </motion.p>
@@ -210,7 +222,11 @@ export const Projects = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.4 }}
-                      className="text-xs text-gray-600 md:text-sm lg:text-base"
+                      className="text-xs text-gray-600 md:text-sm lg:text-base font-clash"
+                      style={{
+                        fontFamily: '"Clash Display", sans-serif',
+                        fontWeight: 400
+                      }}
                     >
                       {projects[currentIndex].description}
                     </motion.p>
@@ -243,7 +259,12 @@ export const Projects = () => {
           </div>
           
           {/* Swipe instruction for mobile */}
-          <p className="mt-1 text-xs text-center text-gray-500 md:hidden">
+          <p className="mt-1 text-xs text-center text-gray-500 md:hidden font-clash"
+            style={{
+              fontFamily: '"Clash Display", sans-serif',
+              fontWeight: 400
+            }}
+          >
             Swipe to navigate
           </p>
         </div>

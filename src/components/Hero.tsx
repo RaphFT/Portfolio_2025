@@ -65,10 +65,10 @@ export const Hero = () => {
           <div className="flex flex-col items-center justify-center w-full min-h-screen md:hidden -mt-8">
             {/* 1. H1 first - Optimized for mobile LCP */}
             <div
-              className="w-full px-4 mx-auto mt-4 text-center"
+              className="w-full px-4 mx-auto mt-2 text-center"
             >
               <h1 
-                className="text-2xl sm:text-3xl font-bold leading-tight font-clash"
+                className="text-xl sm:text-3xl font-bold leading-tight font-clash"
                 aria-label="Developer profile headline"
                 tabIndex={0}
                 style={{ 
@@ -80,7 +80,7 @@ export const Hero = () => {
               >
                 <span className="block">FRONTEND DEV</span>
                 <span className="block mt-1">CONSTANT LEARNER</span>
-                <span className="block mt-1">INDEPENDENT FREELANCER</span>
+                <span className="block mt-1 whitespace-nowrap">INDEPENDENT FREELANCER</span>
               </h1>
             </div>
 
@@ -121,34 +121,6 @@ export const Hero = () => {
               >
                 (Click and type commands)
               </motion.p>
-            </motion.div>
-
-            {/* 3. Available indicator only */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="mb-2 text-center"
-              aria-label="Mobile profile description"
-            >
-              <div className="flex items-center justify-center space-x-2">
-                <div className="relative w-2 h-2">
-                  <motion.span
-                    animate={{
-                      scale: [1, 1.5, 1],
-                      opacity: [1, 0.5, 1]
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                    className="absolute inset-0 bg-green-500 rounded-full"
-                    aria-hidden="true"
-                  />
-                </div>
-                <span className="text-xs">AVAILABLE FOR FREELANCE</span>
-              </div>
             </motion.div>
           </div>
 

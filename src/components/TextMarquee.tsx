@@ -36,7 +36,7 @@ export const TextMarquee = () => {
             aria-hidden="true"
           />
         </div>
-        <span className="text-sm md:text-base font-mono tracking-wider">AVAILABLE FOR FREELANCE</span>
+        <span className="text-xs sm:text-sm md:text-base font-mono tracking-wider">AVAILABLE FOR FREELANCE</span>
       </motion.div>
     );
   }
@@ -51,7 +51,7 @@ export const TextMarquee = () => {
           duration: 45,
           ease: "linear"
         }}
-        className="inline-flex"
+        className="inline-flex whitespace-nowrap"
       >
         <span className="py-2 px-4 text-sm md:text-base font-mono text-black whitespace-nowrap">
           {text}

@@ -25,13 +25,6 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  // JSON-LD structured data is temporarily disabled
-  // To properly implement without warnings:
-  // 1. Install react-helmet-async: npm install react-helmet-async
-  // 2. Import: import { Helmet, HelmetProvider } from 'react-helmet-async';
-  // 3. Wrap your app with HelmetProvider
-  // 4. Use Helmet from react-helmet-async instead
-
   if (isLoading) {
     return <LoadingScreen />;
   }

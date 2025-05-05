@@ -5,15 +5,15 @@ import { motion } from 'framer-motion';
 const bootSequence = [
   { text: '> System initializing...', delay: 400 },
   { text: '> Loading portfolio data...', delay: 600 },
-  { text: '> Ready! Type "help" for available commands', delay: 500 }
+  { text: '> Ready! Type "start" for available commands', delay: 500 }
 ];
 
 // Command definitions with responses
 const commands: Record<string, { response: string[], isEasterEgg?: boolean, action?: string }> = {
-  'help': {
+  'start': {
     response: [
       'Available commands:',
-      '  help     - Show this help message',
+      '  start     - Show this help message',
       '  about    - Learn more about me',
       '  skills   - View my technical skills',
       '  projects - See my recent projects',

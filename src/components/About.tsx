@@ -64,21 +64,24 @@ export const About = () => {
   const renderWords = (startIndex: number, endIndex: number, isFirstParagraph = false) => {
     return words.slice(startIndex, endIndex).map((word, i) => {
       const isLastWord = i === endIndex - startIndex - 1;
+      const currentIndex = startIndex + i;
+      
       return (
         <motion.span
-          key={startIndex + i}
+          key={currentIndex}
           initial={{ opacity: 0.4 }}
           whileInView={{ opacity: 1 }}
           transition={{ 
-            duration: 0.3,
-            delay: (startIndex + i) * 0.08,
+            duration: 0.5,
+            delay: currentIndex * 0.12,
             ease: "easeInOut"
           }}
           viewport={{ once: true, margin: "-50px" }}
           className={`inline-block font-clash text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl ${!isLastWord ? 'mr-3' : ''} ${isFirstParagraph && i === 0 ? 'block w-full text-center mb-3' : ''}`}
           style={{
             fontFamily: '"Clash Display", sans-serif',
-            fontWeight: 400
+            fontWeight: 400,
+            willChange: 'opacity'
           }}
         >
           {word}
@@ -90,7 +93,7 @@ export const About = () => {
   return (
     <section 
       ref={containerRef} 
-      className="min-h-screen py-16 md:py-0 md:h-screen flex items-center justify-center"
+      className="min-h-screen py-8 md:py-0 md:h-screen flex items-center justify-center"
       id="about"
     >
       <div className="container px-4 md:px-6">
@@ -106,20 +109,29 @@ export const About = () => {
             className="block md:hidden px-2 py-10 text-lg sm:text-xl leading-relaxed"
             aria-label="Developer biography mobile"
           >
-            <div className="flex flex-col space-y-8">
+            <div className="flex flex-col space-y-4">
               {/* First paragraph */}
               <div className="text-justify">
-                {renderWords(0, 17, true)}
+                <div className="flex flex-wrap justify-center mb-3">
+                  {renderWords(0, 1, true)}
+                </div>
+                <div className="flex flex-wrap">
+                  {renderWords(1, 17)}
+                </div>
               </div>
               
               {/* Second paragraph */}
               <div className="text-justify">
-                {renderWords(17, 38)}
+                <div className="flex flex-wrap">
+                  {renderWords(17, 38)}
+                </div>
               </div>
               
               {/* Third paragraph */}
               <div className="text-justify">
-                {renderWords(38, words.length)}
+                <div className="flex flex-wrap">
+                  {renderWords(38, words.length)}
+                </div>
               </div>
             </div>
           </div>

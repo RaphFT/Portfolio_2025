@@ -24,7 +24,9 @@ export const Footer = () => {
           >
             GREAT THINGS CAN HAPPEN
             <br />
-            WITH A SIMPLE « HELLO »
+            WITH A SIMPLE
+            <br className="block sm:hidden" />
+            « HELLO »
           </motion.h2>
 
           <motion.div

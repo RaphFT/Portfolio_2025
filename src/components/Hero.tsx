@@ -15,7 +15,7 @@ export const Hero = () => {
     >
       {/* Top bar with version and contact */}
       <div 
-        className="absolute top-0 left-0 right-0 p-3 md:p-5"
+        className="absolute top-0 left-0 right-0 p-2 md:p-4"
         role="navigation"
         aria-label="Quick links"
       >
@@ -157,7 +157,7 @@ export const Hero = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="hidden md:block md:absolute md:left-[26%] md:top-[40%] md:-translate-x-1/2 md:-translate-y-1/2 md:w-[600px]"
+            className="hidden md:min-h-600:block md:absolute md:left-[26%] md:top-[31%] md:-translate-x-1/2 md:-translate-y-1/2 md:w-[600px] lg:top-[36%] xl:top-[41%] 2xl:top-[36%] md:z-10"
             aria-label="Interactive terminal section"
           >
             <div className="w-full">
@@ -188,7 +188,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="hidden max-w-4xl px-4 mx-auto mt-4 text-center md:block md:mt-28"
+            className="hidden max-w-4xl px-4 mx-auto mt-4 text-center md:block md:mt-20 lg:mt-24 xl:mt-28"
           >
             <h1 
               className="text-3xl font-bold leading-tight lg:text-5xl font-clash"

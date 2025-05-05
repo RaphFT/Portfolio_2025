@@ -67,7 +67,7 @@ export const About = () => {
             ease: "easeInOut"
           }}
           viewport={{ once: true, margin: "-50px" }}
-          className={`inline-block font-clash ${!isLastWord ? 'mr-3' : ''} ${isFirstParagraph && i === 0 ? 'block w-full text-center mb-3' : ''}`}
+          className={`inline-block font-clash text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl ${!isLastWord ? 'mr-3' : ''} ${isFirstParagraph && i === 0 ? 'block w-full text-center mb-3' : ''}`}
           style={{
             fontFamily: '"Clash Display", sans-serif',
             fontWeight: 400
@@ -95,7 +95,7 @@ export const About = () => {
         >
           {/* Mobile version */}
           <div 
-            className="block md:hidden px-2 py-10 text-xl sm:text-2xl leading-relaxed"
+            className="block md:hidden px-2 py-10 text-lg sm:text-xl leading-relaxed"
             aria-label="Developer biography mobile"
           >
             <div className="flex flex-col space-y-8">
@@ -118,7 +118,7 @@ export const About = () => {
           
           {/* Desktop version */}
           <div 
-            className="hidden md:block text-body md:text-md-body lg:text-lg-heading-medium leading-relaxed px-4 md:px-0"
+            className="hidden md:block text-xl md:text-2xl lg:text-3xl xl:text-4xl leading-relaxed px-4 md:px-0"
             aria-label="Developer biography"
           >
             <div className="text-justify">

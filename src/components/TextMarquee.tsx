@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 export const TextMarquee = () => {
   const [showFreelance, setShowFreelance] = useState(false);
-  const text = "France-based creative developer, passionate about programming, creative coding, and constantly learning new things. Always looking for exciting freelance opportunities to craft unique and innovative digital experiences.";
+  const text = "Développeur créatif basé en France, passionné par la programmation, le creative coding, et l'apprentissage constant de nouvelles choses. Toujours à la recherche d'opportunités freelance passionnantes pour créer des expériences numériques uniques et innovantes.";
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -19,7 +19,7 @@ export const TextMarquee = () => {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="flex items-center justify-center space-x-3 py-2"
+        className="flex justify-center items-center py-2 space-x-3"
       >
         <div className="relative w-2 h-2">
           <motion.span
@@ -36,13 +36,13 @@ export const TextMarquee = () => {
             aria-hidden="true"
           />
         </div>
-        <span className="text-xs sm:text-sm md:text-base font-mono tracking-wider">AVAILABLE FOR FREELANCE</span>
+        <span className="font-mono text-xs tracking-wider sm:text-sm md:text-base">DISPONIBLE EN FREELANCE</span>
       </motion.div>
     );
   }
 
   return (
-    <div className="w-full overflow-hidden">
+    <div className="overflow-hidden w-full">
       <motion.div
         initial={{ x: 0 }}
         animate={{ x: "-100%" }}
@@ -53,10 +53,10 @@ export const TextMarquee = () => {
         }}
         className="inline-flex whitespace-nowrap"
       >
-        <span className="py-2 px-4 text-sm md:text-base font-mono text-black whitespace-nowrap">
+        <span className="px-4 py-2 font-mono text-sm text-black whitespace-nowrap md:text-base">
           {text}
         </span>
-        <span className="py-2 px-4 text-sm md:text-base font-mono text-black whitespace-nowrap">
+        <span className="px-4 py-2 font-mono text-sm text-black whitespace-nowrap md:text-base">
           {text}
         </span>
       </motion.div>

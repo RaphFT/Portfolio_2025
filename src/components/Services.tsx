@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Badge } from './ui/badge';
 import {
   SwatchIcon,
   MagnifyingGlassIcon,
@@ -6,116 +7,169 @@ import {
   WrenchScrewdriverIcon
 } from '@heroicons/react/24/outline';
 
-const ServiceCard = ({ title, description, Icon, delay, id }: {
-  title: string;
-  description: string;
-  Icon: React.ElementType;
-  delay: number;
-  id: string;
-}) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, delay }}
-    viewport={{ once: true }}
-    className="p-6 md:p-8 transition-all duration-300 bg-white border border-gray-100 rounded-lg hover:shadow-lg hover:border-gray-200 h-full"
-    tabIndex={0}
-    role="group"
-    aria-labelledby={id}
-  >
-    <div className="flex flex-col h-full">
-      <div className="flex items-center gap-4 mb-6">
-        <div className="p-2 transition-colors duration-300 rounded-lg bg-gray-50 group-hover:bg-gray-100">
-          <Icon className="w-6 h-6 text-gray-600 transition-colors duration-300 group-hover:text-gray-900" aria-hidden="true" />
-        </div>
-        <h3 
-          id={id} 
-          className="text-lg md:text-xl font-clash"
-          style={{
-            fontFamily: '"Clash Display", sans-serif',
-            fontWeight: 500
-          }}
-        >
-          {title}
-        </h3>
-      </div>
-      <p 
-        className="text-sm md:text-base text-gray-600 font-clash"
-        style={{
-          fontFamily: '"Clash Display", sans-serif',
-          fontWeight: 400
-        }}
-      >
-        {description}
-      </p>
-    </div>
-  </motion.div>
-);
-
-const services = [
-  {
-    id: 'service-brand',
-    title: 'BRAND IDENTITY',
-    description: "Bring your brand to life with a unique and memorable visual identity. From logo to marketing materials, I create visual consistency that reflects your values and captures your audience's attention.",
-    delay: 0,
-    Icon: SwatchIcon
-  },
-  {
-    id: 'service-seo',
-    title: 'SEO',
-    description: "Maximize your online visibility with effective SEO strategy. Technical optimization, quality content, and targeted keywords to propel your website to the top search results.",
-    delay: 0.2,
-    Icon: MagnifyingGlassIcon
-  },
-  {
-    id: 'service-website',
-    title: 'WEBSITE DESIGN AND DEV',
-    description: "Modern, fast, and optimized websites that convert. Expertise in React, Next.js, and TypeScript to create exceptional user experiences, perfectly aligned with your business goals.",
-    delay: 0.4,
-    Icon: ComputerDesktopIcon
-  },
-  {
-    id: 'service-smallproject',
-    title: 'SMALL PROJECT',
-    description: "Quick and efficient solutions for your specific needs. Landing pages, optimizations, or new features, I adapt to your budget while maintaining premium quality.",
-    delay: 0.6,
-    Icon: WrenchScrewdriverIcon
-  }
-];
-
 export const Services = () => {
   return (
     <section 
       id="services" 
-      className="flex items-center min-h-screen py-20 bg-gray-50"
+      className="w-full py-20 lg:py-40 bg-gray-50"
       aria-labelledby="services-heading"
     >
-      <div className="container px-4">
-        <motion.h2
-          id="services-heading"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mb-16 text-2xl md:text-3xl lg:text-4xl text-center font-clash"
-          style={{
-            fontFamily: '"Clash Display", sans-serif',
-            fontWeight: 600
-          }}
-        >
-          What i do ?
-        </motion.h2>
-        
-        <div 
-          className="grid grid-cols-1 gap-6 md:grid-cols-2 max-w-6xl mx-auto"
-          role="list"
-          aria-label="Services offered"
-        >
-          {services.map((service) => (
-            <div key={service.id} role="listitem">
-              <ServiceCard {...service} />
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col gap-10">
+          <motion.div 
+            className="flex gap-4 flex-col items-start"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div>
+              <Badge variant="secondary">Services</Badge>
             </div>
-          ))}
+            <div className="flex gap-2 flex-col">
+              <h2 
+                id="services-heading"
+                className="text-3xl md:text-5xl tracking-tighter max-w-xl font-clash text-left"
+                style={{
+                  fontFamily: '"Clash Display", sans-serif',
+                  fontWeight: 600
+                }}
+              >
+                Ce que je fais ?
+              </h2>
+              <p 
+                className="text-lg max-w-xl lg:max-w-lg leading-relaxed tracking-tight text-gray-600 text-left font-clash"
+                style={{
+                  fontFamily: '"Clash Display", sans-serif',
+                  fontWeight: 400
+                }}
+              >
+                Des solutions digitales complètes pour faire grandir votre présence en ligne et atteindre vos objectifs business.
+              </p>
+            </div>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div 
+              className="bg-gray-100 rounded-md h-full lg:col-span-2 p-6 aspect-square lg:aspect-auto flex justify-between flex-col"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0 }}
+              viewport={{ once: true }}
+            >
+              <SwatchIcon className="w-8 h-8 stroke-1 text-gray-600" />
+              <div className="flex flex-col">
+                <h3 
+                  className="text-xl tracking-tight font-clash"
+                  style={{
+                    fontFamily: '"Clash Display", sans-serif',
+                    fontWeight: 500
+                  }}
+                >
+                  IDENTITÉ DE MARQUE
+                </h3>
+                <p 
+                  className="text-gray-600 max-w-xs text-base font-clash"
+                  style={{
+                    fontFamily: '"Clash Display", sans-serif',
+                    fontWeight: 400
+                  }}
+                >
+                  Donnez vie à votre marque avec une identité visuelle unique et mémorable. Du logo aux supports marketing, je crée une cohérence visuelle qui reflète vos valeurs.
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              className="bg-gray-100 rounded-md aspect-square p-6 flex justify-between flex-col"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <MagnifyingGlassIcon className="w-8 h-8 stroke-1 text-gray-600" />
+              <div className="flex flex-col">
+                <h3 
+                  className="text-xl tracking-tight font-clash"
+                  style={{
+                    fontFamily: '"Clash Display", sans-serif',
+                    fontWeight: 500
+                  }}
+                >
+                  OPTIMISATION SEO
+                </h3>
+                <p 
+                  className="text-gray-600 max-w-xs text-base font-clash"
+                  style={{
+                    fontFamily: '"Clash Display", sans-serif',
+                    fontWeight: 400
+                  }}
+                >
+                  Maximisez votre visibilité en ligne avec une stratégie SEO efficace. Optimisation technique, contenu de qualité et mots-clés ciblés.
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              className="bg-gray-100 rounded-md aspect-square p-6 flex justify-between flex-col"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <ComputerDesktopIcon className="w-8 h-8 stroke-1 text-gray-600" />
+              <div className="flex flex-col">
+                <h3 
+                  className="text-xl tracking-tight font-clash"
+                  style={{
+                    fontFamily: '"Clash Display", sans-serif',
+                    fontWeight: 500
+                  }}
+                >
+                  CONCEPTION & DÉVELOPPEMENT WEB
+                </h3>
+                <p 
+                  className="text-gray-600 max-w-xs text-base font-clash"
+                  style={{
+                    fontFamily: '"Clash Display", sans-serif',
+                    fontWeight: 400
+                  }}
+                >
+                  Sites web modernes, rapides et optimisés qui convertissent. Expertise en React, Next.js et TypeScript pour créer des expériences exceptionnelles.
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              className="bg-gray-100 rounded-md h-full lg:col-span-2 p-6 aspect-square lg:aspect-auto flex justify-between flex-col"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <WrenchScrewdriverIcon className="w-8 h-8 stroke-1 text-gray-600" />
+              <div className="flex flex-col">
+                <h3 
+                  className="text-xl tracking-tight font-clash"
+                  style={{
+                    fontFamily: '"Clash Display", sans-serif',
+                    fontWeight: 500
+                  }}
+                >
+                  PROJETS SUR MESURE
+                </h3>
+                <p 
+                  className="text-gray-600 max-w-xs text-base font-clash"
+                  style={{
+                    fontFamily: '"Clash Display", sans-serif',
+                    fontWeight: 400
+                  }}
+                >
+                  Solutions rapides et efficaces pour vos besoins spécifiques. Landing pages, optimisations ou nouvelles fonctionnalités, je m'adapte à votre budget.
+                </p>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

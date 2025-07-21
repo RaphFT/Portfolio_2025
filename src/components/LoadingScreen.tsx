@@ -6,7 +6,7 @@ export const LoadingScreen = () => {
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-white"
+      className="flex fixed inset-0 z-50 justify-center items-center bg-white"
     >
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
@@ -14,7 +14,7 @@ export const LoadingScreen = () => {
         transition={{ duration: 0.5 }}
         className="text-center"
       >
-        <div className="flex space-x-2 mb-4">
+        <div className="flex mb-4 space-x-2">
           {[...Array(5)].map((_, i) => (
             <motion.div
               key={i}
@@ -36,9 +36,9 @@ export const LoadingScreen = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="text-primary text-lg font-medium"
+          className="text-lg font-medium text-primary"
         >
-          Loading...
+          Chargement...
         </motion.p>
       </motion.div>
     </motion.div>

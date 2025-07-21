@@ -4,61 +4,75 @@ import { motion } from 'framer-motion';
 export const About = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const words = [
-    "I'm",
+    "Je",
+    "suis",
     "Raphael",
     "Fremont,",
-    "a",
-    "freelance",
+    "développeur",
     "web",
-    "developer",
-    "crafting",
-    "custom,",
-    "high-performance",
-    "websites",
-    "that",
-    "reflect",
-    "your",
-    "brand's",
-    "true",
-    "identity.",
-    "I",
+    "freelance",
+    "créant",
+    "des",
+    "sites",
+    "web",
+    "sur",
+    "mesure,",
+    "haute",
+    "performance",
+    "qui",
+    "reflètent",
+    "la",
+    "véritable",
+    "identité",
+    "de",
+    "votre",
+    "marque.",
+    "Je",
     "combine",
-    "clean",
-    "code,",
-    "SEO",
-    "best",
-    "practices,",
-    "and",
-    "creative",
+    "du",
+    "code",
+    "propre,",
+    "les",
+    "meilleures",
+    "pratiques",
+    "SEO,",
+    "et",
+    "un",
     "design",
-    "to",
-    "build",
-    "digital",
-    "experiences",
-    "that",
-    "engage",
-    "users",
-    "and",
-    "drive",
-    "results.",
-    "Whether",
-    "you're",
-    "launching",
-    "a",
-    "brand",
-    "or",
-    "leveling",
-    "up",
-    "your",
-    "online",
-    "presence,",
-    "I'm",
-    "here",
-    "to",
-    "help",
-    "you",
-    "stand",
-    "out."
+    "créatif",
+    "pour",
+    "construire",
+    "des",
+    "expériences",
+    "numériques",
+    "qui",
+    "engagent",
+    "les",
+    "utilisateurs",
+    "et",
+    "génèrent",
+    "des",
+    "résultats.",
+    "Que",
+    "vous",
+    "lanciez",
+    "une",
+    "marque",
+    "ou",
+    "amélioriez",
+    "votre",
+    "présence",
+    "en",
+    "ligne,",
+    "je",
+    "suis",
+    "là",
+    "pour",
+    "vous",
+    "aider",
+    "à",
+    "vous",
+    "démarquer."
   ];
 
   const renderWords = (startIndex: number, endIndex: number, isFirstParagraph = false) => {
@@ -93,7 +107,7 @@ export const About = () => {
   return (
     <section 
       ref={containerRef} 
-      className="min-h-screen py-8 md:py-0 md:h-screen flex items-center justify-center"
+      className="flex justify-center items-center py-8 min-h-screen md:py-0 md:h-screen"
       id="about"
     >
       <div className="container px-4 md:px-6">
@@ -102,11 +116,11 @@ export const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto"
+          className="mx-auto max-w-4xl"
         >
           {/* Mobile version */}
           <div 
-            className="block md:hidden px-2 py-10 text-lg sm:text-xl leading-relaxed"
+            className="block px-2 py-10 text-lg leading-relaxed md:hidden sm:text-xl"
             aria-label="Developer biography mobile"
           >
             <div className="flex flex-col space-y-4">
@@ -138,7 +152,7 @@ export const About = () => {
           
           {/* Desktop version */}
           <div 
-            className="hidden md:block text-xl md:text-2xl lg:text-3xl xl:text-4xl leading-relaxed px-4 md:px-0"
+            className="hidden px-4 text-xl leading-relaxed md:block md:text-2xl lg:text-3xl xl:text-4xl md:px-0"
             aria-label="Developer biography"
           >
             <div className="text-justify">
@@ -148,7 +162,7 @@ export const About = () => {
           
           {/* Add hidden paragraph with full text for screen readers */}
           <div className="sr-only">
-            I'm Raphael Fremont, a freelance web developer crafting custom, high-performance websites that reflect your brand's true identity. I combine clean code, SEO best practices, and creative design to build digital experiences that engage users and drive results. Whether you're launching a brand or leveling up your online presence, I'm here to help you stand out.
+            Je suis Raphael Fremont, développeur web freelance créant des sites web sur mesure, haute performance qui reflètent la véritable identité de votre marque. Je combine du code propre, les meilleures pratiques SEO, et un design créatif pour construire des expériences numériques qui engagent les utilisateurs et génèrent des résultats. Que vous lanciez une marque ou amélioriez votre présence en ligne, je suis là pour vous aider à vous démarquer.
           </div>
         </motion.div>
       </div>

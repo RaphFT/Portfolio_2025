@@ -3,50 +3,50 @@ import { motion } from 'framer-motion';
 
 // Initial boot sequence
 const bootSequence = [
-  { text: '> System initializing...', delay: 400 },
-  { text: '> Loading portfolio data...', delay: 600 },
-  { text: '> Ready! Type "start" for available commands', delay: 500 }
+  { text: '> Initialisation du système...', delay: 400 },
+  { text: '> Chargement des données du portfolio...', delay: 600 },
+  { text: '> Prêt ! Tapez "help" pour voir les commandes disponibles', delay: 500 }
 ];
 
 // Command definitions with responses
 const commands: Record<string, { response: string[], isEasterEgg?: boolean, action?: string }> = {
-  'start': {
+  'help': {
     response: [
-      'Available commands:',
-      '  start     - Show this help message',
-      '  about    - Learn more about me',
-      '  skills   - View my technical skills',
-      '  projects - See my recent projects',
-      '  contact  - Get my contact information',
-      '  clear    - Clear the terminal',
+      'Commandes disponibles :',
+      '  help     - Afficher ce message d\'aide',
+      '  about    - En savoir plus sur moi',
+      '  skills   - Voir mes compétences techniques',
+      '  projects - Voir mes projets récents',
+      '  contact  - Obtenir mes informations de contact',
+      '  clear    - Effacer le terminal',
       '',
-      'Try to find hidden easter egg commands! 🥚'
+      'Essayez de trouver les commandes cachées ! 🥚'
     ]
   },
   'about': {
     response: [
       'Raphael Fremont',
       '------------------------',
-      'France-based creative developer passionate about crafting',
-      'innovative digital experiences with clean, efficient code.',
-      'Always learning new technologies and techniques to push',
-      'the boundaries of what\'s possible on the web.'
+      'Développeur créatif basé en France passionné par la création',
+      'd\'expériences numériques innovantes avec un code propre et efficace.',
+      'Toujours en train d\'apprendre de nouvelles technologies et techniques',
+      'pour repousser les limites du possible sur le web.'
     ]
   },
   'skills': {
     response: [
-      'Languages & Tools:',
+      'Langages & Outils :',
       '------------------------',
       '{ JavaScript, TypeScript, React, Vite.js, HTML5, CSS3 }',
       '{ Tailwind, Framer Motion, Node.js, Express, MongoDB }',
-      '{ Git, Figma, Responsive Design }',
+      '{ Git, Figma, Design Responsive }',
       '',
-      'Always exploring new technologies and expanding my toolkit!'
+      'Toujours en train d\'explorer de nouvelles technologies et d\'étendre ma boîte à outils !'
     ]
   },
   'projects': {
     response: [
-      'Recent Projects:',
+      'Projets Récents :',
       '------------------------',
       '1. PC Gaming Guide - React, Javascript, HTML, CSS',
       '2. Kasa - React, Javascript, CSS',
@@ -54,18 +54,18 @@ const commands: Record<string, { response: string[], isEasterEgg?: boolean, acti
       '4. Sophie Bluel - Javascript, HTML, CSS',
       '5. Booki - HTML, CSS',
       '',
-      'Scroll down to see more details about these projects!'
+      'Faites défiler vers le bas pour voir plus de détails sur ces projets !'
     ]
   },
   'contact': {
     response: [
-      'Contact Information:',
+      'Informations de Contact :',
       '------------------------',
-      'Email: hello@raphaelfremont.com',
-      'LinkedIn: linkedin.com/in/raphaelfremont',
-      'GitHub: github.com/raphFT',
+      'Email : hello@raphaelfremont.com',
+      'LinkedIn : linkedin.com/in/raphaelfremont',
+      'GitHub : github.com/raphFT',
       '',
-      'Always open to discussing new opportunities!'
+      'Toujours ouvert à discuter de nouvelles opportunités !'
     ]
   },
   'clear': {
@@ -73,21 +73,21 @@ const commands: Record<string, { response: string[], isEasterEgg?: boolean, acti
   },
   // Easter eggs
   'coffee': {
-    response: ['Recharging developer energy... ☕', 'Ready for more coding!'],
+    response: ['Recharge d\'énergie développeur... ☕', 'Prêt pour plus de code !'],
     isEasterEgg: true
   },
   'sudo': {
-    response: ['Nice try! But you don\'t need admin privileges here.'],
+    response: ['Bien essayé ! Mais vous n\'avez pas besoin de privilèges administrateur ici.'],
     isEasterEgg: true
   },
   'hack': {
     response: [
-      'INITIATING HACK SEQUENCE...',
-      'Bypassing firewalls...',
-      'Accessing mainframe...',
-      'Downloading secret files...',
-      '█████████████████████ 100% COMPLETE',
-      'Just kidding! I\'m a developer, not a hacker. 😉'
+      'INITIATION DE LA SÉQUENCE DE PIRATAGE...',
+      'Contournement des pare-feu...',
+      'Accès au mainframe...',
+      'Téléchargement des fichiers secrets...',
+      '█████████████████████ 100% TERMINÉ',
+      'Je plaisante ! Je suis un développeur, pas un hacker. 😉'
     ],
     isEasterEgg: true
   },
@@ -106,12 +106,12 @@ const commands: Record<string, { response: string[], isEasterEgg?: boolean, acti
     response: [
       '@#$%^&*()!~{}[]|:;<>,.?/c0d3r67$#@!^&*()',
       '1010100101010101010101010101010101010101',
-      'ERR0R: T00 MUCH RAND0MN3SS! ABORT1NG...'
+      'ERR0R : TROP DE HASARD ! ABANDON...'
     ],
     isEasterEgg: true
   },
   'matrix': {
-    response: ['Wake up, Neo...', 'The Matrix has you...', 'Follow the white rabbit.', 'Knock, knock, Neo.'],
+    response: ['Réveille-toi, Neo...', 'La Matrice t\'a...', 'Suis le lapin blanc.', 'Toc, toc, Neo.'],
     isEasterEgg: true,
     action: 'MATRIX_ANIMATION'
   },
@@ -250,7 +250,7 @@ const MatrixAnimation = ({ onComplete }: { onComplete: () => void }) => {
   return (
     <div 
       ref={containerRef}
-      className="absolute inset-0 overflow-hidden font-mono text-green-500 bg-black"
+      className="overflow-hidden absolute inset-0 font-mono text-green-500 bg-black"
       aria-label="Matrix animation easter egg"
       role="img"
     >
@@ -307,7 +307,7 @@ const TypedTerminal = () => {
   useEffect(() => {
     if (currentBootIndex >= bootSequence.length) {
       setBootComplete(true);
-      setAnnouncement('Terminal ready. Type help for available commands.');
+      setAnnouncement('Terminal prêt. Tapez help pour voir les commandes disponibles.');
       return;
     }
     
@@ -382,7 +382,7 @@ const TypedTerminal = () => {
   // Handle Matrix animation completion
   const handleMatrixComplete = useCallback(() => {
     setShowMatrixAnimation(false);
-    setAnnouncement('Matrix animation completed.');
+    setAnnouncement('Animation Matrix terminée.');
   }, [setAnnouncement]);
 
   // Memoized command processor to prevent re-creation
@@ -391,12 +391,12 @@ const TypedTerminal = () => {
     
     const commandText = `> ${cmd}`;
     setHistory(prev => [...prev, commandText]);
-    setAnnouncement(`You typed: ${cmd}`);
+    setAnnouncement(`Vous avez tapé : ${cmd}`);
     
     // Special case for clear command
     if (cmd.toLowerCase() === 'clear') {
       setHistory([]);
-      setAnnouncement('Terminal cleared');
+      setAnnouncement('Terminal effacé');
       return;
     }
     
@@ -413,16 +413,16 @@ const TypedTerminal = () => {
       if (action === 'MATRIX_ANIMATION') {
         setTimeout(() => {
           setShowMatrixAnimation(true);
-          setAnnouncement('The Matrix animation is running.');
+          setAnnouncement('L\'animation Matrix est en cours d\'exécution.');
         }, response.length * 200);
       }
       
       // Announce first line of response for screen readers
       if (response.length > 0) {
-        setAnnouncement(`Command ${cmd} executed. ${response[0]}`);
+        setAnnouncement(`Commande ${cmd} exécutée. ${response[0]}`);
       }
     } else {
-      const errorMessage = `Command not found: ${cmd}. Type "help" for available commands.`;
+      const errorMessage = `Commande non trouvée : ${cmd}. Tapez "help" pour voir les commandes disponibles.`;
       setTypingQueue([errorMessage]);
       setAnnouncement(errorMessage);
     }
@@ -446,7 +446,7 @@ const TypedTerminal = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="w-full overflow-hidden font-mono text-xs text-black bg-white border border-gray-200 rounded-lg shadow-xl md:text-sm"
+      className="overflow-hidden w-full font-mono text-xs text-black bg-white rounded-lg border border-gray-200 shadow-xl md:text-sm"
       role="region"
       aria-label="Interactive terminal"
     >
@@ -467,7 +467,7 @@ const TypedTerminal = () => {
       {/* Terminal content */}
       <div 
         ref={terminalRef}
-        className="relative h-48 p-3 overflow-y-auto text-xs bg-white sm:h-56 md:h-64 md:p-4 md:text-sm"
+        className="overflow-y-auto relative p-3 h-48 text-xs bg-white sm:h-56 md:h-64 md:p-4 md:text-sm"
         tabIndex={0}
         role="log"
         aria-live="polite"

@@ -1,273 +1,113 @@
-import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { BentoGrid, type BentoItem } from './ui/bento-grid';
+import {
+  CodeBracketIcon,
+  GlobeAltIcon,
+  CommandLineIcon,
+  CpuChipIcon,
+  RocketLaunchIcon
+} from '@heroicons/react/24/outline';
 
-type Project = {
-  id: number;
-  title: string;
-  category: string;
-  image: string;
-  description?: string;
-};
-
-const projects: Project[] = [
+const projectsData: BentoItem[] = [
   {
-    id: 1,
-    title: 'PC GAMING GUIDE',
-    category: 'REACT, JAVASCRIPT, CSS',
-    image: '/images/projects/pcgg.webp',
-    description: 'A modern web application for a creative agency'
+    title: "PC GAMING GUIDE",
+    meta: "React, JS, CSS",
+    description: "Application web moderne pour une agence créative avec interface utilisateur intuitive et design responsive.",
+    icon: <CodeBracketIcon className="w-4 h-4 text-blue-500" />,
+    status: "Live",
+    tags: ["React", "JavaScript", "CSS"],
+    colSpan: 2,
+    hasPersistentHover: true,
+    githubUrl: "https://github.com/raphFT/pc-gaming-guide",
+    cta: "Voir le code"
   },
   {
-    id: 2,
-    title: 'KASA',
-    category: 'REACT, NODE.JS, EXPRESS, MONGO.DB',
-    image: '/images/projects/kasa.webp',
-    description: 'Innovative laboratory management system'
+    title: "KASA",
+    meta: "React, Node.js",
+    description: "Système de gestion de laboratoire innovant avec architecture moderne et base de données MongoDB.",
+    icon: <GlobeAltIcon className="w-4 h-4 text-emerald-500" />,
+    status: "Déployé",
+    tags: ["React", "Node.js", "MongoDB"],
+    githubUrl: "https://github.com/raphFT/kasa",
+    cta: "Voir le code"
   },
   {
-    id: 3,
-    title: 'BOOKI',
-    category: 'HTML, CSS',
-    image: '/images/projects/booki.webp',
-    description: 'Interactive design platform for creative professionals'
+    title: "BOOKI",
+    meta: "HTML, CSS",
+    description: "Plateforme de design interactive pour professionnels créatifs avec interface moderne et animations fluides.",
+    icon: <CommandLineIcon className="w-4 h-4 text-purple-500" />,
+    status: "Terminé",
+    tags: ["HTML", "CSS", "Design"],
+    githubUrl: "https://github.com/raphFT/booki",
+    cta: "Voir le code"
   },
   {
-    id: 4,
-    title: 'Nina Carducci',
-    category: 'SEO, JAVASCRIPT',
-    image: '/images/projects/nc.webp',
-    description: 'Interactive design platform for creative professionals'
+    title: "NINA CARDUCCI",
+    meta: "SEO, JS",
+    description: "Optimisation SEO complète avec JavaScript avancé pour améliorer la visibilité et les performances web.",
+    icon: <CpuChipIcon className="w-4 h-4 text-sky-500" />,
+    status: "Optimisé",
+    tags: ["SEO", "JavaScript", "Performance"],
+    colSpan: 2,
+    githubUrl: "https://github.com/raphFT/nina-carducci",
+    cta: "Voir le code"
   },
   {
-    id: 5,
-    title: 'Sophie Bluel',
-    category: 'JAVASCRIPT, HTML, CSS',
-    image: '/images/projects/sb.webp',
-    description: 'Interactive design platform for creative professionals'
-  },
+    title: "SOPHIE BLUEL",
+    meta: "JS, HTML, CSS",
+    description: "Application web complète avec JavaScript moderne, HTML sémantique et CSS avancé pour une expérience utilisateur optimale.",
+    icon: <RocketLaunchIcon className="w-4 h-4 text-orange-500" />,
+    status: "Fonctionnel",
+    tags: ["JavaScript", "HTML", "CSS"],
+    githubUrl: "https://github.com/raphFT/sophie-bluel",
+    cta: "Voir le code"
+  }
 ];
 
 export const Projects = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const [statusMessage, setStatusMessage] = useState('');
-  
-  const nextProject = () => {
-    setCurrentIndex((prev) => (prev + 1) % projects.length);
-  };
-
-  const prevProject = () => {
-    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
-  };
-  
-  useEffect(() => {
-    setStatusMessage(`Showing project ${currentIndex + 1} of ${projects.length}: ${projects[currentIndex].title}`);
-  }, [currentIndex]);
-  
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!carouselRef.current) return;
-      
-      if (document.activeElement === carouselRef.current || carouselRef.current.contains(document.activeElement)) {
-        if (e.key === 'ArrowLeft') {
-          prevProject();
-          e.preventDefault();
-        } else if (e.key === 'ArrowRight') {
-          nextProject();
-          e.preventDefault();
-        }
-      }
-    };
-    
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
-  useEffect(() => {
-    if (!carouselRef.current) return;
-    
-    let touchStartX = 0;
-    let touchEndX = 0;
-    
-    const handleTouchStart = (e: TouchEvent) => {
-      touchStartX = e.changedTouches[0].screenX;
-    };
-    
-    const handleTouchEnd = (e: TouchEvent) => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-    };
-    
-    const handleSwipe = () => {
-      const minSwipeDistance = 50;
-      
-      if (touchStartX - touchEndX > minSwipeDistance) {
-        nextProject();
-      } else if (touchEndX - touchStartX > minSwipeDistance) {
-        prevProject();
-      }
-    };
-    
-    const carousel = carouselRef.current;
-    carousel.addEventListener('touchstart', handleTouchStart);
-    carousel.addEventListener('touchend', handleTouchEnd);
-    
-    return () => {
-      carousel.removeEventListener('touchstart', handleTouchStart);
-      carousel.removeEventListener('touchend', handleTouchEnd);
-    };
-  }, []);
-
   return (
     <section 
       id="projects" 
-      className="flex items-center min-h-[60vh] pt-2 pb-6 -mt-8 md:min-h-screen md:py-0 md:h-screen bg-gray-50"
+      className="py-20 w-full bg-gray-50 lg:py-40"
       aria-labelledby="projects-heading"
     >
-      <div className="container px-4 md:px-6">
-        <motion.h2
-          id="projects-heading"
+      <div className="container px-4 mx-auto">
+        <motion.div 
+          className="flex flex-col gap-4 items-start mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-4 text-xl font-bold text-center md:text-2xl lg:text-4xl md:mb-12 font-clash"
-          style={{
-            fontFamily: '"Clash Display", sans-serif',
-            fontWeight: 600
-          }}
         >
-          Recent Projects
-        </motion.h2>
+          <div>
+            <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors bg-black text-white">
+              Portfolio
+            </span>
+          </div>
+          <div className="flex flex-col gap-2">
+            <h2 
+              id="projects-heading"
+              className="max-w-xl text-3xl tracking-tighter text-left md:text-5xl font-clash"
+              style={{
+                fontFamily: '"Clash Display", sans-serif',
+                fontWeight: 600
+              }}
+            >
+              Mes Projets
+            </h2>
+            <p 
+              className="max-w-xl text-lg tracking-tight leading-relaxed text-left text-gray-600 lg:max-w-lg font-clash"
+              style={{
+                fontFamily: '"Clash Display", sans-serif',
+                fontWeight: 400
+              }}
+            >
+              Une sélection de mes réalisations récentes, alliant créativité et expertise technique pour créer des expériences digitales exceptionnelles.
+            </p>
+          </div>
+        </motion.div>
         
-        <div 
-          ref={carouselRef}
-          className="relative max-w-4xl mx-auto"
-          role="region"
-          aria-roledescription="carousel"
-          aria-label="Projects showcase"
-          tabIndex={0}
-        >
-          <div className="sr-only" aria-live="polite">
-            {statusMessage}
-          </div>
-          
-          <div className="flex items-center gap-2 md:gap-4">
-            <button
-              onClick={prevProject}
-              className="p-2 md:p-2.5 text-gray-600 transition-colors border border-gray-300 rounded-full hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
-              aria-label="Previous project"
-              aria-controls="projects-carousel"
-            >
-              <span aria-hidden="true" className="text-base md:text-lg">←</span>
-            </button>
-
-            <div 
-              id="projects-carousel"
-              className="flex-1"
-              aria-live="polite"
-              aria-atomic="true"
-            >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentIndex}
-                  initial={{ opacity: 0, x: 100 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -100 }}
-                  transition={{ duration: 0.5 }}
-                  className="space-y-2 md:space-y-4"
-                  aria-roledescription="slide"
-                  aria-label={`Project ${currentIndex + 1} of ${projects.length}`}
-                >
-                  <div className="space-y-1">
-                    <motion.h3 
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.2 }}
-                      className="text-base font-medium md:text-xl lg:text-2xl font-clash"
-                      style={{
-                        fontFamily: '"Clash Display", sans-serif',
-                        fontWeight: 500
-                      }}
-                    >
-                      {projects[currentIndex].title}
-                    </motion.h3>
-                    <motion.p 
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.3 }}
-                      className="text-xs text-gray-600 md:text-sm lg:text-base font-clash"
-                      style={{
-                        fontFamily: '"Clash Display", sans-serif',
-                        fontWeight: 400
-                      }}
-                    >
-                      {projects[currentIndex].category}
-                    </motion.p>
-                  </div>
-
-                  <div className="overflow-hidden bg-white shadow-lg rounded-lg md:rounded-xl">
-                    <div className="relative w-full aspect-[4/3] md:aspect-video">
-                      <img
-                        src={projects[currentIndex].image}
-                        alt={`${projects[currentIndex].title} - ${projects[currentIndex].description}`}
-                        className="object-cover w-full h-full"
-                        loading={currentIndex === 0 ? "eager" : "lazy"}
-                      />
-                    </div>
-                  </div>
-
-                  {projects[currentIndex].description && (
-                    <motion.p 
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4 }}
-                      className="text-xs text-gray-600 md:text-sm lg:text-base font-clash"
-                      style={{
-                        fontFamily: '"Clash Display", sans-serif',
-                        fontWeight: 400
-                      }}
-                    >
-                      {projects[currentIndex].description}
-                    </motion.p>
-                  )}
-                  
-                  {/* Pagination indicators */}
-                  <div className="flex justify-center mt-2 space-x-1.5 md:space-x-2">
-                    {projects.map((_, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setCurrentIndex(idx)}
-                        className={`w-1.5 h-1.5 md:w-2 md:h-2 rounded-full transition-colors ${idx === currentIndex ? 'bg-primary' : 'bg-gray-300'}`}
-                        aria-label={`Go to project ${idx + 1}`}
-                        aria-current={idx === currentIndex ? 'true' : 'false'}
-                      />
-                    ))}
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            <button
-              onClick={nextProject}
-              className="p-2 md:p-2.5 text-gray-600 transition-colors border border-gray-300 rounded-full hover:border-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
-              aria-label="Next project"
-              aria-controls="projects-carousel"
-            >
-              <span aria-hidden="true" className="text-base md:text-lg">→</span>
-            </button>
-          </div>
-          
-          {/* Swipe instruction for mobile */}
-          <p className="mt-1 text-xs text-center text-gray-500 md:hidden font-clash"
-            style={{
-              fontFamily: '"Clash Display", sans-serif',
-              fontWeight: 400
-            }}
-          >
-            Swipe to navigate
-          </p>
-        </div>
+        <BentoGrid items={projectsData} />
       </div>
     </section>
   );

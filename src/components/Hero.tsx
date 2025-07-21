@@ -171,7 +171,7 @@ export const Hero = () => {
                 fontWeight: 600
               }}
             >
-              FRONTEND DEV
+              FULLSTACK DEV
               <br />
               CONSTANT LEARNER
               <br />

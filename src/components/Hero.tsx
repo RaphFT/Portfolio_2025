@@ -10,16 +10,16 @@ export const Hero = () => {
   return (
     <section 
       id="home" 
-      className="relative min-h-screen overflow-hidden"
+      className="overflow-hidden relative min-h-screen"
       aria-label="Hero section"
     >
       {/* Top bar with version and contact */}
       <div 
-        className="absolute top-0 left-0 right-0 p-2 md:p-4"
+        className="absolute top-0 right-0 left-0 p-2 md:p-4"
         role="navigation"
         aria-label="Quick links"
       >
-        <div className="relative flex items-center justify-between">
+        <div className="flex relative justify-between items-center">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -37,7 +37,7 @@ export const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="absolute z-10 hidden font-mono text-xs transition-colors -translate-x-1/2 rounded cursor-pointer left-1/2 md:text-sm hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary md:block"
+            className="hidden absolute left-1/2 z-10 font-mono text-xs rounded transition-colors -translate-x-1/2 cursor-pointer md:text-sm hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary md:block"
             aria-label="Visit LinkedIn profile, opens in a new tab"
           >
             @RAPHAELFREMONT
@@ -46,7 +46,7 @@ export const Hero = () => {
           {/* Email link optimized for mobile LCP */}
           <a
             href="mailto:raph.frem@gmail.com"
-            className="z-10 font-mono text-xs transition-colors rounded cursor-pointer md:text-sm hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+            className="z-10 font-mono text-xs rounded transition-colors cursor-pointer md:text-sm hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
             aria-label="Send email to raph.frem@gmail.com"
             style={{ 
               willChange: 'opacity',
@@ -59,16 +59,16 @@ export const Hero = () => {
       </div>
 
       {/* Main content */}
-      <div className="container min-h-screen px-4 mx-auto">
-        <div className="relative flex flex-col items-center min-h-screen">
+      <div className="container px-4 mx-auto min-h-screen">
+        <div className="flex relative flex-col items-center min-h-screen">
           {/* Mobile Layout - Only for mobile */}
-          <div className="flex flex-col items-center justify-center w-full min-h-screen md:hidden -mt-8">
+          <div className="flex flex-col justify-center items-center -mt-8 w-full min-h-screen md:hidden">
             {/* 1. H1 first - Optimized for mobile LCP */}
             <div
-              className="w-full px-4 mx-auto mt-2 text-center"
+              className="px-4 mx-auto mt-2 w-full text-center"
             >
               <h1 
-                className="text-xl sm:text-3xl font-bold leading-tight font-clash"
+                className="text-xl font-bold leading-tight sm:text-3xl font-clash"
                 aria-label="Developer profile headline"
                 tabIndex={0}
                 style={{ 
@@ -78,7 +78,7 @@ export const Hero = () => {
                   fontWeight: 600
                 }}
               >
-                <span className="block">FRONTEND DEV</span>
+                <span className="block">FULLSTACK DEV</span>
                 <span className="block mt-1">CONSTANT LEARNER</span>
                 <span className="block mt-1 whitespace-nowrap">INDEPENDENT FREELANCER</span>
               </h1>
@@ -89,7 +89,7 @@ export const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="w-full mt-2"
+              className="mt-2 w-full"
             >
               <TextMarquee />
             </motion.div>
@@ -99,12 +99,12 @@ export const Hero = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="w-full mb-4"
+              className="mb-4 w-full"
               aria-label="Interactive terminal section"
             >
               <Suspense fallback={
                 <div 
-                  className="flex items-center justify-center w-full h-40 mx-auto bg-white border border-gray-200 rounded-lg shadow-xl sm:h-48 md:h-64"
+                  className="flex justify-center items-center mx-auto w-full h-40 bg-white rounded-lg border border-gray-200 shadow-xl sm:h-48 md:h-64"
                   aria-live="polite"
                 >
                   Loading terminal...
@@ -135,7 +135,7 @@ export const Hero = () => {
             <div className="w-full">
               <Suspense fallback={
                 <div 
-                  className="flex items-center justify-center w-full h-48 bg-white border border-gray-200 rounded-lg shadow-xl sm:h-56 md:h-64"
+                  className="flex justify-center items-center w-full h-48 bg-white rounded-lg border border-gray-200 shadow-xl sm:h-56 md:h-64"
                   aria-live="polite"
                 >
                   Loading terminal...
@@ -160,7 +160,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="hidden max-w-4xl px-4 mx-auto mt-4 text-center md:block md:mt-20 lg:mt-24 xl:mt-28"
+            className="hidden px-4 mx-auto mt-4 max-w-4xl text-center md:block md:mt-20 lg:mt-24 xl:mt-28"
           >
             <h1 
               className="text-3xl font-bold leading-tight lg:text-5xl font-clash"
@@ -183,7 +183,7 @@ export const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="w-full mt-2"
+              className="mt-2 w-full"
             >
               <TextMarquee />
             </motion.div>

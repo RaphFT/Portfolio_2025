@@ -20,15 +20,47 @@ interface BentoGridProps {
 }
 
 function BentoGrid({ items }: BentoGridProps) {
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                duration: 0.6,
+                staggerChildren: 0.08,
+                ease: "easeOut"
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { 
+            opacity: 0, 
+            y: 30,
+            scale: 0.95
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: {
+                duration: 0.5,
+                ease: "easeOut"
+            }
+        }
+    };
+
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 p-4 max-w-7xl mx-auto">
+        <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-3 p-4 max-w-7xl mx-auto"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+        >
             {items.map((item, index) => (
                 <motion.div
                     key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
+                    variants={itemVariants}
                     className={`group relative p-4 rounded-xl overflow-hidden transition-all duration-300 border border-gray-100/80 bg-white hover:shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:-translate-y-0.5 will-change-transform ${item.colSpan === 2 ? "md:col-span-2" : "col-span-1"} ${item.hasPersistentHover ? "shadow-[0_2px_12px_rgba(0,0,0,0.03)] -translate-y-0.5" : ""}`}
                 >
                     {/* Background pattern */}
@@ -116,7 +148,7 @@ function BentoGrid({ items }: BentoGridProps) {
                     />
                 </motion.div>
             ))}
-        </div>
+        </motion.div>
     );
 }
 

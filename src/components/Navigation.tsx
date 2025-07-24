@@ -6,12 +6,12 @@ export const Navigation = () => {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="fixed bottom-2 sm:bottom-4 md:bottom-8 left-0 right-0 flex justify-center z-40"
+      className="flex fixed right-0 left-0 bottom-2 z-40 justify-center sm:bottom-4 md:bottom-8"
       aria-label="Site navigation"
       role="navigation"
     >
       <div className="bg-white/80 backdrop-blur-md rounded-full shadow-lg px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 border-2 border-black">
-        <ul className="flex space-x-2 sm:space-x-4 md:space-x-8 text-xs sm:text-sm md:text-base" role="menubar">
+        <ul className="flex space-x-2 text-xs sm:space-x-4 md:space-x-8 sm:text-sm md:text-base" role="menubar">
           <li role="none">
             <a 
               href="#home" 

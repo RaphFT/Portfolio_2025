@@ -21,7 +21,7 @@ export const ScrollProgressMobile = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.5 }}
-      className="fixed bottom-4 right-4 flex flex-col space-y-2 z-50 block md:hidden"
+      className="block flex fixed right-4 bottom-4 z-50 flex-col space-y-2 md:hidden"
     >
       {[...Array(totalIndicators)].map((_, i) => (
         <motion.div
@@ -31,7 +31,7 @@ export const ScrollProgressMobile = () => {
             scale: 1,
           }}
           transition={{ duration: 0.2 }}
-          className={`w-2 h-2 rounded-full border border-black cursor-pointer transition-colors`}
+          className={`w-2 h-2 rounded-full border border-black transition-colors cursor-pointer`}
           style={{
             backgroundColor: i === activeIndex ? '#000' : 'rgba(0, 0, 0, 0)'
           }}

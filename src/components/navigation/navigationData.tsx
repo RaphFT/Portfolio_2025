@@ -14,6 +14,11 @@ export const navigationData = {
       isCurrent: true
     },
     {
+      id: 'stack',
+      label: 'STACK',
+      href: '#stack'
+    },
+    {
       id: 'projects',
       label: 'PROJECTS',
       href: '#projects'

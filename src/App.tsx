@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { LoadingScreen } from './components/global/LoadingScreen';
 import { Navigation } from './components/global/Navigation';
-import { Hero, About, About2, Projects, Services, Footer } from './components/sections';
+import { Hero, About, About2, Stack, Projects, Services, Footer } from './components/sections';
 import { ScrollProgress } from './components/global/ScrollProgress';
 import { ScrollProgressMobile } from './components/global/ScrollProgressMobile';
 import { Analytics } from '@vercel/analytics/react';
@@ -34,6 +34,7 @@ function App() {
         <Hero />
         <About />
         <About2 />
+        <Stack />
         <Projects />
         <Services />
       </main>

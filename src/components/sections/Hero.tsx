@@ -10,7 +10,7 @@ export const Hero = () => {
   return (
     <section 
       id="home" 
-      className="overflow-hidden relative h-screen"
+      className="overflow-hidden relative h-screen pb-4 md:pb-0"
       aria-label="Hero section"
     >
       {/* Top bar with version and contact */}
@@ -49,7 +49,7 @@ export const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="mt-2 w-full"
+            className="mt-2 w-full hidden md:block"
           >
             <TextMarquee />
           </motion.div>

@@ -30,31 +30,15 @@ function App() {
         <Navigation />
       </header>
 
-      <main className="relative bg-white min-h-screen" role="main">
-        <section id="home" aria-label="Hero section">
-          <Hero />
-        </section>
-
-        <section id="about" aria-label="About section">
-          <About />
-        </section>
-
-        <section id="about2" aria-label="Additional information">
-          <About2 />
-        </section>
-
-        <section id="projects" aria-label="Projects showcase">
-          <Projects />
-        </section>
-
-        <section id="services" aria-label="Services offered">
-          <Services />
-        </section>
+      <main className="relative bg-white" role="main">
+        <Hero />
+        <About />
+        <About2 />
+        <Projects />
+        <Services />
       </main>
 
-      <footer role="contentinfo">
-        <Footer />
-      </footer>
+      <Footer />
 
       {/* Desktop Scroll Progress */}
       <ScrollProgress />

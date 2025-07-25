@@ -8,8 +8,8 @@ export type About2TextData = {
 
 export const about2TextData: About2TextData = {
   id: 'about2-main',
-  title: "La curiosité m'a mené ici. Je suis un Développeur.",
-  description: "Combler le fossé entre designers et développeurs, j'apporte une double perspective à chaque projet. Concevoir avec l'esprit d'un développeur, et coder avec l'œil d'un designer, je crée des expériences numériques qui sont à la fois techniquement solides et visuellement attrayantes.",
+  title: "Une vision globale. Des résultats qui font la différence.",
+  description: "La capacité à comprendre le développement tout en concevant, et à apprécier le design tout en développant, crée une synergie unique qui non seulement renforce la créativité, mais mène aussi à des solutions innovantes.",
   language: 'fr',
   version: '1.0.0'
 };

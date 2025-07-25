@@ -5,11 +5,11 @@ export const Services = () => {
   return (
     <section 
       id="services" 
-      className="h-screen w-full bg-white flex items-center justify-center"
+      className="min-h-screen w-full bg-white flex items-center justify-center py-8"
       aria-labelledby="services-heading"
     >
-      <div className="container mx-auto px-4 h-full">
-        <div className="flex flex-col justify-center h-full gap-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col justify-center items-center gap-3 sm:gap-4 lg:gap-6">
           <ServicesHeader />
           <ServicesGrid />
         </div>

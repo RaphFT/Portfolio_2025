@@ -7,7 +7,7 @@ type ContactLinkProps = {
 export const ContactLink = ({ contact }: ContactLinkProps) => {
   const { type, value, href, external, icon } = contact;
   
-  const baseClasses = "inline-block transition-all duration-300 hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 rounded px-2 text-lg md:text-xl font-clash";
+  const baseClasses = "inline-block transition-all duration-300 hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 rounded px-2 text-base sm:text-lg md:text-xl font-clash";
   const fontStyle = {
     fontFamily: '"Clash Display", sans-serif',
     fontWeight: 400
@@ -50,7 +50,7 @@ export const ContactLink = ({ contact }: ContactLinkProps) => {
   // Si c'est juste du texte (localisation)
   return (
     <p 
-      className={`${baseClasses} mt-8`}
+      className={`${baseClasses} mt-6 sm:mt-8`}
       style={fontStyle}
       aria-label="Location"
     >

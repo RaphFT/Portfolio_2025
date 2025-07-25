@@ -1,4 +1,4 @@
-import { type BentoItem } from '../ui/bento-grid';
+import { type BentoItem } from './bento-grid';
 import {
   CodeBracketIcon,
   GlobeAltIcon,

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Badge } from '../ui/badge';
+import { Badge } from './badge';
 
 export const ServicesHeader = () => {
   return (

@@ -9,7 +9,7 @@ export type ContactItem = {
 };
 
 export const footerData = {
-  title: "GREAT THINGS CAN HAPPEN\nWITH A SIMPLE\n« HELLO »",
+  title: "DE GRANDE CHOSES\nPEUVENT NAÎTRE D'UN SIMPLE\n« BONJOUR »",
   contacts: [
     {
       id: 'email',

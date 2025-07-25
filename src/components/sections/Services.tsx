@@ -5,7 +5,7 @@ export const Services = () => {
   return (
     <section 
       id="services" 
-      className="min-h-screen w-full bg-white flex items-center justify-center py-8"
+      className="min-h-screen w-full bg-white flex items-start justify-center py-8 pt-20"
       aria-labelledby="services-heading"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">

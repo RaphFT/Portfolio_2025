@@ -74,7 +74,7 @@ const TypedTerminal = () => {
       transition={{ duration: 0.5 }}
       className="overflow-hidden w-full font-mono text-xs text-black bg-white rounded-lg border border-gray-200 shadow-xl md:text-sm focus:outline-none focus:ring-0"
       role="region"
-      aria-label="Interactive terminal with command history and input"
+      aria-label="Terminal interactif avec historique des commandes et saisie"
       aria-describedby="terminal-instructions"
       style={{ willChange: 'transform, opacity' }}
       ref={focusContainerRef}
@@ -89,7 +89,7 @@ const TypedTerminal = () => {
         tabIndex={-1}
         role="log"
         aria-live="polite"
-        aria-label="Terminal output and command history"
+        aria-label="Sortie du terminal et historique des commandes"
         aria-describedby="terminal-output"
       >
         {!showMatrixAnimation ? (
@@ -116,9 +116,9 @@ const TypedTerminal = () => {
           <Suspense fallback={
             <div 
               className="flex justify-center items-center w-full h-full bg-black text-green-500"
-              aria-label="Loading Matrix animation"
+              aria-label="Chargement de l'animation Matrix"
             >
-              Loading Matrix...
+              Chargement Matrix...
             </div>
           }>
             <MatrixAnimation onComplete={handleMatrixComplete} />
@@ -148,13 +148,13 @@ const TypedTerminal = () => {
 
       {/* Hidden instructions for screen readers */}
       <div id="terminal-instructions" className="sr-only">
-        Interactive terminal. Type commands and press Enter to execute. Available commands: help, about, skills, projects, contact, clear.
-        Use Tab to navigate and Escape to exit focus.
+        Terminal interactif. Tapez des commandes et appuyez sur Entrée pour les exécuter. Commandes disponibles : help, about, skills, projects, contact, clear.
+        Utilisez Tab pour naviguer et Échap pour sortir du focus.
       </div>
 
       {/* Hidden output description */}
       <div id="terminal-output" className="sr-only">
-        Terminal output area showing command history and responses.
+        Zone de sortie du terminal affichant l'historique des commandes et les réponses.
       </div>
 
       {/* Advanced accessibility announcements */}

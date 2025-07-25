@@ -9,7 +9,7 @@ export const FooterContact = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
       viewport={{ once: true }}
-      className="space-y-4 sm:space-y-6 text-center"
+      className="flex flex-col space-y-4 sm:space-y-6 text-center"
       aria-label="Contact information"
     >
       {footerData.contacts.map((contact) => (

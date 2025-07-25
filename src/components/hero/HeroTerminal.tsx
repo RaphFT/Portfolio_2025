@@ -16,7 +16,7 @@ export const HeroTerminal = ({ variant = 'mobile' }: HeroTerminalProps) => {
         animate={{ opacity: 1, transform: 'translateX(0px)' }}
         transition={{ duration: 0.8, delay: 0.2 }}
         className="mb-4 w-full"
-        aria-label="Interactive terminal section"
+        aria-label="Section terminal interactif"
         style={{ willChange: 'transform, opacity' }}
       >
         <Suspense fallback={
@@ -24,7 +24,7 @@ export const HeroTerminal = ({ variant = 'mobile' }: HeroTerminalProps) => {
             className="flex justify-center items-center mx-auto w-full h-40 bg-white rounded-lg border border-gray-200 shadow-xl sm:h-48 md:h-64"
             aria-live="polite"
           >
-            Loading terminal...
+            Chargement du terminal...
           </div>
         }>
           <TypedTerminal />
@@ -37,7 +37,7 @@ export const HeroTerminal = ({ variant = 'mobile' }: HeroTerminalProps) => {
           aria-live="polite"
           style={{ willChange: 'opacity' }}
         >
-          (Click and type commands)
+          (Cliquez et tapez des commandes)
         </motion.p>
       </motion.div>
     );
@@ -49,7 +49,7 @@ export const HeroTerminal = ({ variant = 'mobile' }: HeroTerminalProps) => {
       animate={{ opacity: 1, transform: 'translateX(0px)' }}
       transition={{ duration: 0.8, delay: 0.2 }}
       className="hidden md:min-h-600:block md:absolute md:left-[26%] md:top-[31%] md:-translate-x-1/2 md:-translate-y-1/2 md:w-[600px] lg:top-[36%] xl:top-[41%] 2xl:top-[36%] md:z-10"
-      aria-label="Interactive terminal section"
+      aria-label="Section terminal interactif"
       style={{ willChange: 'transform, opacity' }}
     >
       <div className="w-full">
@@ -58,7 +58,7 @@ export const HeroTerminal = ({ variant = 'mobile' }: HeroTerminalProps) => {
             className="flex justify-center items-center w-full h-48 bg-white rounded-lg border border-gray-200 shadow-xl sm:h-56 md:h-64"
             aria-live="polite"
           >
-            Loading terminal...
+            Chargement du terminal...
           </div>
         }>
           <TypedTerminal />
@@ -72,7 +72,7 @@ export const HeroTerminal = ({ variant = 'mobile' }: HeroTerminalProps) => {
         aria-live="polite"
         style={{ willChange: 'opacity' }}
       >
-        (Click and type commands)
+        (Cliquez et tapez des commandes)
       </motion.p>
     </motion.div>
   );

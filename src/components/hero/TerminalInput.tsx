@@ -20,7 +20,7 @@ export const TerminalInput = forwardRef<HTMLInputElement, TerminalInputProps>(
 
     return (
       <>
-        <label htmlFor={id} className="sr-only">Terminal input</label>
+        <label htmlFor={id} className="sr-only">Saisie du terminal</label>
         <input
           id={id}
           ref={ref}
@@ -30,7 +30,7 @@ export const TerminalInput = forwardRef<HTMLInputElement, TerminalInputProps>(
           onChange={onChange}
           onKeyDown={onKeyDown}
           autoFocus
-          aria-label="Terminal command input"
+          aria-label="Saisie de commande du terminal"
           role="textbox"
           aria-multiline="false"
           disabled={disabled}

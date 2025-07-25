@@ -11,12 +11,12 @@ export const ProjectsHeader = () => {
       viewport={{ once: true }}
     >
       <div>
-        <Badge variant="secondary">Projets</Badge>
+        <Badge variant="secondary" className="!bg-black !text-white hover:!bg-black/80">Projets</Badge>
       </div>
       <div className="flex gap-1 sm:gap-2 flex-col items-center">
         <h2 
           id="projects-heading"
-          className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl tracking-tighter max-w-xs sm:max-w-sm md:max-w-xl font-clash text-center"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tighter max-w-xs sm:max-w-sm md:max-w-xl font-clash text-center"
           style={{
             fontFamily: '"Clash Display", sans-serif',
             fontWeight: 600

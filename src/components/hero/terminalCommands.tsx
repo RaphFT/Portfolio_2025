@@ -123,13 +123,13 @@ export const commands: Commands = {
   },
   'camille': {
     response: [
-      'My heart is yours, forever and always. ❤️'
+      'Mon cœur est à toi, pour toujours et à jamais. ❤️'
     ],
     isEasterEgg: true
   },
   'fps': {
     response: [
-      'Because we all have a dormant chicken inside us, ready to rush B with rollerblades.'
+      'Parce que nous avons tous un poulet endormi en nous, prêt à foncer sur B avec des rollers.'
     ],
     isEasterEgg: true
   }

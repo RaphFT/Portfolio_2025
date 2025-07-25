@@ -1,6 +1,6 @@
-import { About2Background } from './about2/About2Background';
-import { About2Title } from './about2/About2Title';
-import { About2Description } from './about2/About2Description';
+import { About2Background } from '../about2/About2Background';
+import { About2Title } from '../about2/About2Title';
+import { About2Description } from '../about2/About2Description';
 
 export const About2 = () => {
   return (

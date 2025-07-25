@@ -1,5 +1,5 @@
-import { AboutContainer } from './about/AboutContainer';
-import { AboutText } from './about/AboutText';
+import { AboutContainer } from '../about/AboutContainer';
+import { AboutText } from '../about/AboutText';
 
 export const About = () => {
   return (

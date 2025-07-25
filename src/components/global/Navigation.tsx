@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { NavigationContainer } from './navigation/NavigationContainer';
+import { NavigationContainer } from '../navigation/NavigationContainer';
 
 export const Navigation = () => {
   return (

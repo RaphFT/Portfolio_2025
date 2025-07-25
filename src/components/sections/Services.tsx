@@ -1,5 +1,5 @@
-import { ServicesHeader } from './services/ServicesHeader';
-import { ServicesGrid } from './services/ServicesGrid';
+import { ServicesHeader } from '../services/ServicesHeader';
+import { ServicesGrid } from '../services/ServicesGrid';
 
 export const Services = () => {
   return (

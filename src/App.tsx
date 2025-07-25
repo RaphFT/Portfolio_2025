@@ -1,14 +1,9 @@
 import { useEffect, useState } from 'react';
-import { LoadingScreen } from './components/LoadingScreen';
-import { Navigation } from './components/Navigation';
-import { Hero } from './components/Hero';
-import { About } from './components/About';
-import { About2 } from './components/About2';
-import { Projects } from './components/Projects';
-import { Services } from './components/Services';
-import { Footer } from './components/Footer';
-import { ScrollProgress } from './components/ScrollProgress';
-import { ScrollProgressMobile } from './components/ScrollProgressMobile';
+import { LoadingScreen } from './components/global/LoadingScreen';
+import { Navigation } from './components/global/Navigation';
+import { Hero, About, About2, Projects, Services, Footer } from './components/sections';
+import { ScrollProgress } from './components/global/ScrollProgress';
+import { ScrollProgressMobile } from './components/global/ScrollProgressMobile';
 import { Analytics } from '@vercel/analytics/react';
 // Removed react-helmet import to fix UNSAFE_componentWillMount warning
 // For proper SEO, this should be replaced with react-helmet-async

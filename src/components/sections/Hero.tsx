@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
-import '../styles/fonts.css';
-import { TextMarquee } from './hero/TextMarquee';
-import { HeroTopBar } from './hero/HeroTopBar';
-import { HeroTitle } from './hero/HeroTitle';
-import { HeroTerminal } from './hero/HeroTerminal';
-import { HeroSkipLink } from './hero/HeroSkipLink';
+import '../../styles/fonts.css';
+import { TextMarquee } from '../hero/TextMarquee';
+import { HeroTopBar } from '../hero/HeroTopBar';
+import { HeroTitle } from '../hero/HeroTitle';
+import { HeroTerminal } from '../hero/HeroTerminal';
+import { HeroSkipLink } from '../hero/HeroSkipLink';
 
 export const Hero = () => {
   return (

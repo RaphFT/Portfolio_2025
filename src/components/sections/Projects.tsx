@@ -1,5 +1,5 @@
-import { ProjectsHeader } from './projects/ProjectsHeader';
-import { ProjectsGrid } from './projects/ProjectsGrid';
+import { ProjectsHeader } from '../projects/ProjectsHeader';
+import { ProjectsGrid } from '../projects/ProjectsGrid';
 
 export const Projects = () => {
   return (

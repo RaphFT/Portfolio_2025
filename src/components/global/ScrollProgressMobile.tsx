@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useScrollProgress } from '../hooks/useScrollProgress';
+import { useScrollProgress } from '../../hooks/useScrollProgress';
 import { useCallback } from 'react';
 
 export const ScrollProgressMobile = () => {

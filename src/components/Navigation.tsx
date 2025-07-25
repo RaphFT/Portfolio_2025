@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { NavigationContainer } from './navigation/NavigationContainer';
 
 export const Navigation = () => {
   return (
@@ -10,38 +11,7 @@ export const Navigation = () => {
       aria-label="Site navigation"
       role="navigation"
     >
-      <div className="bg-white/80 backdrop-blur-md rounded-full shadow-lg px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 border-2 border-black">
-        <ul className="flex space-x-2 text-xs sm:space-x-4 md:space-x-8 sm:text-sm md:text-base" role="menubar">
-          <li role="none">
-            <a 
-              href="#home" 
-              className="text-primary hover:text-secondary transition-colors px-1.5 sm:px-2 py-1 focus:outline-none focus:ring-2 focus:ring-primary rounded"
-              role="menuitem"
-              aria-current="page"
-            >
-              RAPHAEL F.
-            </a>
-          </li>
-          <li role="none">
-            <a 
-              href="#projects" 
-              className="text-primary hover:text-secondary transition-colors px-1.5 sm:px-2 py-1 focus:outline-none focus:ring-2 focus:ring-primary rounded"
-              role="menuitem"
-            >
-              PROJECTS
-            </a>
-          </li>
-          <li role="none">
-            <a 
-              href="#contact" 
-              className="text-primary hover:text-secondary transition-colors px-1.5 sm:px-2 py-1 focus:outline-none focus:ring-2 focus:ring-primary rounded"
-              role="menuitem"
-            >
-              CONTACT
-            </a>
-          </li>
-        </ul>
-      </div>
+      <NavigationContainer />
     </motion.nav>
   );
 }; 

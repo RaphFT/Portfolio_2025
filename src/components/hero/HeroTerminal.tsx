@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { lazy, Suspense } from 'react';
 
 // Lazy load the terminal component
-const TypedTerminal = lazy(() => import('../TypedTerminal').then(module => ({ default: module.TypedTerminal })));
+const TypedTerminal = lazy(() => import('./TypedTerminal').then(module => ({ default: module.TypedTerminal })));
 
 type HeroTerminalProps = {
   variant?: 'mobile' | 'desktop';

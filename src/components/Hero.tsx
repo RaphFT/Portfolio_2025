@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import '../styles/fonts.css';
-import { TextMarquee } from './TextMarquee';
+import { TextMarquee } from './hero/TextMarquee';
 import { HeroTopBar } from './hero/HeroTopBar';
 import { HeroTitle } from './hero/HeroTitle';
 import { HeroTerminal } from './hero/HeroTerminal';

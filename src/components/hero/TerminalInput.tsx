@@ -19,7 +19,7 @@ export const TerminalInput = forwardRef<HTMLInputElement, TerminalInputProps>(
           inputElement.current.focus();
         }
       }
-    }, []); // Empty dependency array - only run on mount
+    }, [ref, disabled]); // Include dependencies to satisfy ESLint
 
     return (
       <>

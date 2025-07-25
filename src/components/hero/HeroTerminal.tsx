@@ -12,11 +12,12 @@ export const HeroTerminal = ({ variant = 'mobile' }: HeroTerminalProps) => {
   if (variant === 'mobile') {
     return (
       <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, transform: 'translateX(20px)' }}
+        animate={{ opacity: 1, transform: 'translateX(0px)' }}
         transition={{ duration: 0.8, delay: 0.2 }}
         className="mb-4 w-full"
         aria-label="Interactive terminal section"
+        style={{ willChange: 'transform, opacity' }}
       >
         <Suspense fallback={
           <div 
@@ -34,6 +35,7 @@ export const HeroTerminal = ({ variant = 'mobile' }: HeroTerminalProps) => {
           transition={{ delay: 4, duration: 1 }}
           className="mt-2 text-xs text-center text-gray-500"
           aria-live="polite"
+          style={{ willChange: 'opacity' }}
         >
           (Click and type commands)
         </motion.p>
@@ -43,11 +45,12 @@ export const HeroTerminal = ({ variant = 'mobile' }: HeroTerminalProps) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, transform: 'translateX(20px)' }}
+      animate={{ opacity: 1, transform: 'translateX(0px)' }}
       transition={{ duration: 0.8, delay: 0.2 }}
       className="hidden md:min-h-600:block md:absolute md:left-[26%] md:top-[31%] md:-translate-x-1/2 md:-translate-y-1/2 md:w-[600px] lg:top-[36%] xl:top-[41%] 2xl:top-[36%] md:z-10"
       aria-label="Interactive terminal section"
+      style={{ willChange: 'transform, opacity' }}
     >
       <div className="w-full">
         <Suspense fallback={
@@ -67,6 +70,7 @@ export const HeroTerminal = ({ variant = 'mobile' }: HeroTerminalProps) => {
         transition={{ delay: 4, duration: 1 }}
         className="mt-2 text-xs text-center text-gray-500"
         aria-live="polite"
+        style={{ willChange: 'opacity' }}
       >
         (Click and type commands)
       </motion.p>

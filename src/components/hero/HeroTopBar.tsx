@@ -1,35 +1,36 @@
-import { motion } from 'framer-motion';
-
 export const HeroTopBar = () => {
   return (
     <div 
       className="absolute top-0 right-0 left-0 p-2 md:p-4"
       role="navigation"
-      aria-label="Quick links"
+      aria-label="Top navigation bar with version information and contact links"
     >
       <div className="flex relative justify-between items-center">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="font-mono text-xs md:text-sm"
-          aria-label="Version number"
+        <div
+          className="font-mono text-xs md:text-sm animate-fade-in"
+          aria-label="Application version number"
+          role="text"
+          style={{
+            animation: 'fadeIn 0.5s ease-out forwards',
+            willChange: 'opacity'
+          }}
         >
-          V-1.0.0
-        </motion.div>
+          <span aria-label="Version 1.0.0">V-1.0.0</span>
+        </div>
 
-        <motion.a
+        <a
           href="https://www.linkedin.com/in/raphael-fremont-63a91a1b3/"
           target="_blank"
           rel="noopener noreferrer"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="hidden absolute left-1/2 z-10 font-mono text-xs rounded transition-colors -translate-x-1/2 cursor-pointer md:text-sm hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary md:block"
-          aria-label="Visit LinkedIn profile, opens in a new tab"
+          className="hidden absolute left-1/2 z-10 font-mono text-xs rounded transition-colors -translate-x-1/2 cursor-pointer md:text-sm hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary md:block animate-fade-in"
+          aria-label="Visit Raphael Fremont's LinkedIn profile, opens in a new tab"
+          style={{
+            animation: 'fadeIn 0.5s ease-out forwards',
+            willChange: 'opacity'
+          }}
         >
-          @RAPHAELFREMONT
-        </motion.a>
+          <span aria-label="LinkedIn username">@RAPHAELFREMONT</span>
+        </a>
 
         {/* Email link optimized for mobile LCP */}
         <a
@@ -41,8 +42,14 @@ export const HeroTopBar = () => {
             opacity: 1 
           }}
         >
-          HELLO@RAPHAELFREMONT.COM
+          <span aria-label="Email address">HELLO@RAPHAELFREMONT.COM</span>
         </a>
+      </div>
+      
+      {/* Hidden navigation description for screen readers */}
+      <div className="sr-only">
+        Top navigation bar containing version information, LinkedIn profile link, and email contact.
+        Use Tab to navigate between links.
       </div>
     </div>
   );

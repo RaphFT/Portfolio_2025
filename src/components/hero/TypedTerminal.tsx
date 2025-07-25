@@ -38,7 +38,7 @@ const TypedTerminal = () => {
 
   // Focus management for accessibility
   const { containerRef: focusContainerRef } = useFocusManagement({
-    autoFocus: true,
+    autoFocus: false, // Disable aggressive auto-focus to prevent unwanted scrolling
     trapFocus: false,
     onFocusChange: (isFocused) => {
       if (isFocused) {

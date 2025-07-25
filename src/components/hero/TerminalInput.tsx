@@ -10,13 +10,16 @@ type TerminalInputProps = {
 
 export const TerminalInput = forwardRef<HTMLInputElement, TerminalInputProps>(
   ({ id, value, onChange, onKeyDown, disabled }, ref) => {
-    // Maintain focus on the input
+    // Maintain focus on the input only when component mounts, not on every update
     useEffect(() => {
       const inputElement = ref as React.MutableRefObject<HTMLInputElement>;
       if (inputElement?.current && !disabled) {
-        inputElement.current.focus();
+        // Only focus if the element is not already focused to prevent unwanted scrolling
+        if (document.activeElement !== inputElement.current) {
+          inputElement.current.focus();
+        }
       }
-    }, [ref, disabled]);
+    }, []); // Empty dependency array - only run on mount
 
     return (
       <>
@@ -25,7 +28,7 @@ export const TerminalInput = forwardRef<HTMLInputElement, TerminalInputProps>(
           id={id}
           ref={ref}
           type="text"
-          className="absolute top-0 left-0 w-0 h-0 opacity-0 focus:outline-none focus:ring-0 focus:border-0"
+          className="absolute inset-0 w-full h-full opacity-0 focus:outline-none focus:ring-0 focus:border-0"
           value={value}
           onChange={onChange}
           onKeyDown={onKeyDown}

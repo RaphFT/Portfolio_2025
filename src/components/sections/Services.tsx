@@ -5,11 +5,11 @@ export const Services = () => {
   return (
     <section 
       id="services" 
-      className="w-full py-20 lg:py-40 bg-gray-50"
+      className="h-screen w-full bg-white flex items-center justify-center"
       aria-labelledby="services-heading"
     >
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col gap-10">
+      <div className="container mx-auto px-4 h-full">
+        <div className="flex flex-col justify-center h-full gap-10">
           <ServicesHeader />
           <ServicesGrid />
         </div>

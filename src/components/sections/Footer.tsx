@@ -5,12 +5,12 @@ export const Footer = () => {
   return (
     <footer 
       id="contact" 
-      className="min-h-screen flex items-center bg-primary text-white py-20"
+      className="h-screen flex items-center justify-center bg-primary text-white"
       aria-labelledby="contact-heading"
       role="contentinfo"
     >
-      <div className="container px-4">
-        <div className="max-w-4xl mx-auto">
+      <div className="container px-4 mx-auto">
+        <div className="max-w-4xl mx-auto text-center">
           <FooterHeader />
           <FooterContact />
         </div>

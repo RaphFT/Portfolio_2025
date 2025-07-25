@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, useEffect } from 'react';
 
 type TerminalInputProps = {
   id: string;
@@ -10,6 +10,14 @@ type TerminalInputProps = {
 
 export const TerminalInput = forwardRef<HTMLInputElement, TerminalInputProps>(
   ({ id, value, onChange, onKeyDown, disabled }, ref) => {
+    // Maintain focus on the input
+    useEffect(() => {
+      const inputElement = ref as React.MutableRefObject<HTMLInputElement>;
+      if (inputElement?.current && !disabled) {
+        inputElement.current.focus();
+      }
+    }, [ref, disabled]);
+
     return (
       <>
         <label htmlFor={id} className="sr-only">Terminal input</label>
@@ -17,7 +25,7 @@ export const TerminalInput = forwardRef<HTMLInputElement, TerminalInputProps>(
           id={id}
           ref={ref}
           type="text"
-          className="absolute top-0 left-0 w-0 h-0 opacity-0"
+          className="absolute top-0 left-0 w-0 h-0 opacity-0 focus:outline-none focus:ring-0 focus:border-0"
           value={value}
           onChange={onChange}
           onKeyDown={onKeyDown}
@@ -26,6 +34,7 @@ export const TerminalInput = forwardRef<HTMLInputElement, TerminalInputProps>(
           role="textbox"
           aria-multiline="false"
           disabled={disabled}
+          tabIndex={0}
         />
       </>
     );

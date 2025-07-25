@@ -1,17 +1,66 @@
-import { Suspense, lazy } from 'react';
+import React, { Suspense, lazy } from 'react';
+import { useThreeJsLazyLoading } from './hooks/useThreeJsLazyLoading';
+import { ThreeJsFallback } from './ThreeJsFallback';
 
 // Chargement dynamique de la LavaLamp
 const LavaLamp = lazy(() => import('./fluid-blob').then(module => ({ default: module.LavaLamp })));
 
-// Composant de fallback pour la LavaLamp
-const LavaLampFallback = () => (
-  <div className="absolute inset-0 bg-black animate-pulse" />
-);
-
 export const About2Background = () => {
+  const {
+    containerRef,
+    isLoading,
+    isLoaded,
+    error,
+    shouldLoad,
+    prefersReducedMotion,
+    loadThreeJs
+  } = useThreeJsLazyLoading({
+    preloadDistance: 500,
+    respectReducedMotion: true,
+    onLoadStart: () => console.log('Loading Three.js LavaLamp...'),
+    onLoadComplete: () => console.log('Three.js LavaLamp loaded successfully'),
+    onLoadError: (error) => console.error('Failed to load Three.js LavaLamp:', error)
+  });
+
+  // Load Three.js when shouldLoad becomes true
+  React.useEffect(() => {
+    if (shouldLoad && !isLoaded) {
+      loadThreeJs(() => import('./fluid-blob').then(module => ({ default: module.LavaLamp })));
+    }
+  }, [shouldLoad, isLoaded, loadThreeJs]);
+
   return (
-    <Suspense fallback={<LavaLampFallback />}>
-      <LavaLamp />
-    </Suspense>
+    <div 
+      ref={containerRef}
+      className="absolute inset-0"
+      role="region"
+      aria-label="Background animation area"
+    >
+      {/* Show fallback while loading or if error */}
+      {(!isLoaded || error) && (
+        <ThreeJsFallback isReducedMotion={prefersReducedMotion} />
+      )}
+      
+      {/* Show Three.js component when loaded */}
+      {isLoaded && !error && !prefersReducedMotion && (
+        <Suspense fallback={<ThreeJsFallback isReducedMotion={false} />}>
+          <LavaLamp />
+        </Suspense>
+      )}
+      
+      {/* Loading indicator for screen readers */}
+      {isLoading && (
+        <div className="sr-only" aria-live="polite">
+          Loading Three.js background animation...
+        </div>
+      )}
+      
+      {/* Error indicator for screen readers */}
+      {error && (
+        <div className="sr-only" aria-live="assertive">
+          Failed to load background animation. Using fallback.
+        </div>
+      )}
+    </div>
   );
 }; 

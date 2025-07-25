@@ -10,17 +10,17 @@ export const Hero = () => {
   return (
     <section 
       id="home" 
-      className="overflow-hidden relative min-h-screen"
+      className="overflow-hidden relative h-screen"
       aria-label="Hero section"
     >
       {/* Top bar with version and contact */}
       <HeroTopBar />
 
       {/* Main content */}
-      <div className="container px-4 mx-auto min-h-screen">
-        <div className="flex relative flex-col items-center min-h-screen">
+      <div className="container px-4 mx-auto h-full">
+        <div className="flex relative flex-col items-center h-full">
           {/* Mobile Layout - Only for mobile */}
-          <div className="flex flex-col justify-center items-center -mt-8 w-full min-h-screen md:hidden">
+          <div className="flex flex-col justify-center items-center -mt-8 w-full h-full md:hidden">
             {/* 1. H1 first - Optimized for mobile LCP */}
             <HeroTitle variant="mobile" />
 

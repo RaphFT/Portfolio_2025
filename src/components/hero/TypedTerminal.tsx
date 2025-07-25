@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { useTerminalLogic } from './hooks';
 import { useFocusManagement, useAccessibilityAnnouncements } from './hooks';
 import { TerminalHeader } from './TerminalHeader';
@@ -49,13 +49,30 @@ const TypedTerminal = () => {
 
   // Advanced accessibility announcements
   const accessibilityAnnouncements = useAccessibilityAnnouncements();
+
+  // Maintain focus on the input when terminal is clicked
+  useEffect(() => {
+    const handleTerminalClick = () => {
+      if (inputRef.current && !showMatrixAnimation) {
+        inputRef.current.focus();
+      }
+    };
+
+    const terminalElement = focusContainerRef.current;
+    if (terminalElement) {
+      terminalElement.addEventListener('click', handleTerminalClick);
+      return () => {
+        terminalElement.removeEventListener('click', handleTerminalClick);
+      };
+    }
+  }, [focusContainerRef, inputRef, showMatrixAnimation]);
   
   return (
     <motion.div
       initial={{ opacity: 0, transform: 'translateY(20px)' }}
       animate={{ opacity: 1, transform: 'translateY(0px)' }}
       transition={{ duration: 0.5 }}
-      className="overflow-hidden w-full font-mono text-xs text-black bg-white rounded-lg border border-gray-200 shadow-xl md:text-sm"
+      className="overflow-hidden w-full font-mono text-xs text-black bg-white rounded-lg border border-gray-200 shadow-xl md:text-sm focus:outline-none focus:ring-0"
       role="region"
       aria-label="Interactive terminal with command history and input"
       aria-describedby="terminal-instructions"
@@ -68,8 +85,8 @@ const TypedTerminal = () => {
       {/* Terminal content */}
       <div 
         ref={terminalRef}
-        className="overflow-y-auto relative p-3 h-48 text-xs bg-white sm:h-56 md:h-64 md:p-4 md:text-sm"
-        tabIndex={0}
+        className="terminal-focus overflow-y-auto relative p-3 h-48 text-xs bg-white sm:h-56 md:h-64 md:p-4 md:text-sm"
+        tabIndex={-1}
         role="log"
         aria-live="polite"
         aria-label="Terminal output and command history"

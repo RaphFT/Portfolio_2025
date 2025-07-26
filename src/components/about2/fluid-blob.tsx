@@ -82,9 +82,7 @@ vec3 getNormal(vec3 p) {
 
 float rayMarch(vec3 rayOrigin, vec3 ray) {
     float t = 0.0;
-    // Réduire le nombre d'itérations sur mobile pour les performances
-    int maxIterations = 50; // Réduit de 100 à 50
-    for (int i = 0; i < maxIterations; i++) {
+    for (int i = 0; i < 100; i++) {
         vec3 p = rayOrigin + ray * t;
         float d = sdf(p);
         if (d < 0.001) return t;
@@ -170,9 +168,6 @@ function LavaLampShader() {
 }
 
 export const LavaLamp = () => {
-  // Détecter si on est sur mobile
-  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-  
   return (
     <div style={{ width: '100%', height: '100%', background: '#000', position: "absolute" }}>
       <Canvas
@@ -186,53 +181,10 @@ export const LavaLamp = () => {
           position: [0, 0, 2]
         }}
         orthographic
-        gl={{ 
-          antialias: !isMobile,
-          powerPreference: isMobile ? "default" : "high-performance",
-          failIfMajorPerformanceCaveat: false,
-          preserveDrawingBuffer: false
-        }}
-        dpr={isMobile ? 1 : window.devicePixelRatio}
-        performance={{ min: isMobile ? 0.1 : 0.5 }}
+        gl={{ antialias: true }}
       >
-        {isMobile ? <SimpleLavaLampShader /> : <LavaLampShader />}
+        <LavaLampShader />
       </Canvas>
     </div>
-  );
-}
-
-// Version simplifiée du shader pour mobile
-function SimpleLavaLampShader() {
-  const meshRef = useRef<THREE.Mesh>(null);
-  
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.z = state.clock.elapsedTime * 0.5;
-      meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.3) * 0.1;
-    }
-  });
-
-  return (
-    <>
-      <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} />
-      
-      {/* Boule principale verte */}
-      <mesh ref={meshRef} position={[0, 0, 0]}>
-        <sphereGeometry args={[0.3, 16, 16]} />
-        <meshPhongMaterial color="#47D649" transparent opacity={0.8} />
-      </mesh>
-      
-      {/* Boules secondaires blanches */}
-      <mesh position={[-0.5, 0.2, 0]}>
-        <sphereGeometry args={[0.2, 12, 12]} />
-        <meshPhongMaterial color="#ffffff" transparent opacity={0.6} />
-      </mesh>
-      
-      <mesh position={[0.4, -0.3, 0]}>
-        <sphereGeometry args={[0.15, 12, 12]} />
-        <meshPhongMaterial color="#ffffff" transparent opacity={0.6} />
-      </mesh>
-    </>
   );
 } 

@@ -16,23 +16,8 @@ export const About2Background = () => {
     loadThreeJs
   } = useThreeJsLazyLoading({
     preloadDistance: 500,
-    respectReducedMotion: true,
-    onLoadStart: () => console.log('Loading Three.js LavaLamp...'),
-    onLoadComplete: () => console.log('Three.js LavaLamp loaded successfully'),
-    onLoadError: (error) => console.error('Failed to load Three.js LavaLamp:', error)
+    respectReducedMotion: true
   });
-
-  // Debug logs
-  React.useEffect(() => {
-    console.log('About2Background Debug:', {
-      isLoading,
-      isLoaded,
-      error: error?.message,
-      shouldLoad,
-      prefersReducedMotion,
-      isMobile: typeof window !== 'undefined' && window.innerWidth <= 768
-    });
-  }, [isLoading, isLoaded, error, shouldLoad, prefersReducedMotion]);
 
   // Load Three.js when shouldLoad becomes true
   React.useEffect(() => {
@@ -41,19 +26,7 @@ export const About2Background = () => {
     }
   }, [shouldLoad, isLoaded, loadThreeJs]);
 
-  // Force load on mobile after a delay if not loaded
-  React.useEffect(() => {
-    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-    
-    if (isMobile && !isLoaded && !isLoading) {
-      const timer = setTimeout(() => {
-        console.log('Force loading Three.js on mobile...');
-        loadThreeJs(() => import('./fluid-blob').then(module => ({ default: module.LavaLamp })));
-      }, 2000); // 2 secondes de délai
-      
-      return () => clearTimeout(timer);
-    }
-  }, [isLoaded, isLoading, loadThreeJs]);
+
 
   return (
     <div 
@@ -64,13 +37,7 @@ export const About2Background = () => {
     >
       {/* Show fallback while loading or if error */}
       {(!isLoaded || error) && (
-        <div className="relative">
-          <ThreeJsFallback isReducedMotion={prefersReducedMotion} />
-          {/* Debug indicator */}
-          <div className="absolute top-4 left-4 bg-red-500 text-white px-2 py-1 text-xs z-50">
-            Debug: {isLoading ? 'Loading' : isLoaded ? 'Loaded' : error ? 'Error' : 'Not loaded'}
-          </div>
-        </div>
+        <ThreeJsFallback isReducedMotion={prefersReducedMotion} />
       )}
       
       {/* Show Three.js component when loaded */}

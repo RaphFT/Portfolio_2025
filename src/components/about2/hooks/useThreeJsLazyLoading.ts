@@ -42,6 +42,9 @@ export const useThreeJsLazyLoading = (options: UseThreeJsLazyLoadingOptions = {}
   useEffect(() => {
     if (!containerRef.current) return;
 
+    // Détecter si on est sur mobile
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !shouldLoad && !isLoaded) {
@@ -56,8 +59,8 @@ export const useThreeJsLazyLoading = (options: UseThreeJsLazyLoadingOptions = {}
         }
       },
       {
-        threshold: 0.1,
-        rootMargin: `${preloadDistance}px`
+        threshold: isMobile ? 0.05 : 0.1, // Seuil plus bas sur mobile
+        rootMargin: isMobile ? `${preloadDistance * 0.5}px` : `${preloadDistance}px` // Marge réduite sur mobile
       }
     );
 

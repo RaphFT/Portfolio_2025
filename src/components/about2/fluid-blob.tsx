@@ -82,7 +82,9 @@ vec3 getNormal(vec3 p) {
 
 float rayMarch(vec3 rayOrigin, vec3 ray) {
     float t = 0.0;
-    for (int i = 0; i < 100; i++) {
+    // Réduire le nombre d'itérations sur mobile pour les performances
+    int maxIterations = 50; // Réduit de 100 à 50
+    for (int i = 0; i < maxIterations; i++) {
         vec3 p = rayOrigin + ray * t;
         float d = sdf(p);
         if (d < 0.001) return t;
@@ -168,6 +170,9 @@ function LavaLampShader() {
 }
 
 export const LavaLamp = () => {
+  // Détecter si on est sur mobile
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+  
   return (
     <div style={{ width: '100%', height: '100%', background: '#000', position: "absolute" }}>
       <Canvas
@@ -181,7 +186,14 @@ export const LavaLamp = () => {
           position: [0, 0, 2]
         }}
         orthographic
-        gl={{ antialias: true }}
+        gl={{ 
+          antialias: !isMobile, // Désactiver l'antialiasing sur mobile pour les performances
+          powerPreference: "high-performance",
+          failIfMajorPerformanceCaveat: false,
+          preserveDrawingBuffer: false
+        }}
+        dpr={isMobile ? 1 : window.devicePixelRatio} // Réduire la résolution sur mobile
+        performance={{ min: 0.5 }} // Réduire les performances sur mobile
       >
         <LavaLampShader />
       </Canvas>

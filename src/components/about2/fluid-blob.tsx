@@ -173,6 +173,11 @@ export const LavaLamp = () => {
   // Détecter si on est sur mobile
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
   
+  // Version simplifiée pour mobile
+  if (isMobile) {
+    return <SimpleLavaLamp />;
+  }
+  
   return (
     <div style={{ width: '100%', height: '100%', background: '#000', position: "absolute" }}>
       <Canvas
@@ -187,15 +192,72 @@ export const LavaLamp = () => {
         }}
         orthographic
         gl={{ 
-          antialias: !isMobile, // Désactiver l'antialiasing sur mobile pour les performances
+          antialias: true,
           powerPreference: "high-performance",
           failIfMajorPerformanceCaveat: false,
           preserveDrawingBuffer: false
         }}
-        dpr={isMobile ? 1 : window.devicePixelRatio} // Réduire la résolution sur mobile
-        performance={{ min: 0.5 }} // Réduire les performances sur mobile
+        dpr={window.devicePixelRatio}
+        performance={{ min: 0.5 }}
       >
         <LavaLampShader />
+      </Canvas>
+    </div>
+  );
+}
+
+// Version simplifiée pour mobile
+function SimpleLavaLamp() {
+  const meshRef = useRef<THREE.Mesh>(null);
+  
+  useFrame((state) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.z = state.clock.elapsedTime * 0.5;
+      meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.3) * 0.1;
+    }
+  });
+
+  return (
+    <div style={{ width: '100%', height: '100%', background: '#000', position: "absolute" }}>
+      <Canvas
+        camera={{
+          left: -0.5,
+          right: 0.5,
+          top: 0.5,
+          bottom: -0.5,
+          near: -1000,
+          far: 1000,
+          position: [0, 0, 2]
+        }}
+        orthographic
+        gl={{ 
+          antialias: false,
+          powerPreference: "default",
+          failIfMajorPerformanceCaveat: false,
+          preserveDrawingBuffer: false
+        }}
+        dpr={1}
+        performance={{ min: 0.1 }}
+      >
+        <ambientLight intensity={0.5} />
+        <pointLight position={[10, 10, 10]} />
+        
+        {/* Boule principale */}
+        <mesh ref={meshRef} position={[0, 0, 0]}>
+          <sphereGeometry args={[0.3, 16, 16]} />
+          <meshPhongMaterial color="#47D649" transparent opacity={0.8} />
+        </mesh>
+        
+        {/* Boules secondaires */}
+        <mesh position={[-0.5, 0.2, 0]}>
+          <sphereGeometry args={[0.2, 12, 12]} />
+          <meshPhongMaterial color="#ffffff" transparent opacity={0.6} />
+        </mesh>
+        
+        <mesh position={[0.4, -0.3, 0]}>
+          <sphereGeometry args={[0.15, 12, 12]} />
+          <meshPhongMaterial color="#ffffff" transparent opacity={0.6} />
+        </mesh>
       </Canvas>
     </div>
   );

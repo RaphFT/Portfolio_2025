@@ -3,6 +3,7 @@ import { LoadingScreen } from './components/global/LoadingScreen';
 import { Navigation } from './components/global/Navigation';
 import { Hero, About, About2, Stack, Services, Footer } from './components/sections';
 import { ProjectsCircular } from './components/projects/ProjectsCircular';
+
 import { ScrollProgress } from './components/global/ScrollProgress';
 import { ScrollProgressMobile } from './components/global/ScrollProgressMobile';
 import { Analytics } from '@vercel/analytics/react';
@@ -27,6 +28,8 @@ function App() {
 
   return (
     <>
+
+      
       <header className="fixed top-0 left-0 right-0 z-50" role="banner">
         <Navigation />
       </header>

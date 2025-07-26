@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { GlitchText } from '../effects/GlitchText';
 
 type HeroTitleProps = {
   variant?: 'mobile' | 'desktop';
@@ -28,9 +29,15 @@ export const HeroTitle = ({ variant = 'mobile' }: HeroTitleProps) => {
             opacity: 1
           }}
         >
-          <span className="block" aria-label="Fullstack Developer">FULLSTACK DEV</span>
-          <span className="block mt-1" aria-label="Constant Learner">CONSTANT LEARNER</span>
-          <span className="block mt-1 whitespace-nowrap" aria-label="Independent Freelancer">INDEPENDENT FREELANCER</span>
+          <span className="block" aria-label="Fullstack Developer">
+            <GlitchText glitchInterval={8000} intensity={0.3}>FULLSTACK DEV</GlitchText>
+          </span>
+          <span className="block mt-1" aria-label="Constant Learner">
+            <GlitchText glitchInterval={10000} intensity={0.2}>CONSTANT LEARNER</GlitchText>
+          </span>
+          <span className="block mt-1 whitespace-nowrap" aria-label="Independent Freelancer">
+            <GlitchText glitchInterval={12000} intensity={0.25}>INDEPENDENT FREELANCER</GlitchText>
+          </span>
         </h1>
         <p className="sr-only">
           Raphael Fremont is a fullstack developer who is constantly learning new technologies and works as an independent freelancer.
@@ -56,11 +63,17 @@ export const HeroTitle = ({ variant = 'mobile' }: HeroTitleProps) => {
         tabIndex={0}
         style={titleStyle}
       >
-        <span aria-label="Fullstack Developer">FULLSTACK DEV</span>
+        <span aria-label="Fullstack Developer">
+          <GlitchText glitchInterval={8000} intensity={0.3}>FULLSTACK DEV</GlitchText>
+        </span>
         <br />
-        <span aria-label="Constant Learner">CONSTANT LEARNER</span>
+        <span aria-label="Constant Learner">
+          <GlitchText glitchInterval={10000} intensity={0.2}>CONSTANT LEARNER</GlitchText>
+        </span>
         <br />
-        <span aria-label="Independent Freelancer">INDEPENDENT FREELANCER</span>
+        <span aria-label="Independent Freelancer">
+          <GlitchText glitchInterval={12000} intensity={0.25}>INDEPENDENT FREELANCER</GlitchText>
+        </span>
       </h1>
       <p className="sr-only">
         Raphael Fremont is a fullstack developer who is constantly learning new technologies and works as an independent freelancer.

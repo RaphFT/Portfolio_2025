@@ -19,15 +19,17 @@ export const StackGrid = () => {
 
   return (
     <motion.div 
-      className="grid grid-cols-1 md:grid-cols-3 gap-3 p-4 max-w-7xl mx-auto"
+      className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
     >
-      {techStack.map((tech, index) => (
-        <TechCard key={tech.id} tech={tech} index={index} />
-      ))}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        {techStack.map((tech, index) => (
+          <TechCard key={tech.id} tech={tech} index={index} />
+        ))}
+      </div>
     </motion.div>
   );
 }; 

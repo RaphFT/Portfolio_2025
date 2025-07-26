@@ -8,7 +8,7 @@ export const FooterHeader = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="mb-6 text-2xl text-center sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-clash sm:mb-8 lg:mb-12"
+      className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-clash text-center leading-tight tracking-tighter px-2 sm:px-0"
       style={{
         fontFamily: '"Clash Display", sans-serif',
         fontWeight: 600

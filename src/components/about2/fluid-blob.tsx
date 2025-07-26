@@ -52,6 +52,7 @@ float sdf(vec3 p) {
     vec3 p2 = rotate(p, vec3(1.), -time/5.0);
     vec3 p3 = rotate(p, vec3(1., 1., 0.), -time/4.5);
     vec3 p4 = rotate(p, vec3(0., 1., 0.), -time/4.0);
+    vec3 p5 = rotate(p, vec3(0.5, 0.5, 1.0), time/3.5); // Nouvelle rotation pour la boule verte
     
     float final = sphereSDF(p1 - vec3(-0.5, 0.0, 0.0), 0.35);
     float nextSphere = sphereSDF(p2 - vec3(0.55, 0.0, 0.0), 0.3);
@@ -61,6 +62,10 @@ float sdf(vec3 p) {
     nextSphere = sphereSDF(p3 - vec3(1.0, 0.0, 0.0), 0.15);
     final = smin(final, nextSphere, 0.1);
     nextSphere = sphereSDF(p4 - vec3(0.45, -0.45, 0.0), 0.15);
+    final = smin(final, nextSphere, 0.1);
+    
+    // Ajout de la boule verte
+    nextSphere = sphereSDF(p5 - vec3(0.0, 0.6, 0.0), 0.25);
     final = smin(final, nextSphere, 0.1);
     
     return final;
@@ -98,7 +103,19 @@ void main() {
         vec3 p = cameraPos + ray * t;
         vec3 normal = getNormal(p);
         float fresnel = pow(1.0 + dot(ray, normal), 3.0);
-        color = vec3(fresnel);
+        
+        // Détecter si on est dans la zone de la boule verte
+        vec3 p5 = rotate(p, vec3(0.5, 0.5, 1.0), time/3.5);
+        float greenSphereDist = sphereSDF(p5 - vec3(0.0, 0.6, 0.0), 0.25);
+        
+        if (greenSphereDist < 0.1) {
+            // Couleur verte avec effet fresnel pour la nouvelle boule
+            color = vec3(0.278, 0.839, 0.286) * fresnel; // #47D649 avec effet
+        } else {
+            // Couleur noire avec effet fresnel pour les autres boules
+            color = vec3(fresnel);
+        }
+        
         gl_FragColor = vec4(color, 1.0);
     } else {
         gl_FragColor = vec4(1.0);

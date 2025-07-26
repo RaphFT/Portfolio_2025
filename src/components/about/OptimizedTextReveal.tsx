@@ -23,7 +23,7 @@ export const OptimizedTextReveal = ({
   return (
     <div 
       ref={targetRef} 
-      className={`relative z-0 h-full flex items-center justify-center ${className}`}
+      className={`flex relative z-0 justify-center items-center h-full ${className}`}
       role="region"
       aria-label="About section text with scroll-based word reveal"
     >

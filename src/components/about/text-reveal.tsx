@@ -33,10 +33,10 @@ const TextRevealByWord: FC<TextRevealByWordProps> = ({
         {words.map((word, i) => {
           // Animation mot par mot : chaque mot a sa propre fenêtre de temps
           const wordProgress = i / words.length;
-          const start = wordProgress * 0.8; // Commencer à 80% du scroll pour chaque mot
-          const end = start + 0.02; // Chaque mot prend seulement 2% du scroll
+          const start = wordProgress * 0.6; // Commencer à 60% du scroll pour chaque mot (plus tôt)
+          const end = start + 0.015; // Chaque mot prend seulement 1.5% du scroll (plus rapide)
           return (
-            <Word key={i} progress={scrollYProgress} range={[start, end]}>
+            <Word key={i} progress={scrollYProgress} range={[start, end]} wordIndex={i} allWords={words}>
               {word}
             </Word>
           );
@@ -50,10 +50,31 @@ interface WordProps {
   children: ReactNode;
   progress: MotionValue<number>;
   range: [number, number];
+  wordIndex: number;
+  allWords: string[];
 }
 
-const Word: FC<WordProps> = ({ children, progress, range }) => {
+const Word: FC<WordProps> = ({ children, progress, range, wordIndex, allWords }) => {
   const opacity = useTransform(progress, range, [0, 1]);
+  
+  // Liste des mots à mettre en vert (sans "les" pour l'instant)
+  const highlightedWords = [
+    "Raphael", "Fremont", "freelance", "sur", "mesure", "design", "créatif", "engagent", "utilisateurs","lanciez","amélioriez", "démarquer"
+  ];
+  
+  // Vérifier si le mot est dans la liste (en tenant compte de la ponctuation)
+  const cleanWord = children?.toString().replace(/[.,!?;:]/g, '') || '';
+  let isHighlighted = highlightedWords.includes(cleanWord);
+  
+  // Logique spéciale pour "les" - seulement s'il est entre "engagent" et "utilisateurs"
+  if (cleanWord === "les") {
+    // Vérifier le contexte : le mot précédent doit être "engagent" et le suivant "utilisateurs"
+    const prevWord = wordIndex > 0 ? allWords[wordIndex - 1]?.replace(/[.,!?;:]/g, '') : '';
+    const nextWord = wordIndex < allWords.length - 1 ? allWords[wordIndex + 1]?.replace(/[.,!?;:]/g, '') : '';
+    
+    isHighlighted = prevWord === "engagent" && nextWord === "utilisateurs";
+  }
+  
   return (
     <span 
       className="relative mx-1 lg:mx-2 font-clash"
@@ -62,10 +83,12 @@ const Word: FC<WordProps> = ({ children, progress, range }) => {
         fontWeight: 400
       }}
     >
-      <span className="absolute text-black opacity-30">{children}</span>
+      <span className="absolute text-black opacity-30">
+        {children}
+      </span>
       <motion.span
         style={{ opacity: opacity }}
-        className="text-black"
+        className={isHighlighted ? 'text-[#47D649] drop-shadow-[0_0_0.5px_#47D649]' : 'text-black'}
       >
         {children}
       </motion.span>

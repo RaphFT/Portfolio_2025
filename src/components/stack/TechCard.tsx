@@ -17,7 +17,7 @@ export const TechCard = ({ tech, index }: TechCardProps) => {
         y: -2,
         transition: { duration: 0.2 }
       }}
-      className="group relative p-5 sm:p-6 rounded-xl overflow-hidden transition-all duration-300 border border-gray-100/80 bg-white hover:shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:-translate-y-0.5 will-change-transform"
+      className="group relative p-3 sm:p-5 lg:p-6 rounded-xl overflow-hidden transition-all duration-300 border border-gray-100/80 bg-white hover:shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:-translate-y-0.5 will-change-transform"
     >
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -26,16 +26,16 @@ export const TechCard = ({ tech, index }: TechCardProps) => {
 
       <div className="relative flex flex-col space-y-4 sm:space-y-3">
         <div className="flex items-center justify-between">
-          <div className="w-10 h-10 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center bg-black/5 group-hover:bg-gradient-to-br transition-all duration-300">
-            <span className="text-xl sm:text-lg">{tech.icon}</span>
+          <div className="w-8 h-8 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center bg-black/5 group-hover:bg-gradient-to-br transition-all duration-300">
+            <span className="text-lg sm:text-lg">{tech.icon}</span>
           </div>
-          <span className="text-xs font-medium px-2 py-1 rounded-lg backdrop-blur-sm bg-black/5 text-gray-600 transition-colors duration-300 group-hover:bg-black/10">
+          <span className="text-xs font-medium px-1 sm:px-2 py-1 rounded-lg backdrop-blur-sm bg-black/5 text-gray-600 transition-colors duration-300 group-hover:bg-black/10">
             {tech.category}
           </span>
         </div>
 
-        <div className="space-y-2">
-          <h3 className="font-medium text-gray-900 tracking-tight text-base sm:text-[15px] font-clash"
+        <div className="space-y-1 sm:space-y-2">
+          <h3 className="font-medium text-gray-900 tracking-tight text-sm sm:text-[15px] font-clash"
             style={{
               fontFamily: '"Clash Display", sans-serif',
               fontWeight: 500
@@ -43,7 +43,7 @@ export const TechCard = ({ tech, index }: TechCardProps) => {
           >
             {tech.name}
           </h3>
-          <p className="text-sm text-gray-600 leading-snug font-clash"
+          <p className="text-xs sm:text-sm text-gray-600 leading-snug font-clash"
             style={{
               fontFamily: '"Clash Display", sans-serif',
               fontWeight: 400

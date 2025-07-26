@@ -18,8 +18,8 @@ export const GlitchText = ({
   const [isGlitching, setIsGlitching] = useState(false);
   const [glitchText, setGlitchText] = useState(children);
 
-  // Matrix glitch characters
-  const glitchChars = 'ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+  // Matrix glitch characters (katakana only)
+  const glitchChars = 'ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ';
 
   const generateGlitchText = (text: string) => {
     const chars = text.split('');
@@ -66,11 +66,11 @@ export const GlitchText = ({
       {/* Glitch text layers */}
       {isGlitching && (
         <>
-          {/* Red layer */}
+          {/* Black layer */}
           <span 
             className="absolute inset-0 opacity-80"
             style={{
-              color: '#ff0000',
+              color: '#000000',
               transform: `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`,
               filter: 'blur(0.5px)',
               zIndex: 1
@@ -79,26 +79,14 @@ export const GlitchText = ({
             {glitchText}
           </span>
           
-          {/* Cyan layer */}
-          <span 
-            className="absolute inset-0 opacity-80"
-            style={{
-              color: '#00ffff',
-              transform: `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`,
-              filter: 'blur(0.5px)',
-              zIndex: 2
-            }}
-          >
-            {glitchText}
-          </span>
-          
-          {/* White layer */}
+          {/* Green layer */}
           <span 
             className="absolute inset-0 opacity-90"
             style={{
-              color: '#ffffff',
-              transform: `translate(${Math.random() * 2 - 1}px, ${Math.random() * 2 - 1}px)`,
-              zIndex: 3
+              color: '#47D649',
+              transform: `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`,
+              filter: 'blur(0.5px)',
+              zIndex: 2
             }}
           >
             {glitchText}

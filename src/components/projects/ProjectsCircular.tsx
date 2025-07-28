@@ -35,7 +35,7 @@ export const ProjectsCircular = () => {
         <div className="hidden md:flex justify-center">
           <CircularProjects
             projects={circularProjectsData}
-            autoplay={true}
+            autoplay={false}
             colors={{
               title: "#000000",
               meta: "#6b7280",

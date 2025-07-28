@@ -21,7 +21,7 @@ export const ScrollProgress = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.5 }}
-      className="fixed right-5 top-1/2 -translate-y-1/2 space-y-1 z-50 hidden md:block"
+      className="hidden fixed right-5 top-1/2 z-50 space-y-1 -translate-y-1/2 md:block"
     >
       {[...Array(totalIndicators)].map((_, i) => (
         <motion.div
@@ -31,7 +31,7 @@ export const ScrollProgress = () => {
             scale: 1,
           }}
           transition={{ duration: 0.2 }}
-          className={`w-4 h-4 border border-black cursor-pointer transition-colors`}
+          className={`w-2 h-2 rounded-full border border-black transition-colors cursor-pointer`}
           style={{
             backgroundColor: i === activeIndex ? '#000' : 'rgba(0, 0, 0, 0)'
           }}

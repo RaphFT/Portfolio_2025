@@ -92,7 +92,7 @@ export const Scanlines = ({
       observer.disconnect();
       cancelAnimationFrame(animationId);
     };
-  }, [intensity, speed, color, spacing, isVisible]);
+  }, [intensity, speed, color, spacing, isVisible, disableHeavyEffects]);
 
   return (
     <canvas

@@ -29,7 +29,7 @@ export const ProjectsHeader = () => {
           }}
           aria-label="Mes projets de développement web"
         >
-          Mes Réalisations
+          Mes Projets
         </h2>
         <p 
           className="max-w-xs text-xs tracking-tight leading-relaxed text-center text-gray-600 sm:text-sm md:text-base lg:text-lg sm:max-w-sm md:max-w-xl lg:max-w-lg font-clash"
@@ -38,9 +38,9 @@ export const ProjectsHeader = () => {
             fontWeight: 400
           }}
         >
-          Découvrez une sélection de mes réalisations web, allant de sites vitrines 
-          à des applications complètes. Chaque projet reflète mon approche 
-          centrée sur l'expérience utilisateur et les performances.
+          Une sélection de mes projets de formation, de l'intégration HTML/CSS 
+          au développement full-stack. Chaque projet démontre mon évolution 
+          technique et ma capacité d'adaptation.
         </p>
       </div>
     </motion.div>

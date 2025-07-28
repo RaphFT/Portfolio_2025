@@ -80,9 +80,9 @@ export const MobileOptimizedProjects = ({
   };
 
   return (
-    <div className="px-4 py-6 w-full">
+    <div className="px-4 py-6 w-full mb-8">
       {/* Compact image section */}
-      <div className="relative mb-6 h-48 w-full overflow-hidden rounded-xl">
+      <div className="relative mb-4 h-48 w-full overflow-hidden rounded-xl">
         <img
           src={activeProject.src}
           alt={activeProject.title}
@@ -99,6 +99,47 @@ export const MobileOptimizedProjects = ({
             </span>
           ))}
         </div>
+      </div>
+
+      {/* Navigation arrows - positioned below image */}
+      <div className="flex justify-center gap-3 mb-4">
+        <button
+          className="flex justify-center items-center w-8 h-8 rounded-full border-none transition-colors duration-200 cursor-pointer"
+          onClick={handlePrev}
+          style={{
+            backgroundColor: hoverPrev ? colorArrowHoverBg : colorArrowBg,
+          }}
+          onMouseEnter={() => setHoverPrev(true)}
+          onMouseLeave={() => setHoverPrev(false)}
+          aria-label="Previous project"
+        >
+          <ArrowLeftIcon className="w-4 h-4" style={{ color: colorArrowFg }} />
+        </button>
+        
+        {/* Project indicator */}
+        <div className="flex items-center gap-1">
+          {projects.map((_, index) => (
+            <div
+              key={index}
+              className={`w-2 h-2 rounded-full transition-colors duration-200 ${
+                index === activeIndex ? 'bg-green-500' : 'bg-gray-300'
+              }`}
+            />
+          ))}
+        </div>
+        
+        <button
+          className="flex justify-center items-center w-8 h-8 rounded-full border-none transition-colors duration-200 cursor-pointer"
+          onClick={handleNext}
+          style={{
+            backgroundColor: hoverNext ? colorArrowHoverBg : colorArrowBg,
+          }}
+          onMouseEnter={() => setHoverNext(true)}
+          onMouseLeave={() => setHoverNext(false)}
+          aria-label="Next project"
+        >
+          <ArrowRightIcon className="w-4 h-4" style={{ color: colorArrowFg }} />
+        </button>
       </div>
 
       {/* Compact content */}
@@ -181,47 +222,6 @@ export const MobileOptimizedProjects = ({
               <span className="text-sm">Voir le site</span>
             </a>
           )}
-        </div>
-
-        {/* Compact navigation */}
-        <div className="flex justify-center gap-4">
-          <button
-            className="flex justify-center items-center w-10 h-10 rounded-full border-none transition-colors duration-200 cursor-pointer"
-            onClick={handlePrev}
-            style={{
-              backgroundColor: hoverPrev ? colorArrowHoverBg : colorArrowBg,
-            }}
-            onMouseEnter={() => setHoverPrev(true)}
-            onMouseLeave={() => setHoverPrev(false)}
-            aria-label="Previous project"
-          >
-            <ArrowLeftIcon className="w-5 h-5" style={{ color: colorArrowFg }} />
-          </button>
-          
-          {/* Project indicator */}
-          <div className="flex items-center gap-1">
-            {projects.map((_, index) => (
-              <div
-                key={index}
-                className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-                  index === activeIndex ? 'bg-green-500' : 'bg-gray-300'
-                }`}
-              />
-            ))}
-          </div>
-          
-          <button
-            className="flex justify-center items-center w-10 h-10 rounded-full border-none transition-colors duration-200 cursor-pointer"
-            onClick={handleNext}
-            style={{
-              backgroundColor: hoverNext ? colorArrowHoverBg : colorArrowBg,
-            }}
-            onMouseEnter={() => setHoverNext(true)}
-            onMouseLeave={() => setHoverNext(false)}
-            aria-label="Next project"
-          >
-            <ArrowRightIcon className="w-5 h-5" style={{ color: colorArrowFg }} />
-          </button>
         </div>
       </div>
     </div>

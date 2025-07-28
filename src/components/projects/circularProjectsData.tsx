@@ -42,7 +42,7 @@ export const circularProjectsData: Project[] = [
     description: "Développement du front-end d'une application de location immobilière avec React. Utilisation de React Router pour la navigation et affichage dynamique à partir d'un fichier JSON.",
     src: "/images/projects/kasa.webp",
     githubUrl: "https://github.com/RaphFT/Kasa",
-    liveUrl: "https://kasa-app.vercel.app",
+    liveUrl: "https://raphft.github.io/Kasa",
     tags: ["React", "React Router", "Vite", "JavaScript"]
   },
   {

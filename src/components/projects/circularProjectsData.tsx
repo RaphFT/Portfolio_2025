@@ -10,48 +10,57 @@ export interface Project {
 
 export const circularProjectsData: Project[] = [
   {
-    title: "PC GAMING GUIDE",
-    meta: "React, JS, CSS",
-    description: "Application web moderne pour une agence créative avec interface utilisateur intuitive et design responsive.",
-    src: "/images/projects/pcgg.webp",
-    githubUrl: "https://github.com/raphFT/pc-gaming-guide",
-    liveUrl: "https://pc-gaming-guide.vercel.app",
-    tags: ["React", "JavaScript", "CSS"]
-  },
-  {
-    title: "KASA",
-    meta: "React, Node.js",
-    description: "Système de gestion de laboratoire innovant avec architecture moderne et base de données MongoDB.",
-    src: "/images/projects/kasa.webp",
-    githubUrl: "https://github.com/raphFT/kasa",
-    liveUrl: "https://kasa-app.vercel.app",
-    tags: ["React", "Node.js", "MongoDB"]
-  },
-  {
     title: "BOOKI",
     meta: "HTML, CSS",
-    description: "Plateforme de design interactive pour professionnels créatifs avec interface moderne et animations fluides.",
+    description: "Intégration responsive de la page d'accueil d'une agence de voyage à partir de maquettes Figma. Approfondissement des bases HTML/CSS et mise en pratique du responsive design.",
     src: "/images/projects/booki.webp",
-    githubUrl: "https://github.com/raphFT/booki",
-    liveUrl: "https://booki-project.vercel.app",
-    tags: ["HTML", "CSS", "Design"]
+    githubUrl: "https://github.com/ton-profil/booki",
+    liveUrl: "https://booki.vercel.app",
+    tags: ["HTML", "CSS", "Responsive Design"]
+  },
+  {
+    title: "Sophie Bluel - Portfolio",
+    meta: "JavaScript, API, DOM",
+    description: "Développement d'un site dynamique pour une architecte d'intérieur. Gestion du DOM avec JavaScript, appels API, création d'une page d'authentification et upload d'images via une modale.",
+    src: "/images/projects/sophiebluel.webp",
+    githubUrl: "https://github.com/ton-profil/sophie-bluel",
+    liveUrl: "https://sophiebluel.vercel.app",
+    tags: ["JavaScript", "API", "DOM"]
   },
   {
     title: "NINA CARDUCCI",
-    meta: "SEO, JS",
-    description: "Optimisation SEO complète avec JavaScript avancé pour améliorer la visibilité et les performances web.",
-    src: "/images/projects/nc.webp",
-    githubUrl: "https://github.com/raphFT/nina-carducci",
+    meta: "SEO, Accessibilité, Performances",
+    description: "Optimisation d'un site existant pour améliorer ses performances, son accessibilité et son référencement. Utilisation d'outils comme Lighthouse et Wave, rédaction d'un rapport d'audit complet.",
+    src: "/images/projects/ninacarducci.webp",
+    githubUrl: "https://github.com/ton-profil/nina-carducci",
     liveUrl: "https://nina-carducci.vercel.app",
-    tags: ["SEO", "JavaScript", "Performance"]
+    tags: ["SEO", "Accessibilité", "Performance", "Audit"]
   },
   {
-    title: "SOPHIE BLUEL",
-    meta: "JS, HTML, CSS",
-    description: "Application web complète avec JavaScript moderne, HTML sémantique et CSS avancé pour une expérience utilisateur optimale.",
-    src: "/images/projects/sb.webp",
-    githubUrl: "https://github.com/raphFT/sophie-bluel",
-    liveUrl: "https://sophie-bluel.vercel.app",
-    tags: ["JavaScript", "HTML", "CSS"]
+    title: "KASA",
+    meta: "React, React Router, Vite",
+    description: "Développement du front-end d'une application de location immobilière avec React. Utilisation de React Router pour la navigation et affichage dynamique à partir d'un fichier JSON.",
+    src: "/images/projects/kasa.webp",
+    githubUrl: "https://github.com/ton-profil/kasa",
+    liveUrl: "https://kasa-app.vercel.app",
+    tags: ["React", "React Router", "Vite", "JavaScript"]
+  },
+  {
+    title: "Mon Vieux Grimoire",
+    meta: "Node.js, Express, MongoDB",
+    description: "Développement du back-end d'un site de notation de livres. Mise en place d'une API sécurisée avec Express, gestion des données avec MongoDB/Mongoose, opérations CRUD et authentification utilisateur.",
+    src: "/images/projects/grimoire.webp",
+    githubUrl: "https://github.com/ton-profil/mon-vieux-grimoire",
+    liveUrl: "https://mon-vieux-grimoire.vercel.app",
+    tags: ["Node.js", "Express", "MongoDB", "Mongoose", "API"]
+  },
+  {
+    title: "Menu Maker by QWENTA",
+    meta: "Gestion de projet, Rédaction technique",
+    description: "Rédaction des spécifications techniques d'un projet web à partir de maquettes et user stories. Utilisation d'outils de gestion (Notion) et réalisation d'une veille technologique pour orienter les choix techniques.",
+    src: "/images/projects/menumaker.webp",
+    githubUrl: "",
+    liveUrl: "",
+    tags: ["Gestion de projet", "Spécifications", "Veille technologique"]
   }
 ]; 

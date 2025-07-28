@@ -6,7 +6,7 @@ export const FooterHeader = () => {
       id="contact-heading"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.3 }}
       viewport={{ once: true }}
       className="px-2 text-2xl tracking-tighter leading-tight text-center sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-clash sm:px-0"
       style={{

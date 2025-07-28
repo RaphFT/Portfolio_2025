@@ -7,7 +7,7 @@ export const StackHeader = () => {
       className="flex flex-col items-center space-y-2 sm:space-y-3 lg:space-y-4 mb-4 sm:mb-6 lg:mb-8 px-4 sm:px-6 lg:px-8"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.3 }}
       viewport={{ once: true }}
     >
       <div className="flex justify-center">

@@ -7,7 +7,7 @@ export const ProjectsHeader = () => {
       className="flex gap-1 sm:gap-2 lg:gap-3 flex-col items-center mb-4 sm:mb-6 lg:mb-8"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.3 }}
       viewport={{ once: true }}
     >
       <div>

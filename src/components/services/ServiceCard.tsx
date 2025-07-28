@@ -6,7 +6,7 @@ type ServiceCardProps = {
 };
 
 export const ServiceCard = ({ service }: ServiceCardProps) => {
-  const { title, description, icon, delay, colSpan } = service;
+  const { title, description, icon, colSpan } = service;
   
   return (
     <motion.div 
@@ -15,16 +15,16 @@ export const ServiceCard = ({ service }: ServiceCardProps) => {
       }`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay }}
-      viewport={{ once: true }}
+      transition={{ duration: 0.3, delay: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
       whileHover={{ 
         scale: 1.02,
         transition: { duration: 0.3 }
       }}
     >
-      {/* Effet de fond vert qui apparaît au hover */}
+      {/* Effet de fond vert qui apparaît au hover - Desktop only */}
       <motion.div 
-        className="absolute inset-0 bg-gradient-to-br from-green-400/20 via-green-500/30 to-green-600/20 rounded-lg"
+        className="absolute inset-0 bg-gradient-to-br from-green-400/20 via-green-500/30 to-green-600/20 rounded-lg hidden sm:block"
         initial={{ opacity: 0, scale: 0.8 }}
         whileHover={{ 
           opacity: 1, 
@@ -33,9 +33,9 @@ export const ServiceCard = ({ service }: ServiceCardProps) => {
         }}
       />
       
-      {/* Particules vertes flottantes */}
+      {/* Particules vertes flottantes - Desktop only */}
       <motion.div 
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none hidden sm:block"
         initial={{ opacity: 0 }}
         whileHover={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
@@ -63,9 +63,9 @@ export const ServiceCard = ({ service }: ServiceCardProps) => {
         ))}
       </motion.div>
       
-      {/* Bordure verte animée */}
+      {/* Bordure verte animée - Desktop only */}
       <motion.div 
-        className="absolute inset-0 rounded-lg border-2 border-transparent"
+        className="absolute inset-0 rounded-lg border-2 border-transparent hidden sm:block"
         whileHover={{ 
           borderColor: "#47D649",
           transition: { duration: 0.3 }
@@ -108,9 +108,9 @@ export const ServiceCard = ({ service }: ServiceCardProps) => {
           </motion.p>
         </div>
         
-        {/* Indicateur de hover en bas */}
+        {/* Indicateur de hover en bas - Desktop only */}
         <motion.div 
-          className="absolute bottom-0 left-0 right-0 h-1 bg-green-500 rounded-b-lg"
+          className="absolute bottom-0 left-0 right-0 h-1 bg-green-500 rounded-b-lg hidden sm:block"
           initial={{ scaleX: 0 }}
           whileHover={{ 
             scaleX: 1,

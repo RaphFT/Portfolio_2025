@@ -253,39 +253,53 @@ export const CircularProjects = ({
                >
                  {activeProject.meta}
                </p>
-                             <motion.p
-                 className="mb-8 leading-relaxed font-clash"
-                 style={{ 
-                   color: colorDescription, 
-                   fontSize: fontSizeDescription,
-                   fontFamily: '"Clash Display", sans-serif',
-                   fontWeight: 400
-                 }}
-               >
-                {activeProject.description.split(" ").map((word, i) => (
-                  <motion.span
-                    key={i}
-                    initial={{
-                      filter: "blur(10px)",
-                      opacity: 0,
-                      y: 5,
-                    }}
-                    animate={{
-                      filter: "blur(0px)",
-                      opacity: 1,
-                      y: 0,
-                    }}
-                    transition={{
-                      duration: 0.22,
-                      ease: "easeInOut",
-                      delay: 0.025 * i,
-                    }}
-                    style={{ display: "inline-block" }}
-                  >
-                    {word}&nbsp;
-                  </motion.span>
-                ))}
-              </motion.p>
+                                     {/* Mobile version - Simple text */}
+        <p
+          className="mb-8 leading-relaxed font-clash sm:hidden"
+          style={{ 
+            color: colorDescription, 
+            fontSize: fontSizeDescription,
+            fontFamily: '"Clash Display", sans-serif',
+            fontWeight: 400
+          }}
+        >
+          {activeProject.description}
+        </p>
+        
+        {/* Desktop version - Animated text */}
+        <motion.p
+          className="mb-8 leading-relaxed font-clash hidden sm:block"
+          style={{ 
+            color: colorDescription, 
+            fontSize: fontSizeDescription,
+            fontFamily: '"Clash Display", sans-serif',
+            fontWeight: 400
+          }}
+        >
+          {activeProject.description.split(" ").map((word, i) => (
+            <motion.span
+              key={i}
+              initial={{
+                filter: "blur(5px)",
+                opacity: 0,
+                y: 2,
+              }}
+              animate={{
+                filter: "blur(0px)",
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.1,
+                ease: "easeInOut",
+                delay: 0.01 * i,
+              }}
+              style={{ display: "inline-block" }}
+            >
+              {word}&nbsp;
+            </motion.span>
+          ))}
+        </motion.p>
               
                              {/* Action buttons */}
                <div className="flex gap-4 mb-8">

@@ -1,24 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import compression from 'vite-plugin-compression'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    // Compression Gzip pour améliorer les performances
-    compression({
-      algorithm: 'gzip',
-      ext: '.gz',
-      threshold: 1024, // Compresser les fichiers > 1KB
-    }),
-    // Compression Brotli pour encore plus d'économies
-    compression({
-      algorithm: 'brotliCompress',
-      ext: '.br',
-      threshold: 1024,
-    }),
-  ],
+  plugins: [react()],
   css: {
     postcss: './postcss.config.cjs',
   },
@@ -69,17 +54,5 @@ export default defineConfig({
   // Optimisations de développement
   optimizeDeps: {
     include: ['react', 'react-dom', 'framer-motion', 'three', '@react-three/fiber'],
-  },
-  // Optimisations du serveur de développement
-  server: {
-    headers: {
-      'Cache-Control': 'public, max-age=31536000',
-    },
-  },
-  // Optimisations de préchargement
-  preview: {
-    headers: {
-      'Cache-Control': 'public, max-age=31536000',
-    },
   },
 })

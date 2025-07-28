@@ -1,13 +1,19 @@
 import { motion } from 'framer-motion';
 import { Badge } from '../services/badge';
+import { useMobileOptimization } from '../hero/hooks/useMobileOptimization';
 
 export const ProjectsHeader = () => {
+  const { shouldReduceMotion } = useMobileOptimization();
+  
   return (
     <motion.div 
-      className="flex gap-1 sm:gap-2 lg:gap-3 flex-col items-center mb-4 sm:mb-6 lg:mb-8"
+      className="flex gap-1 sm:gap-2 lg:gap-3 flex-col items-center mb-2 sm:mb-4 md:mb-6 lg:mb-8"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
+      transition={{ 
+        duration: shouldReduceMotion ? 0.2 : 0.3,
+        ease: shouldReduceMotion ? 'linear' : 'easeOut'
+      }}
       viewport={{ once: true }}
     >
       <div>
@@ -16,7 +22,7 @@ export const ProjectsHeader = () => {
       <div className="flex gap-1 sm:gap-2 flex-col items-center">
         <h2 
           id="projects-heading"
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tighter max-w-xs sm:max-w-sm md:max-w-xl font-clash text-center"
+          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl tracking-tighter max-w-xs sm:max-w-sm md:max-w-xl font-clash text-center"
           style={{
             fontFamily: '"Clash Display", sans-serif',
             fontWeight: 600

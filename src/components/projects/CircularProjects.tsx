@@ -12,6 +12,7 @@ import {
   GlobeAltIcon 
 } from '@heroicons/react/24/outline';
 import { motion, AnimatePresence } from "framer-motion";
+import { useMobileOptimization } from '../hero/hooks/useMobileOptimization';
 
 interface Project {
   title: string;
@@ -68,6 +69,8 @@ export const CircularProjects = ({
   colors = {},
   fontSizes = {},
 }: CircularProjectsProps) => {
+  const { isMobile } = useMobileOptimization();
+  
   // Color & font config
   const colorTitle = colors.title ?? "#000";
   const colorMeta = colors.meta ?? "#6b7280";
@@ -106,9 +109,9 @@ export const CircularProjects = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Autoplay
+  // Autoplay - disabled on mobile
   useEffect(() => {
-    if (autoplay) {
+    if (autoplay && !isMobile) {
       autoplayIntervalRef.current = setInterval(() => {
         setActiveIndex((prev) => (prev + 1) % projectsLength);
       }, 5000);
@@ -116,7 +119,7 @@ export const CircularProjects = ({
     return () => {
       if (autoplayIntervalRef.current) clearInterval(autoplayIntervalRef.current);
     };
-  }, [autoplay, projectsLength]);
+  }, [autoplay, projectsLength, isMobile]);
 
   // Keyboard navigation
   useEffect(() => {

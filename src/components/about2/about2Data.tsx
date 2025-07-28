@@ -9,7 +9,7 @@ export type About2TextData = {
 export const about2TextData: About2TextData = {
   id: 'about2-main',
   title: "Une vision globale. Des résultats qui font la différence.",
-  description: "La capacité à comprendre le développement tout en concevant, et à apprécier le design tout en développant, crée une synergie unique qui non seulement renforce la créativité, mais mène aussi à des solutions innovantes.",
+  description: "Une synergie unique entre le design et la technique, la créativité et la conception. Pour des résultats qui font la différence et des solutions au service de vos innovations.",
   language: 'fr',
   version: '1.0.0'
 };

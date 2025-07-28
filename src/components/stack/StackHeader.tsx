@@ -4,19 +4,19 @@ import { Badge } from '../services/badge';
 export const StackHeader = () => {
   return (
     <motion.div 
-      className="flex flex-col items-center space-y-2 sm:space-y-3 lg:space-y-4 mb-4 sm:mb-6 lg:mb-8 px-4 sm:px-6 lg:px-8"
+      className="flex flex-col gap-1 items-center mb-4 sm:gap-2 lg:gap-3 sm:mb-6 lg:mb-8"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
       viewport={{ once: true }}
     >
-      <div className="flex justify-center">
+      <div>
         <Badge variant="secondary" className="!bg-black !text-white hover:!bg-black/80">Technologies</Badge>
       </div>
-      <div className="flex flex-col items-center space-y-3 sm:space-y-4 max-w-2xl mx-auto">
+      <div className="flex flex-col gap-1 items-center sm:gap-2">
         <h2 
           id="stack-heading"
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tighter font-clash text-center leading-tight"
+          className="max-w-xs text-2xl tracking-tighter text-center sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl sm:max-w-sm md:max-w-xl font-clash"
           style={{
             fontFamily: '"Clash Display", sans-serif',
             fontWeight: 600
@@ -26,7 +26,7 @@ export const StackHeader = () => {
           Stack Technique
         </h2>
         <p 
-          className="text-xs sm:text-sm md:text-base leading-relaxed tracking-tight text-gray-600 text-center font-clash max-w-lg mx-auto"
+          className="max-w-xs text-xs tracking-tight leading-relaxed text-center text-gray-600 sm:text-sm md:text-base lg:text-lg sm:max-w-sm md:max-w-xl lg:max-w-lg font-clash"
           style={{
             fontFamily: '"Clash Display", sans-serif',
             fontWeight: 400

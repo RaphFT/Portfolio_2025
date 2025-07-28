@@ -80,7 +80,7 @@ export const MobileOptimizedProjects = ({
   };
 
   return (
-    <div className="px-4 py-6 w-full mb-16">
+    <div className="px-4 py-6 w-full">
       {/* Compact image section */}
       <div className="relative mb-4 h-48 w-full overflow-hidden rounded-xl">
         <img

@@ -7,7 +7,7 @@ export const ProjectsHeader = () => {
   
   return (
     <motion.div 
-      className="flex gap-1 sm:gap-2 lg:gap-3 flex-col items-center mb-2 sm:mb-4 md:mb-6 lg:mb-8"
+      className="flex flex-col gap-1 items-center mb-4 sm:gap-2 lg:gap-3 sm:mb-6 lg:mb-8"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ 
@@ -19,10 +19,10 @@ export const ProjectsHeader = () => {
       <div>
         <Badge variant="secondary" className="!bg-black !text-white hover:!bg-black/80">Projets</Badge>
       </div>
-      <div className="flex gap-1 sm:gap-2 flex-col items-center">
+      <div className="flex flex-col gap-1 items-center sm:gap-2">
         <h2 
           id="projects-heading"
-          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl tracking-tighter max-w-xs sm:max-w-sm md:max-w-xl font-clash text-center"
+          className="max-w-xs text-2xl tracking-tighter text-center sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl sm:max-w-sm md:max-w-xl font-clash"
           style={{
             fontFamily: '"Clash Display", sans-serif',
             fontWeight: 600
@@ -32,7 +32,7 @@ export const ProjectsHeader = () => {
           Mes Réalisations
         </h2>
         <p 
-          className="text-xs sm:text-sm md:text-base lg:text-lg max-w-xs sm:max-w-sm md:max-w-xl lg:max-w-lg leading-relaxed tracking-tight text-gray-600 text-center font-clash px-2 sm:px-0"
+          className="max-w-xs text-xs tracking-tight leading-relaxed text-center text-gray-600 sm:text-sm md:text-base lg:text-lg sm:max-w-sm md:max-w-xl lg:max-w-lg font-clash"
           style={{
             fontFamily: '"Clash Display", sans-serif',
             fontWeight: 400

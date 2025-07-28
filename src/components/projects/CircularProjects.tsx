@@ -11,7 +11,7 @@ import {
   CodeBracketIcon, 
   GlobeAltIcon 
 } from '@heroicons/react/24/outline';
-import { motion, AnimatePresence } from "framer-motion";
+
 
 
 interface Project {
@@ -80,14 +80,13 @@ export const CircularProjects = ({
   const fontSizeMeta = fontSizes.meta ?? "0.925rem";
   const fontSizeDescription = fontSizes.description ?? "1.125rem";
 
-  // State
+  // State - Static version without autoplay
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoverPrev, setHoverPrev] = useState(false);
   const [hoverNext, setHoverNext] = useState(false);
   const [containerWidth, setContainerWidth] = useState(1200);
 
   const imageContainerRef = useRef<HTMLDivElement>(null);
-  const autoplayIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const projectsLength = useMemo(() => projects.length, [projects]);
   const activeProject = useMemo(
@@ -107,21 +106,7 @@ export const CircularProjects = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Autoplay - completely disabled for better UX
-  useEffect(() => {
-    // Always clear any existing interval
-    if (autoplayIntervalRef.current) {
-      clearInterval(autoplayIntervalRef.current);
-      autoplayIntervalRef.current = null;
-    }
-    
-    return () => {
-      if (autoplayIntervalRef.current) {
-        clearInterval(autoplayIntervalRef.current);
-        autoplayIntervalRef.current = null;
-      }
-    };
-  }, []);
+  // No autoplay - static version only
 
   // Keyboard navigation
   useEffect(() => {
@@ -134,14 +119,12 @@ export const CircularProjects = ({
     // eslint-disable-next-line
   }, [activeIndex, projectsLength]);
 
-  // Navigation handlers
+  // Navigation handlers - static version
   const handleNext = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % projectsLength);
-    if (autoplayIntervalRef.current) clearInterval(autoplayIntervalRef.current);
   }, [projectsLength]);
   const handlePrev = useCallback(() => {
     setActiveIndex((prev) => (prev - 1 + projectsLength) % projectsLength);
-    if (autoplayIntervalRef.current) clearInterval(autoplayIntervalRef.current);
   }, [projectsLength]);
 
   // Compute transforms for each image (always show 3: left, center, right)
@@ -187,12 +170,7 @@ export const CircularProjects = ({
     };
   }
 
-  // Framer Motion variants for content
-  const contentVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -20 },
-  };
+  // Static content - no animations
 
   return (
     <div className="p-8 w-full max-w-4xl">
@@ -227,118 +205,75 @@ export const CircularProjects = ({
         
         {/* Content */}
         <div className="flex flex-col justify-between">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeIndex}
-              variants={contentVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+          <div key={activeIndex}>
+            <h3
+              className="mb-1 font-bold font-clash"
+              style={{ 
+                color: colorTitle, 
+                fontSize: fontSizeTitle,
+                fontFamily: '"Clash Display", sans-serif',
+                fontWeight: 600
+              }}
             >
-                             <h3
-                 className="mb-1 font-bold font-clash"
-                 style={{ 
-                   color: colorTitle, 
-                   fontSize: fontSizeTitle,
-                   fontFamily: '"Clash Display", sans-serif',
-                   fontWeight: 600
-                 }}
-               >
-                 {activeProject.title}
-               </h3>
-               <p
-                 className="mb-8 font-clash"
-                 style={{ 
-                   color: colorMeta, 
-                   fontSize: fontSizeMeta,
-                   fontFamily: '"Clash Display", sans-serif',
-                   fontWeight: 400
-                 }}
-               >
-                 {activeProject.meta}
-               </p>
-                                     {/* Mobile version - Simple text */}
-        <p
-          className="mb-8 leading-relaxed font-clash sm:hidden"
-          style={{ 
-            color: colorDescription, 
-            fontSize: fontSizeDescription,
-            fontFamily: '"Clash Display", sans-serif',
-            fontWeight: 400
-          }}
-        >
-          {activeProject.description}
-        </p>
-        
-        {/* Desktop version - Animated text */}
-        <motion.p
-          className="mb-8 leading-relaxed font-clash hidden sm:block"
-          style={{ 
-            color: colorDescription, 
-            fontSize: fontSizeDescription,
-            fontFamily: '"Clash Display", sans-serif',
-            fontWeight: 400
-          }}
-        >
-          {activeProject.description.split(" ").map((word, i) => (
-            <motion.span
-              key={i}
-              initial={{
-                filter: "blur(5px)",
-                opacity: 0,
-                y: 2,
+              {activeProject.title}
+            </h3>
+            <p
+              className="mb-8 font-clash"
+              style={{ 
+                color: colorMeta, 
+                fontSize: fontSizeMeta,
+                fontFamily: '"Clash Display", sans-serif',
+                fontWeight: 400
               }}
-              animate={{
-                filter: "blur(0px)",
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                duration: 0.1,
-                ease: "easeInOut",
-                delay: 0.01 * i,
-              }}
-              style={{ display: "inline-block" }}
             >
-              {word}&nbsp;
-            </motion.span>
-          ))}
-        </motion.p>
-              
-                             {/* Action buttons */}
-               <div className="flex gap-4 mb-8">
-                 <a
-                   href={activeProject.githubUrl}
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   className="flex items-center gap-2 px-6 py-3 rounded-lg text-decoration-none font-medium transition-all duration-300 font-clash bg-gray-900 text-white hover:bg-green-500 hover:-translate-y-0.5"
-                   style={{
-                     fontFamily: '"Clash Display", sans-serif',
-                     fontWeight: 500
-                   }}
-                 >
-                   <CodeBracketIcon className="w-5 h-5" />
-                   <span>Code</span>
-                 </a>
-                 {activeProject.liveUrl && (
-                   <a
-                     href={activeProject.liveUrl}
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className="flex items-center gap-2 px-6 py-3 rounded-lg text-decoration-none font-medium transition-all duration-300 font-clash bg-green-500 text-white hover:bg-green-700 hover:-translate-y-0.5"
-                     style={{
-                       fontFamily: '"Clash Display", sans-serif',
-                       fontWeight: 500
-                     }}
-                   >
-                     <GlobeAltIcon className="w-5 h-5" />
-                     <span>Voir le site</span>
-                   </a>
-                 )}
-               </div>
-            </motion.div>
-          </AnimatePresence>
+              {activeProject.meta}
+            </p>
+            
+            {/* Static description - no animations */}
+            <p
+              className="mb-8 leading-relaxed font-clash"
+              style={{ 
+                color: colorDescription, 
+                fontSize: fontSizeDescription,
+                fontFamily: '"Clash Display", sans-serif',
+                fontWeight: 400
+              }}
+            >
+              {activeProject.description}
+            </p>
+            
+            {/* Action buttons */}
+            <div className="flex gap-4 mb-8">
+              <a
+                href={activeProject.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 rounded-lg text-decoration-none font-medium transition-all duration-300 font-clash bg-gray-900 text-white hover:bg-green-500 hover:-translate-y-0.5"
+                style={{
+                  fontFamily: '"Clash Display", sans-serif',
+                  fontWeight: 500
+                }}
+              >
+                <CodeBracketIcon className="w-5 h-5" />
+                <span>Code</span>
+              </a>
+              {activeProject.liveUrl && (
+                <a
+                  href={activeProject.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-3 rounded-lg text-decoration-none font-medium transition-all duration-300 font-clash bg-green-500 text-white hover:bg-green-700 hover:-translate-y-0.5"
+                  style={{
+                    fontFamily: '"Clash Display", sans-serif',
+                    fontWeight: 500
+                  }}
+                >
+                  <GlobeAltIcon className="w-5 h-5" />
+                  <span>Voir le site</span>
+                </a>
+              )}
+            </div>
+          </div>
           
                      <div className="flex gap-6 pt-12 md:pt-0">
              <button

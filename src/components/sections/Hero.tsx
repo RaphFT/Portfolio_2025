@@ -1,10 +1,10 @@
-import { motion } from 'framer-motion';
 import '../../styles/fonts.css';
 import { TextMarquee } from '../hero/TextMarquee';
 import { HeroTopBar } from '../hero/HeroTopBar';
 import { HeroTitle } from '../hero/HeroTitle';
 import { HeroTerminal } from '../hero/HeroTerminal';
 import { HeroSkipLink } from '../hero/HeroSkipLink';
+import { MobileOptimizedAnimation } from '../hero/MobileOptimizedAnimation';
 
 export const Hero = () => {
   return (
@@ -25,14 +25,13 @@ export const Hero = () => {
             <HeroTitle variant="mobile" />
 
             {/* TextMarquee for mobile */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
+            <MobileOptimizedAnimation
+              animation="fadeIn"
+              duration={0.5}
               className="mt-2 w-full"
             >
               <TextMarquee />
-            </motion.div>
+            </MobileOptimizedAnimation>
 
             {/* 2. Terminal in the middle */}
             <HeroTerminal variant="mobile" />
@@ -45,14 +44,13 @@ export const Hero = () => {
           <HeroTitle variant="desktop" />
 
           {/* TextMarquee for desktop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+          <MobileOptimizedAnimation
+            animation="fadeIn"
+            duration={0.5}
             className="mt-2 w-full hidden md:block"
           >
             <TextMarquee />
-          </motion.div>
+          </MobileOptimizedAnimation>
         </div>
       </div>
 

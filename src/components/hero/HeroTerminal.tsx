@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { lazy, Suspense } from 'react';
+import { useMobileOptimization } from './hooks/useMobileOptimization';
 
 // Lazy load the terminal component
 const TypedTerminal = lazy(() => import('./TypedTerminal').then(module => ({ default: module.TypedTerminal })));
@@ -9,15 +10,20 @@ type HeroTerminalProps = {
 };
 
 export const HeroTerminal = ({ variant = 'mobile' }: HeroTerminalProps) => {
+  const { shouldReduceMotion } = useMobileOptimization();
+  
   if (variant === 'mobile') {
     return (
       <motion.div
         initial={{ opacity: 0, transform: 'translateX(20px)' }}
         animate={{ opacity: 1, transform: 'translateX(0px)' }}
-        transition={{ duration: 0.8, delay: 0.2 }}
+        transition={{ 
+          duration: shouldReduceMotion ? 0.4 : 0.8, 
+          delay: shouldReduceMotion ? 0 : 0.2 
+        }}
         className="mb-4 w-full"
         aria-label="Section terminal interactif"
-        style={{ willChange: 'transform, opacity' }}
+        style={{ willChange: shouldReduceMotion ? 'auto' : 'transform, opacity' }}
       >
         <Suspense fallback={
           <div 

@@ -1,0 +1,118 @@
+/* Mobile-specific optimizations to prevent jank and flickering */
+
+/* Disable animations on mobile when user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Optimize GPU usage on mobile */
+@media (max-width: 768px) {
+  /* Reduce will-change usage on mobile */
+  * {
+    will-change: auto !important;
+  }
+  
+  /* Only use will-change for critical animations */
+  .mobile-optimized-animation {
+    will-change: transform, opacity;
+  }
+  
+  /* Optimize transform animations */
+  .mobile-transform {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  /* Reduce animation complexity on mobile */
+  .mobile-simple-animation {
+    transition: opacity 0.3s ease-out;
+  }
+  
+  /* Disable heavy effects on mobile */
+  .mobile-disable-effects {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  /* Optimize canvas elements */
+  canvas {
+    image-rendering: optimizeSpeed;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+  }
+  
+  /* Reduce motion for better performance */
+  .mobile-reduced-motion {
+    animation-duration: 0.3s !important;
+    transition-duration: 0.3s !important;
+  }
+  
+  /* Optimize scrolling */
+  html {
+    scroll-behavior: auto;
+  }
+  
+  /* Prevent layout shifts */
+  .mobile-stable-layout {
+    contain: layout style paint;
+  }
+  
+  /* Optimize text rendering */
+  body {
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Specific optimizations for very low-end devices */
+@media (max-width: 480px) {
+  /* Disable all animations on very small screens */
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  /* Only keep essential animations */
+  .essential-animation {
+    transition: opacity 0.2s ease-out;
+  }
+}
+
+/* Optimize for touch devices */
+@media (hover: none) and (pointer: coarse) {
+  /* Disable hover effects on touch devices */
+  *:hover {
+    transform: none !important;
+    transition: none !important;
+  }
+  
+  /* Optimize touch interactions */
+  .touch-optimized {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Battery optimization */
+@media (prefers-reduced-motion: reduce) {
+  /* Disable all animations when battery is low or user prefers reduced motion */
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  /* Keep only essential transitions */
+  .essential-transition {
+    transition: opacity 0.1s ease-out;
+  }
+} 

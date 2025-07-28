@@ -1,4 +1,5 @@
 @import url('./styles/fonts.css');
+@import url('./styles/mobile-optimizations.css');
 
 @tailwind base;
 @tailwind components;

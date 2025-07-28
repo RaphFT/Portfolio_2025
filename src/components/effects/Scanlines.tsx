@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useMobileOptimization } from '../hero/hooks/useMobileOptimization';
 
 interface ScanlinesProps {
   intensity?: number; // 0-1
@@ -15,10 +16,14 @@ export const Scanlines = ({
   spacing = 12,
   className = ''
 }: ScanlinesProps) => {
+  const { disableHeavyEffects } = useMobileOptimization();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // Don't run on mobile or when heavy effects are disabled
+    if (disableHeavyEffects) return;
+    
     const canvas = canvasRef.current;
     if (!canvas) return;
 

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { CodeBracketIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';

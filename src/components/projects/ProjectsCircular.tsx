@@ -6,7 +6,7 @@ import { ProjectsHeader } from './ProjectsHeader';
 
 export const ProjectsCircular = () => {
   return (
-    <section className="min-h-screen sm:min-h-screen py-4 sm:py-8 md:py-20 bg-white pb-8 sm:pb-8">
+    <section id="projects" className="min-h-screen sm:min-h-screen py-4 sm:py-8 md:py-20 bg-white pb-8 sm:pb-8">
       <div className="container mx-auto px-4">
         {/* Header */}
         <ProjectsHeader />

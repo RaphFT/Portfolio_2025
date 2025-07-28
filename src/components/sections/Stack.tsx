@@ -5,7 +5,7 @@ export const Stack = () => {
   return (
     <section 
       id="stack" 
-      className="h-screen w-full bg-white flex items-center justify-center py-4 sm:py-6 lg:py-8"
+      className="h-screen w-full bg-white flex items-center justify-center py-4 sm:py-6 lg:py-8 pb-16 sm:pb-6"
       aria-labelledby="stack-heading"
     >
       <div className="w-full max-w-7xl mx-auto">

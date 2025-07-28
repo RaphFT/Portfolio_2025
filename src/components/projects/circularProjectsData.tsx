@@ -14,7 +14,7 @@ export const circularProjectsData: Project[] = [
     meta: "HTML, CSS",
     description: "Intégration responsive de la page d'accueil d'une agence de voyage à partir de maquettes Figma. Approfondissement des bases HTML/CSS et mise en pratique du responsive design.",
     src: "/images/projects/booki.webp",
-    githubUrl: "https://github.com/ton-profil/booki",
+    githubUrl: "https://github.com/RaphFT/Booki",
     liveUrl: "https://booki.vercel.app",
     tags: ["HTML", "CSS", "Responsive Design"]
   },
@@ -23,7 +23,7 @@ export const circularProjectsData: Project[] = [
     meta: "JavaScript, API, DOM",
     description: "Développement d'un site dynamique pour une architecte d'intérieur. Gestion du DOM avec JavaScript, appels API, création d'une page d'authentification et upload d'images via une modale.",
     src: "/images/projects/sophiebluel.webp",
-    githubUrl: "https://github.com/ton-profil/sophie-bluel",
+    githubUrl: "https://github.com/RaphFT/Portfolio-architecte-sophie-bluel",
     liveUrl: "https://sophiebluel.vercel.app",
     tags: ["JavaScript", "API", "DOM"]
   },
@@ -32,7 +32,7 @@ export const circularProjectsData: Project[] = [
     meta: "SEO, Accessibilité, Performances",
     description: "Optimisation d'un site existant pour améliorer ses performances, son accessibilité et son référencement. Utilisation d'outils comme Lighthouse et Wave, rédaction d'un rapport d'audit complet.",
     src: "/images/projects/ninacarducci.webp",
-    githubUrl: "https://github.com/ton-profil/nina-carducci",
+    githubUrl: "https://github.com/RaphFT/Nina-Carducci-Dev",
     liveUrl: "https://nina-carducci.vercel.app",
     tags: ["SEO", "Accessibilité", "Performance", "Audit"]
   },
@@ -41,7 +41,7 @@ export const circularProjectsData: Project[] = [
     meta: "React, React Router, Vite",
     description: "Développement du front-end d'une application de location immobilière avec React. Utilisation de React Router pour la navigation et affichage dynamique à partir d'un fichier JSON.",
     src: "/images/projects/kasa.webp",
-    githubUrl: "https://github.com/ton-profil/kasa",
+    githubUrl: "https://github.com/RaphFT/Kasa",
     liveUrl: "https://kasa-app.vercel.app",
     tags: ["React", "React Router", "Vite", "JavaScript"]
   },
@@ -50,7 +50,7 @@ export const circularProjectsData: Project[] = [
     meta: "Node.js, Express, MongoDB",
     description: "Développement du back-end d'un site de notation de livres. Mise en place d'une API sécurisée avec Express, gestion des données avec MongoDB/Mongoose, opérations CRUD et authentification utilisateur.",
     src: "/images/projects/grimoire.webp",
-    githubUrl: "https://github.com/ton-profil/mon-vieux-grimoire",
+    githubUrl: "https://github.com/RaphFT/MonVieuxGrimoire",
     liveUrl: "https://mon-vieux-grimoire.vercel.app",
     tags: ["Node.js", "Express", "MongoDB", "Mongoose", "API"]
   },

@@ -20,7 +20,7 @@ export const navigationData = {
     },
     {
       id: 'projects',
-      label: 'PROJECTS',
+      label: 'PROJETS',
       href: '#projects'
     },
     {

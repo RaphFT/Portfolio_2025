@@ -1,8 +1,8 @@
 import {
-  SwatchIcon,
-  MagnifyingGlassIcon,
   ComputerDesktopIcon,
-  WrenchScrewdriverIcon
+  ArrowPathIcon,
+  CogIcon,
+  RocketLaunchIcon
 } from '@heroicons/react/24/outline';
 
 export type ServiceItem = {
@@ -16,32 +16,32 @@ export type ServiceItem = {
 
 export const servicesData: ServiceItem[] = [
   {
-    id: 'brand-identity',
-    title: 'IDENTITÉ DE MARQUE',
-    description: 'Donnez vie à votre marque avec une identité visuelle unique et mémorable. Du logo aux supports marketing, je crée une cohérence visuelle qui reflète vos valeurs.',
-    icon: <SwatchIcon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 stroke-1 text-gray-600" />,
+    id: 'custom-web-app',
+    title: 'APPLICATION WEB SUR-MESURE',
+    description: 'CRM, plateforme e-commerce, outil de gestion interne. Analyse des besoins, conception de l\'architecture (front-end, back-end, base de données), développement complet et déploiement.',
+    icon: <ComputerDesktopIcon className="w-6 h-6 text-gray-600 stroke-1 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />,
     delay: 0,
     colSpan: 2
   },
   {
-    id: 'seo-optimization',
-    title: 'OPTIMISATION SEO',
-    description: 'Maximisez votre visibilité en ligne avec une stratégie SEO efficace. Optimisation technique, contenu de qualité et mots-clés ciblés.',
-    icon: <MagnifyingGlassIcon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 stroke-1 text-gray-600" />,
+    id: 'website-optimization',
+    title: 'REFONTE & OPTIMISATION',
+    description: 'Amélioration du design, montée en version du framework, meilleure performance. Audit technique et UX, mise à jour du stack, SEO et temps de chargement optimisés.',
+    icon: <ArrowPathIcon className="w-6 h-6 text-gray-600 stroke-1 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />,
     delay: 0.2
   },
   {
-    id: 'web-development',
-    title: 'CONCEPTION & DÉVELOPPEMENT WEB',
-    description: 'Sites web modernes, rapides et optimisés qui convertissent. Expertise en React, Next.js et TypeScript pour créer des expériences exceptionnelles.',
-    icon: <ComputerDesktopIcon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 stroke-1 text-gray-600" />,
+    id: 'business-automation',
+    title: 'AUTOMATISATION DE PROCESSUS',
+    description: 'Génération automatique de documents, synchronisation entre outils, reporting. Développement d\'APIs ou de scripts personnalisés, connexion avec des outils tiers.',
+    icon: <CogIcon className="w-6 h-6 text-gray-600 stroke-1 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />,
     delay: 0.4
   },
   {
-    id: 'custom-projects',
-    title: 'PROJETS SUR MESURE',
-    description: 'Solutions rapides et efficaces pour vos besoins spécifiques. Landing pages, optimisations ou nouvelles fonctionnalités, je m\'adapte à votre budget.',
-    icon: <WrenchScrewdriverIcon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 stroke-1 text-gray-600" />,
+    id: 'mvp-development',
+    title: 'DÉVELOPPEMENT MVP',
+    description: 'Sprint rapide de développement (1 à 3 mois) pour tester une idée rapidement. Stack légère et scalable, livrable fonctionnel pour valider le marché.',
+    icon: <RocketLaunchIcon className="w-6 h-6 text-gray-600 stroke-1 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />,
     delay: 0.6,
     colSpan: 2
   }

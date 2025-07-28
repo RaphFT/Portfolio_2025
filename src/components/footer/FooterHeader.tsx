@@ -15,7 +15,7 @@ export const FooterHeader = () => {
       }}
     >
       <div className="block whitespace-nowrap">DE GRANDE CHOSES</div>
-      <div className="block whitespace-nowrap">PEUVENT NAÎTRE D'UN SIMPLE</div>
+      <div className="block whitespace-nowrap">PEUVENT NAÎTRE AVEC UN SIMPLE</div>
       <div className="block whitespace-nowrap">
         <span className="text-[#47D649]">BONJOUR</span>
       </div>

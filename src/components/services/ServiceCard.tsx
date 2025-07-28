@@ -10,7 +10,7 @@ export const ServiceCard = ({ service }: ServiceCardProps) => {
   
   return (
     <motion.div 
-      className={`relative bg-gray-100 rounded-lg h-full p-3 sm:p-4 lg:p-5 flex flex-col overflow-hidden group cursor-pointer ${
+      className={`relative bg-gray-100 rounded-lg h-full p-2 sm:p-4 lg:p-5 flex flex-col overflow-hidden group cursor-pointer ${
         colSpan === 2 ? 'lg:col-span-2' : ''
       }`}
       initial={{ opacity: 0, y: 20 }}
@@ -80,7 +80,7 @@ export const ServiceCard = ({ service }: ServiceCardProps) => {
         
         <div className="flex flex-col flex-1">
           <motion.h3 
-            className="text-base sm:text-lg lg:text-xl tracking-tight font-clash mb-1 sm:mb-2"
+            className="text-sm sm:text-lg lg:text-xl tracking-tight font-clash mb-1 sm:mb-2"
             style={{
               fontFamily: '"Clash Display", sans-serif',
               fontWeight: 500
@@ -94,7 +94,7 @@ export const ServiceCard = ({ service }: ServiceCardProps) => {
           </motion.h3>
           
           <motion.p 
-            className="text-gray-600 text-xs sm:text-sm lg:text-base font-clash leading-relaxed"
+            className="text-gray-600 text-xs sm:text-xs lg:text-base font-clash leading-relaxed"
             style={{
               fontFamily: '"Clash Display", sans-serif',
               fontWeight: 400

@@ -50,6 +50,12 @@ function calculateGap(width: number) {
   const maxWidth = 1456;
   const minGap = 60;
   const maxGap = 86;
+  
+  // Mobile optimization
+  if (width < 768) {
+    return 20; // Smaller gap for mobile
+  }
+  
   if (width <= minWidth) return minGap;
   if (width >= maxWidth)
     return Math.max(minGap, maxGap + 0.06018 * (width - maxWidth));

@@ -6,7 +6,7 @@ export const About2 = () => {
   return (
     <section 
       id="about2" 
-      className="min-h-screen relative flex flex-col justify-center items-center bg-white py-8"
+      className="min-h-screen sm:min-h-screen relative flex flex-col justify-center items-center bg-white py-4 sm:py-8"
       aria-labelledby="about2-heading"
     >
       <About2Background />

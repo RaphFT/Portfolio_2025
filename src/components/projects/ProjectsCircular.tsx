@@ -5,7 +5,7 @@ import { ProjectsHeader } from './ProjectsHeader';
 
 export const ProjectsCircular = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-8 sm:py-20 bg-white">
       <div className="container mx-auto px-4">
         {/* Header */}
         <ProjectsHeader />

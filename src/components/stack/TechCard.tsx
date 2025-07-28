@@ -18,7 +18,7 @@ export const TechCard = ({ tech, index }: TechCardProps) => {
         y: -2,
         transition: { duration: 0.2 }
       }}
-      className="group relative p-3 sm:p-5 lg:p-6 rounded-xl overflow-hidden transition-all duration-300 border border-gray-100/80 bg-white hover:shadow-[0_8px_32px_rgba(71,214,73,0.15)] hover:-translate-y-0.5 will-change-transform"
+      className="group relative p-2 sm:p-5 lg:p-6 rounded-xl overflow-hidden transition-all duration-300 border border-gray-100/80 bg-white hover:shadow-[0_8px_32px_rgba(71,214,73,0.15)] hover:-translate-y-0.5 will-change-transform"
       style={{
         background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)'
       }}

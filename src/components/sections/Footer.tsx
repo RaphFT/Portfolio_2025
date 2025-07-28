@@ -6,7 +6,7 @@ export const Footer = () => {
   return (
     <footer 
       id="contact" 
-      className="relative min-h-screen flex items-center justify-center bg-primary text-white py-8 sm:py-12 lg:py-16"
+      className="relative min-h-screen sm:min-h-screen flex items-center justify-center bg-primary text-white py-4 sm:py-12 lg:py-16"
       aria-labelledby="contact-heading"
       role="contentinfo"
     >

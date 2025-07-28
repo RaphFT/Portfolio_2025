@@ -12,7 +12,7 @@ import {
   GlobeAltIcon 
 } from '@heroicons/react/24/outline';
 import { motion, AnimatePresence } from "framer-motion";
-import { useMobileOptimization } from '../hero/hooks/useMobileOptimization';
+
 
 interface Project {
   title: string;
@@ -65,11 +65,9 @@ function calculateGap(width: number) {
 
 export const CircularProjects = ({
   projects,
-  autoplay = true,
   colors = {},
   fontSizes = {},
 }: CircularProjectsProps) => {
-  const { isMobile } = useMobileOptimization();
   
   // Color & font config
   const colorTitle = colors.title ?? "#000";
@@ -109,17 +107,21 @@ export const CircularProjects = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Autoplay - disabled on mobile
+  // Autoplay - completely disabled for better UX
   useEffect(() => {
-    if (autoplay && !isMobile) {
-      autoplayIntervalRef.current = setInterval(() => {
-        setActiveIndex((prev) => (prev + 1) % projectsLength);
-      }, 5000);
+    // Always clear any existing interval
+    if (autoplayIntervalRef.current) {
+      clearInterval(autoplayIntervalRef.current);
+      autoplayIntervalRef.current = null;
     }
+    
     return () => {
-      if (autoplayIntervalRef.current) clearInterval(autoplayIntervalRef.current);
+      if (autoplayIntervalRef.current) {
+        clearInterval(autoplayIntervalRef.current);
+        autoplayIntervalRef.current = null;
+      }
     };
-  }, [autoplay, projectsLength, isMobile]);
+  }, []);
 
   // Keyboard navigation
   useEffect(() => {

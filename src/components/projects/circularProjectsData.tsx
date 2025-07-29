@@ -24,7 +24,7 @@ export const circularProjectsData: Project[] = [
     description: "Développement d'un site dynamique pour une architecte d'intérieur. Gestion du DOM avec JavaScript, appels API, création d'une page d'authentification et upload d'images via une modale.",
     src: "/images/projects/sophiebluel.webp",
     githubUrl: "https://github.com/RaphFT/Portfolio-architecte-sophie-bluel",
-    liveUrl: "https://sophiebluel.vercel.app",
+    liveUrl: "https://raphft.github.io/Portfolio-architecte-sophie-bluel/",
     tags: ["JavaScript", "API", "DOM"]
   },
   {

@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { TechItem } from './stackData';
 import { GlitchText } from '../effects/GlitchText';
 
@@ -8,15 +7,7 @@ type TechCardProps = {
 
 export const TechCard = ({ tech }: TechCardProps) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30, scale: 0.95 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.2, delay: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      whileHover={{ 
-        y: -2,
-        transition: { duration: 0.2 }
-      }}
+    <div
       className="group relative p-2 sm:p-5 lg:p-6 rounded-xl overflow-hidden transition-all duration-300 border border-gray-100/80 bg-white hover:shadow-[0_8px_32px_rgba(71,214,73,0.15)] hover:-translate-y-0.5 will-change-transform"
       style={{
         background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)'
@@ -64,6 +55,6 @@ export const TechCard = ({ tech }: TechCardProps) => {
           </p>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }; 

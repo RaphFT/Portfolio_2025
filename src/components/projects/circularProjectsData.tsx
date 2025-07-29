@@ -59,7 +59,7 @@ export const circularProjectsData: Project[] = [
     meta: "Gestion de projet, Rédaction technique",
     description: "Rédaction des spécifications techniques d'un projet web à partir de maquettes et user stories. Utilisation d'outils de gestion (Notion) et réalisation d'une veille technologique pour orienter les choix techniques.",
     src: "/images/projects/menumaker.webp",
-    githubUrl: "",
+    githubUrl: "https://github.com/RaphFT/menu_maker_by_qwenta",
     liveUrl: "",
     tags: ["Gestion de projet", "Spécifications", "Veille technologique"]
   }

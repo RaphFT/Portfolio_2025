@@ -33,7 +33,7 @@ export const circularProjectsData: Project[] = [
     description: "Optimisation d'un site existant pour améliorer ses performances, son accessibilité et son référencement. Utilisation d'outils comme Lighthouse et Wave, rédaction d'un rapport d'audit complet.",
     src: "/images/projects/ninacarducci.webp",
     githubUrl: "https://github.com/RaphFT/Nina-Carducci-Dev",
-    liveUrl: "https://nina-carducci.vercel.app",
+    liveUrl: "https://raphft.github.io/Nina-Carducci-Dev/",
     tags: ["SEO", "Accessibilité", "Performance", "Audit"]
   },
   {

@@ -15,7 +15,7 @@ export const circularProjectsData: Project[] = [
     description: "Intégration responsive de la page d'accueil d'une agence de voyage à partir de maquettes Figma. Approfondissement des bases HTML/CSS et mise en pratique du responsive design.",
     src: "/images/projects/booki.webp",
     githubUrl: "https://github.com/RaphFT/Booki",
-    liveUrl: "https://booki.vercel.app",
+    liveUrl: "https://raphft.github.io/Booki/",
     tags: ["HTML", "CSS", "Responsive Design"]
   },
   {

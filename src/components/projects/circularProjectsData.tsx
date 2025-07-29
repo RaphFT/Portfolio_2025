@@ -51,7 +51,7 @@ export const circularProjectsData: Project[] = [
     description: "Développement du back-end d'un site de notation de livres. Mise en place d'une API sécurisée avec Express, gestion des données avec MongoDB/Mongoose, opérations CRUD et authentification utilisateur.",
     src: "/images/projects/grimoire.webp",
     githubUrl: "https://github.com/RaphFT/MonVieuxGrimoire",
-    liveUrl: "https://mon-vieux-grimoire.vercel.app",
+    liveUrl: "https://raphft.github.io/MonVieuxGrimoire/",
     tags: ["Node.js", "Express", "MongoDB", "Mongoose", "API"]
   },
   {

@@ -1,12 +1,39 @@
+/**
+ * @fileoverview Indicateur de progression de scroll mobile
+ * @description Composant d'indicateur de progression de scroll
+ * optimisé pour mobile avec navigation interactive
+ * @author Raphael Fremont
+ * @version 1.0.0
+ */
+
 import { motion } from 'framer-motion';
 import { useScrollProgress } from '../../hooks/useScrollProgress';
 import { useCallback } from 'react';
 
+/**
+ * Composant indicateur de progression de scroll mobile
+ * @description Affiche un indicateur de progression de scroll optimisé pour mobile avec :
+ * - 5 indicateurs de progression (moins que desktop)
+ * - Navigation interactive par clic
+ * - Défilement fluide vers la section
+ * - Animation d'apparition avec délai
+ * - Position fixe en bas à droite
+ * - Layout vertical pour mobile
+ * - Z-index élevé pour la superposition
+ * - Accessibilité avec clavier et lecteurs d'écran
+ * - Visible uniquement sur mobile (< md)
+ * 
+ * @returns {JSX.Element} Indicateur de progression de scroll mobile
+ * 
+ * @example
+ * <ScrollProgressMobile />
+ */
 export const ScrollProgressMobile = () => {
   const { progress } = useScrollProgress();
   const totalIndicators = 5; // Moins d'indicateurs pour mobile
   const activeIndex = Math.floor((progress / 100) * (totalIndicators - 1));
 
+  // Fonction de navigation vers une section
   const handleScroll = useCallback((index: number) => {
     const scrollPercentage = (index / (totalIndicators - 1)) * 100;
     const scrollPosition = (scrollPercentage / 100) * (document.documentElement.scrollHeight - window.innerHeight);
@@ -23,6 +50,7 @@ export const ScrollProgressMobile = () => {
       transition={{ duration: 0.5, delay: 0.5 }}
       className="block flex fixed right-4 bottom-4 z-50 flex-col space-y-2 md:hidden"
     >
+      {/* Indicateurs de progression pour mobile */}
       {[...Array(totalIndicators)].map((_, i) => (
         <motion.div
           key={i}

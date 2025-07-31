@@ -1,23 +1,57 @@
+/**
+ * @fileoverview Composant de fallback pour Three.js
+ * @description Composant de fallback accessible et animé
+ * pour remplacer l'animation Three.js en cas d'erreur
+ * @author Raphael Fremont
+ * @version 1.0.0
+ */
+
 import { useEffect, useState } from 'react';
 
+/**
+ * Interface des props du composant ThreeJsFallback
+ * @interface ThreeJsFallbackProps
+ */
 type ThreeJsFallbackProps = {
   className?: string;
   isReducedMotion?: boolean;
 };
 
+/**
+ * Composant de fallback pour Three.js
+ * @description Fournit un arrière-plan animé de fallback avec :
+ * - Animation de gradient rotatif à 20 FPS
+ * - Effet d'orbes flottantes avec animation
+ * - Effet de lueur subtile
+ * - Mode statique pour les préférences de réduction de mouvement
+ * - Accessibilité avec aria-label approprié
+ * - Performance optimisée avec requestAnimationFrame
+ * 
+ * @param {ThreeJsFallbackProps} props - Props du composant
+ * @param {string} [props.className=''] - Classes CSS additionnelles
+ * @param {boolean} [props.isReducedMotion=false] - Si l'utilisateur préfère la réduction de mouvement
+ * 
+ * @returns {JSX.Element} Arrière-plan de fallback animé ou statique
+ * 
+ * @example
+ * <ThreeJsFallback isReducedMotion={false} />
+ */
 export const ThreeJsFallback = ({ className = '', isReducedMotion = false }: ThreeJsFallbackProps) => {
+  // État pour l'animation du gradient
   const [animationPhase, setAnimationPhase] = useState(0);
 
+  // Gestion de l'animation avec respect des préférences utilisateur
   useEffect(() => {
     if (isReducedMotion) return;
 
     const interval = setInterval(() => {
       setAnimationPhase(prev => (prev + 1) % 360);
-    }, 50); // 20 FPS animation
+    }, 50); // Animation à 20 FPS
 
     return () => clearInterval(interval);
   }, [isReducedMotion]);
 
+  // Mode statique pour les préférences de réduction de mouvement
   if (isReducedMotion) {
     return (
       <div 
@@ -34,7 +68,7 @@ export const ThreeJsFallback = ({ className = '', isReducedMotion = false }: Thr
       role="img"
       aria-label="Animated background fallback for Three.js LavaLamp effect"
     >
-      {/* Animated gradient background */}
+      {/* Arrière-plan avec gradient animé */}
       <div 
         className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"
         style={{
@@ -47,7 +81,7 @@ export const ThreeJsFallback = ({ className = '', isReducedMotion = false }: Thr
         }}
       />
       
-      {/* Floating orbs effect */}
+      {/* Effet d'orbes flottantes */}
       <div className="absolute inset-0">
         {[...Array(5)].map((_, i) => (
           <div
@@ -66,7 +100,7 @@ export const ThreeJsFallback = ({ className = '', isReducedMotion = false }: Thr
         ))}
       </div>
 
-      {/* Subtle glow effect */}
+      {/* Effet de lueur subtile */}
       <div 
         className="absolute inset-0 opacity-30"
         style={{

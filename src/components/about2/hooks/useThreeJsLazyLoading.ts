@@ -1,5 +1,22 @@
+/**
+ * @fileoverview Hook pour le chargement lazy de Three.js
+ * @description Hook personnalisé pour gérer le chargement lazy de Three.js
+ * avec optimisations de performance et respect des préférences utilisateur
+ * @author Raphael Fremont
+ * @version 1.0.0
+ */
+
 import { useState, useEffect, useRef, useCallback } from 'react';
 
+/**
+ * Interface des options du hook useThreeJsLazyLoading
+ * @interface UseThreeJsLazyLoadingOptions
+ * @property {number} [preloadDistance=500] - Distance de préchargement en pixels
+ * @property {() => void} [onLoadStart] - Callback appelé au début du chargement
+ * @property {() => void} [onLoadComplete] - Callback appelé à la fin du chargement
+ * @property {(error: Error) => void} [onLoadError] - Callback appelé en cas d'erreur
+ * @property {boolean} [respectReducedMotion=true] - Respecter les préférences de réduction de mouvement
+ */
 type UseThreeJsLazyLoadingOptions = {
   preloadDistance?: number;
   onLoadStart?: () => void;
@@ -8,6 +25,43 @@ type UseThreeJsLazyLoadingOptions = {
   respectReducedMotion?: boolean;
 };
 
+/**
+ * Hook pour le chargement lazy de Three.js
+ * @description Gère le chargement lazy de Three.js avec :
+ * - Intersection Observer pour le préchargement intelligent
+ * - Respect des préférences de réduction de mouvement
+ * - Gestion d'erreur avec fallback automatique
+ * - Callbacks pour le suivi du chargement
+ * - Optimisation des performances avec preload
+ * - Éviter les chargements multiples
+ * 
+ * @param {UseThreeJsLazyLoadingOptions} [options={}] - Options de configuration
+ * @param {number} [options.preloadDistance=500] - Distance de préchargement
+ * @param {() => void} [options.onLoadStart] - Callback début chargement
+ * @param {() => void} [options.onLoadComplete] - Callback fin chargement
+ * @param {(error: Error) => void} [options.onLoadError] - Callback erreur
+ * @param {boolean} [options.respectReducedMotion=true] - Respecter les préférences
+ * 
+ * @returns {Object} Objet contenant les refs et états
+ * @returns {React.RefObject<HTMLDivElement>} returns.containerRef - Ref du conteneur
+ * @returns {boolean} returns.isLoading - État de chargement
+ * @returns {boolean} returns.isLoaded - Si le composant est chargé
+ * @returns {Error | null} returns.error - Erreur de chargement
+ * @returns {boolean} returns.shouldLoad - Si le chargement doit commencer
+ * @returns {boolean} returns.prefersReducedMotion - Préférence de réduction de mouvement
+ * @returns {(importFn: () => Promise<unknown>) => Promise<void>} returns.loadThreeJs - Fonction de chargement
+ * 
+ * @example
+ * const {
+ *   containerRef,
+ *   isLoading,
+ *   isLoaded,
+ *   loadThreeJs
+ * } = useThreeJsLazyLoading({
+ *   preloadDistance: 300,
+ *   respectReducedMotion: true
+ * });
+ */
 export const useThreeJsLazyLoading = (options: UseThreeJsLazyLoadingOptions = {}) => {
   const {
     preloadDistance = 500,
@@ -17,6 +71,7 @@ export const useThreeJsLazyLoading = (options: UseThreeJsLazyLoadingOptions = {}
     respectReducedMotion = true
   } = options;
 
+  // États pour gérer le chargement
   const [isLoading, setIsLoading] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState<Error | null>(null);
@@ -25,7 +80,7 @@ export const useThreeJsLazyLoading = (options: UseThreeJsLazyLoadingOptions = {}
   const containerRef = useRef<HTMLDivElement>(null);
   const loadingPromiseRef = useRef<Promise<unknown> | null>(null);
 
-  // Check for reduced motion preference
+  // Vérifier les préférences de réduction de mouvement
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     setPrefersReducedMotion(mediaQuery.matches);
@@ -38,14 +93,14 @@ export const useThreeJsLazyLoading = (options: UseThreeJsLazyLoadingOptions = {}
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
-  // Intersection Observer for preloading
+  // Observer d'intersection pour le préchargement
   useEffect(() => {
     if (!containerRef.current) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !shouldLoad && !isLoaded) {
-          // Don't load Three.js if user prefers reduced motion
+          // Ne pas charger Three.js si l'utilisateur préfère la réduction de mouvement
           if (respectReducedMotion && prefersReducedMotion) {
             setIsLoaded(true);
             onLoadComplete?.();
@@ -70,7 +125,7 @@ export const useThreeJsLazyLoading = (options: UseThreeJsLazyLoadingOptions = {}
     };
   }, [shouldLoad, isLoaded, preloadDistance, respectReducedMotion, prefersReducedMotion, onLoadComplete]);
 
-  // Load Three.js component
+  // Fonction de chargement de Three.js
   const loadThreeJs = useCallback(async (importFn: () => Promise<unknown>) => {
     if (isLoading || isLoaded || loadingPromiseRef.current) return;
 

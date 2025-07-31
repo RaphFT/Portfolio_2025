@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Composant d'affichage circulaire des projets (version desktop)
+ * @description Composant interactif affichant les projets dans un carrousel circulaire
+ * avec navigation par flèches et animations fluides
+ * @author Raphael Fremont
+ * @version 1.0.0
+ */
+
 "use client";
 import React, {
   useEffect,
@@ -12,8 +20,10 @@ import {
   GlobeAltIcon 
 } from '@heroicons/react/24/outline';
 
-
-
+/**
+ * Interface définissant la structure d'un projet
+ * @interface Project
+ */
 interface Project {
   title: string;
   meta: string;
@@ -24,6 +34,10 @@ interface Project {
   tags: string[];
 }
 
+/**
+ * Interface pour la configuration des couleurs
+ * @interface Colors
+ */
 interface Colors {
   title?: string;
   meta?: string;
@@ -33,12 +47,20 @@ interface Colors {
   arrowHoverBackground?: string;
 }
 
+/**
+ * Interface pour la configuration des tailles de police
+ * @interface FontSizes
+ */
 interface FontSizes {
   title?: string;
   meta?: string;
   description?: string;
 }
 
+/**
+ * Interface des props du composant CircularProjects
+ * @interface CircularProjectsProps
+ */
 interface CircularProjectsProps {
   projects: Project[];
   autoplay?: boolean;
@@ -46,15 +68,25 @@ interface CircularProjectsProps {
   fontSizes?: FontSizes;
 }
 
+/**
+ * Calcule l'espacement entre les projets en fonction de la largeur d'écran
+ * @description Optimise l'affichage pour différentes tailles d'écran
+ * 
+ * @param {number} width - Largeur de l'écran en pixels
+ * @returns {number} Espacement calculé en pixels
+ * 
+ * @example
+ * const gap = calculateGap(1200); // Retourne 86
+ */
 function calculateGap(width: number) {
   const minWidth = 1024;
   const maxWidth = 1456;
   const minGap = 60;
   const maxGap = 86;
   
-  // Mobile optimization
+  // Optimisation mobile
   if (width < 768) {
-    return 20; // Smaller gap for mobile
+    return 20; // Espacement réduit pour mobile
   }
   
   if (width <= minWidth) return minGap;
@@ -63,38 +95,62 @@ function calculateGap(width: number) {
   return minGap + (maxGap - minGap) * ((width - minWidth) / (maxWidth - minWidth));
 }
 
+/**
+ * Composant d'affichage circulaire des projets
+ * @description Affiche les projets dans un carrousel circulaire interactif
+ * avec navigation par flèches, animations fluides et design responsive
+ * 
+ * @param {CircularProjectsProps} props - Props du composant
+ * @param {Project[]} props.projects - Array des projets à afficher
+ * @param {boolean} [props.autoplay=false] - Démarrage automatique du carrousel
+ * @param {Colors} [props.colors] - Configuration des couleurs
+ * @param {FontSizes} [props.fontSizes] - Configuration des tailles de police
+ * 
+ * @returns {JSX.Element} Composant de carrousel circulaire
+ * 
+ * @example
+ * <CircularProjects 
+ *   projects={projectsData}
+ *   colors={{ title: "#000", meta: "#666" }}
+ *   fontSizes={{ title: "28px", description: "16px" }}
+ * />
+ */
 export const CircularProjects = ({
   projects,
   colors = {},
   fontSizes = {},
 }: CircularProjectsProps) => {
   
-  // Color & font config
+  // Configuration des couleurs avec valeurs par défaut
   const colorTitle = colors.title ?? "#000";
   const colorMeta = colors.meta ?? "#6b7280";
   const colorDescription = colors.description ?? "#4b5563";
   const colorArrowBg = colors.arrowBackground ?? "#141414";
   const colorArrowFg = colors.arrowForeground ?? "#f1f1f7";
   const colorArrowHoverBg = colors.arrowHoverBackground ?? "#47D649";
+  
+  // Configuration des tailles de police avec valeurs par défaut
   const fontSizeTitle = fontSizes.title ?? "1.5rem";
   const fontSizeMeta = fontSizes.meta ?? "0.925rem";
   const fontSizeDescription = fontSizes.description ?? "1.125rem";
 
-  // State - Static version without autoplay
+  // État du composant - Version statique sans autoplay
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoverPrev, setHoverPrev] = useState(false);
   const [hoverNext, setHoverNext] = useState(false);
   const [containerWidth, setContainerWidth] = useState(1200);
 
+  // Références DOM
   const imageContainerRef = useRef<HTMLDivElement>(null);
 
+  // Mémoisation des valeurs calculées pour optimiser les performances
   const projectsLength = useMemo(() => projects.length, [projects]);
   const activeProject = useMemo(
     () => projects[activeIndex],
     [activeIndex, projects]
   );
 
-  // Responsive gap calculation
+  // Calcul responsive de l'espacement
   useEffect(() => {
     function handleResize() {
       if (imageContainerRef.current) {

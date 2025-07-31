@@ -1,6 +1,32 @@
+/**
+ * @fileoverview Section Stack technique du portfolio
+ * @description Composant de la section Stack avec présentation
+ * des technologies et outils utilisés
+ * @author Raphael Fremont
+ * @version 1.0.0
+ */
+
 import { StackHeader } from '../stack/StackHeader';
 import { StackGrid } from '../stack/StackGrid';
 
+/**
+ * Composant section Stack technique
+ * @description Affiche la section Stack avec :
+ * - Hauteur minimale adaptée à l'écran
+ * - Layout centré verticalement et horizontalement
+ * - Arrière-plan blanc
+ * - En-tête avec titre et description
+ * - Grille des technologies avec cartes interactives
+ * - Padding responsive optimisé
+ * - Largeur maximale centrée
+ * - Espacement adaptatif entre les éléments
+ * - Accessibilité avec aria-labelledby
+ * 
+ * @returns {JSX.Element} Section Stack complète
+ * 
+ * @example
+ * <Stack />
+ */
 export const Stack = () => {
   return (
     <section 

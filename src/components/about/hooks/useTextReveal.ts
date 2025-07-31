@@ -1,5 +1,22 @@
+/**
+ * @fileoverview Hook pour l'animation de révélation de texte
+ * @description Hook personnalisé pour gérer l'animation de révélation de texte
+ * avec observer de visibilité et respect des préférences de mouvement
+ * @author Raphael Fremont
+ * @version 1.0.0
+ */
+
 import { useEffect, useRef, useState, useCallback } from 'react';
 
+/**
+ * Interface des options du hook useTextReveal
+ * @interface UseTextRevealOptions
+ * @property {number} [threshold=0.1] - Seuil de visibilité pour déclencher l'animation
+ * @property {string} [rootMargin='0px'] - Marge autour de l'élément pour l'observer
+ * @property {number} [animationDuration=0.6] - Durée de l'animation en secondes
+ * @property {number} [staggerDelay=0.05] - Délai entre chaque mot en secondes
+ * @property {boolean} [respectReducedMotion=true] - Respecter les préférences de réduction de mouvement
+ */
 type UseTextRevealOptions = {
   threshold?: number;
   rootMargin?: string;
@@ -8,6 +25,42 @@ type UseTextRevealOptions = {
   respectReducedMotion?: boolean;
 };
 
+/**
+ * Hook pour l'animation de révélation de texte
+ * @description Gère l'animation de révélation de texte avec :
+ * - Observer de visibilité pour déclencher l'animation
+ * - Respect des préférences de réduction de mouvement
+ * - Animation en cascade (stagger) pour les mots
+ * - Optimisations de performance avec willChange
+ * - Gestion des états d'animation
+ * 
+ * @param {UseTextRevealOptions} [options={}] - Options de configuration
+ * @param {number} [options.threshold=0.1] - Seuil de visibilité
+ * @param {string} [options.rootMargin='0px'] - Marge de l'observer
+ * @param {number} [options.animationDuration=0.6] - Durée d'animation
+ * @param {number} [options.staggerDelay=0.05] - Délai entre mots
+ * @param {boolean} [options.respectReducedMotion=true] - Respecter les préférences
+ * 
+ * @returns {Object} Objet contenant les refs et fonctions d'animation
+ * @returns {React.RefObject<HTMLDivElement>} returns.containerRef - Ref du conteneur
+ * @returns {boolean} returns.isVisible - État de visibilité
+ * @returns {boolean} returns.hasAnimated - Si l'animation a déjà eu lieu
+ * @returns {boolean} returns.prefersReducedMotion - Préférence de réduction de mouvement
+ * @returns {(index: number) => React.CSSProperties} returns.getWordAnimationStyle - Fonction pour les styles de mot
+ * @returns {() => React.CSSProperties} returns.getContainerStyle - Fonction pour les styles de conteneur
+ * 
+ * @example
+ * const {
+ *   containerRef,
+ *   isVisible,
+ *   getWordAnimationStyle,
+ *   getContainerStyle
+ * } = useTextReveal({
+ *   threshold: 0.2,
+ *   animationDuration: 0.8,
+ *   staggerDelay: 0.1
+ * });
+ */
 export const useTextReveal = (options: UseTextRevealOptions = {}) => {
   const {
     threshold = 0.1,
@@ -22,7 +75,7 @@ export const useTextReveal = (options: UseTextRevealOptions = {}) => {
   const [hasAnimated, setHasAnimated] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
-  // Check for reduced motion preference
+  // Vérifier les préférences de réduction de mouvement
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     setPrefersReducedMotion(mediaQuery.matches);
@@ -35,7 +88,7 @@ export const useTextReveal = (options: UseTextRevealOptions = {}) => {
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
-  // Intersection Observer for visibility
+  // Observer d'intersection pour la visibilité
   useEffect(() => {
     if (!containerRef.current) return;
 
@@ -61,7 +114,7 @@ export const useTextReveal = (options: UseTextRevealOptions = {}) => {
     };
   }, [threshold, rootMargin, hasAnimated]);
 
-  // Get animation style for a word
+  // Obtenir le style d'animation pour un mot
   const getWordAnimationStyle = useCallback((index: number) => {
     if (!isVisible || (respectReducedMotion && prefersReducedMotion)) {
       return {
@@ -82,7 +135,7 @@ export const useTextReveal = (options: UseTextRevealOptions = {}) => {
     };
   }, [isVisible, prefersReducedMotion, respectReducedMotion, staggerDelay, animationDuration]);
 
-  // Get container animation style
+  // Obtenir le style d'animation du conteneur
   const getContainerStyle = useCallback(() => {
     if (respectReducedMotion && prefersReducedMotion) {
       return {

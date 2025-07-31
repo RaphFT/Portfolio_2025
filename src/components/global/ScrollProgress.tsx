@@ -1,12 +1,39 @@
+/**
+ * @fileoverview Indicateur de progression de scroll desktop
+ * @description Composant d'indicateur de progression de scroll
+ * avec navigation interactive et accessibilité
+ * @author Raphael Fremont
+ * @version 1.0.0
+ */
+
 import { motion } from 'framer-motion';
 import { useScrollProgress } from '../../hooks/useScrollProgress';
 import { useCallback } from 'react';
 
+/**
+ * Composant indicateur de progression de scroll desktop
+ * @description Affiche un indicateur de progression de scroll avec :
+ * - 10 indicateurs de progression
+ * - Navigation interactive par clic
+ * - Défilement fluide vers la section
+ * - Animation d'apparition avec délai
+ * - Position fixe à droite de l'écran
+ * - Centrage vertical
+ * - Z-index élevé pour la superposition
+ * - Accessibilité avec clavier et lecteurs d'écran
+ * - Visible uniquement sur desktop (md+)
+ * 
+ * @returns {JSX.Element} Indicateur de progression de scroll
+ * 
+ * @example
+ * <ScrollProgress />
+ */
 export const ScrollProgress = () => {
   const { progress } = useScrollProgress();
   const totalIndicators = 10;
   const activeIndex = Math.floor((progress / 100) * (totalIndicators - 1));
 
+  // Fonction de navigation vers une section
   const handleScroll = useCallback((index: number) => {
     const scrollPercentage = (index / (totalIndicators - 1)) * 100;
     const scrollPosition = (scrollPercentage / 100) * (document.documentElement.scrollHeight - window.innerHeight);
@@ -23,6 +50,7 @@ export const ScrollProgress = () => {
       transition={{ duration: 0.5, delay: 0.5 }}
       className="hidden fixed right-5 top-1/2 z-50 space-y-1 -translate-y-1/2 md:block"
     >
+      {/* Indicateurs de progression */}
       {[...Array(totalIndicators)].map((_, i) => (
         <motion.div
           key={i}

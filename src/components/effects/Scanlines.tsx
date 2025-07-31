@@ -1,6 +1,25 @@
+/**
+ * @fileoverview Effet de scanlines animées
+ * @description Composant d'effet visuel de scanlines avec animation
+ * fluide et optimisations pour les performances
+ * @author Raphael Fremont
+ * @version 1.0.0
+ */
+
 import { useEffect, useRef, useState } from 'react';
 import { useMobileOptimization } from '../hero/hooks/useMobileOptimization';
 
+/**
+ * Interface des props du composant Scanlines
+ * @interface ScanlinesProps
+ * @description Configuration des propriétés de l'effet scanlines
+ * 
+ * @property {number} intensity - Intensité de l'effet (0-1, défaut: 0.05)
+ * @property {number} speed - Vitesse d'animation en pixels par frame (défaut: 1)
+ * @property {string} color - Couleur des scanlines (défaut: '#00FF00')
+ * @property {number} spacing - Espacement entre les lignes en pixels (défaut: 12)
+ * @property {string} className - Classes CSS additionnelles
+ */
 interface ScanlinesProps {
   intensity?: number; // 0-1
   speed?: number; // pixels per frame
@@ -9,6 +28,30 @@ interface ScanlinesProps {
   className?: string;
 }
 
+/**
+ * Composant effet de scanlines animées
+ * @description Affiche un effet de scanlines avec :
+ * - Lignes horizontales animées
+ * - Mouvement fluide vers le bas
+ * - Intensité et vitesse configurables
+ * - Optimisation mobile avec désactivation automatique
+ * - Intersection Observer pour les performances
+ * - Canvas avec mix-blend-mode screen
+ * - Espacement personnalisable
+ * - Responsive avec redimensionnement automatique
+ * 
+ * @param {ScanlinesProps} props - Propriétés du composant
+ * @param {number} props.intensity - Intensité de l'effet (0-1)
+ * @param {number} props.speed - Vitesse d'animation
+ * @param {string} props.color - Couleur des scanlines
+ * @param {number} props.spacing - Espacement entre les lignes
+ * @param {string} props.className - Classes CSS additionnelles
+ * 
+ * @returns {JSX.Element} Canvas avec effet scanlines
+ * 
+ * @example
+ * <Scanlines intensity={0.02} speed={0.5} color="#00FF00" spacing={12} />
+ */
 export const Scanlines = ({ 
   intensity = 0.05, 
   speed = 1, 
@@ -21,7 +64,7 @@ export const Scanlines = ({
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Don't run on mobile or when heavy effects are disabled
+    // Désactivation sur mobile ou quand les effets lourds sont désactivés
     if (disableHeavyEffects) return;
     
     const canvas = canvasRef.current;
@@ -30,7 +73,7 @@ export const Scanlines = ({
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas size
+    // Redimensionnement du canvas
     const resizeCanvas = () => {
       const rect = canvas.getBoundingClientRect();
       canvas.width = rect.width;
@@ -42,14 +85,14 @@ export const Scanlines = ({
     let offset = 0;
     let animationId: number;
 
-    // Animation loop
+    // Boucle d'animation
     const animate = () => {
       if (!ctx || !isVisible) return;
 
-      // Clear canvas
+      // Effacement du canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Draw scanlines
+      // Dessin des scanlines
       ctx.strokeStyle = color;
       ctx.lineWidth = 1;
       ctx.globalAlpha = intensity;
@@ -61,7 +104,7 @@ export const Scanlines = ({
         ctx.stroke();
       }
 
-      // Move scanlines
+      // Déplacement des scanlines
       offset += speed;
       if (offset >= spacing) {
         offset = 0;
@@ -70,7 +113,7 @@ export const Scanlines = ({
       animationId = requestAnimationFrame(animate);
     };
 
-    // Intersection Observer for performance
+    // Intersection Observer pour les performances
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);

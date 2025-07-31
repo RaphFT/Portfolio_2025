@@ -1,11 +1,47 @@
+/**
+ * @fileoverview Composant mot individuel avec animation
+ * @description Composant optimisé pour afficher un mot avec animation
+ * et effet de profondeur
+ * @author Raphael Fremont
+ * @version 1.0.0
+ */
+
 import { ReactNode, memo } from 'react';
 
+/**
+ * Interface des props du composant Word
+ * @interface WordProps
+ */
 type WordProps = {
   children: ReactNode;
   animationStyle: React.CSSProperties;
   className?: string;
 };
 
+/**
+ * Composant mot individuel avec animation
+ * @description Affiche un mot avec animation et effet de profondeur :
+ * - Mémoisation pour optimiser les performances
+ * - Effet de profondeur avec texte de fond
+ * - Police Clash Display personnalisée
+ * - Styles d'animation personnalisables
+ * - Accessibilité optimisée
+ * 
+ * @param {WordProps} props - Props du composant
+ * @param {ReactNode} props.children - Le mot à afficher
+ * @param {React.CSSProperties} props.animationStyle - Styles d'animation à appliquer
+ * @param {string} [props.className=''] - Classes CSS supplémentaires
+ * 
+ * @returns {JSX.Element} Mot avec animation et effet de profondeur
+ * 
+ * @example
+ * <Word 
+ *   animationStyle={{ opacity: 0.5, transform: 'translateY(10px)' }}
+ *   className="custom-word"
+ * >
+ *   Hello
+ * </Word>
+ */
 export const Word = memo(({ children, animationStyle, className = '' }: WordProps) => {
   return (
     <span 
@@ -17,7 +53,7 @@ export const Word = memo(({ children, animationStyle, className = '' }: WordProp
       }}
       aria-hidden="true"
     >
-      {/* Background text for depth effect */}
+      {/* Texte de fond pour l'effet de profondeur */}
       <span 
         className="absolute text-black opacity-30"
         style={{ zIndex: 1 }}
@@ -25,9 +61,9 @@ export const Word = memo(({ children, animationStyle, className = '' }: WordProp
         {children}
       </span>
       
-      {/* Animated text */}
+      {/* Texte animé */}
       <span 
-        className="text-black relative"
+        className="relative text-black"
         style={{ zIndex: 2 }}
       >
         {children}

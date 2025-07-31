@@ -1,17 +1,39 @@
+/**
+ * @fileoverview Composant principal de la section projets
+ * @description Section complète des projets avec affichage responsive (mobile/desktop)
+ * @author Raphael Fremont
+ * @version 1.0.0
+ */
 
 import { CircularProjects } from './CircularProjects';
 import { MobileOptimizedProjects } from './MobileOptimizedProjects';
 import { circularProjectsData } from './circularProjectsData';
 import { ProjectsHeader } from './ProjectsHeader';
 
+/**
+ * Composant principal de la section projets
+ * @description Affiche la section projets avec un design responsive :
+ * - Version mobile : Composant optimisé pour les petits écrans
+ * - Version desktop : Composant circulaire interactif
+ * 
+ * @returns {JSX.Element} Section complète des projets
+ * 
+ * @example
+ * <ProjectsCircular />
+ */
 export const ProjectsCircular = () => {
   return (
-    <section id="projects" className="min-h-screen sm:min-h-screen py-4 sm:py-8 md:py-20 bg-white pb-8 sm:pb-8">
+    <section 
+      id="projects" 
+      className="min-h-screen sm:min-h-screen py-4 sm:py-8 md:py-20 bg-white pb-8 sm:pb-8"
+      role="region"
+      aria-label="Section des projets de développement web"
+    >
       <div className="container mx-auto px-4">
-        {/* Header */}
+        {/* En-tête de la section */}
         <ProjectsHeader />
 
-        {/* Mobile Optimized Projects */}
+        {/* Version mobile - Optimisée pour les petits écrans */}
         <div className="md:hidden">
           <MobileOptimizedProjects
             projects={circularProjectsData}
@@ -31,7 +53,7 @@ export const ProjectsCircular = () => {
           />
         </div>
 
-        {/* Desktop Circular Projects Component */}
+        {/* Version desktop - Composant circulaire interactif */}
         <div className="hidden md:flex justify-center">
           <CircularProjects
             projects={circularProjectsData}

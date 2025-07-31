@@ -1,5 +1,28 @@
+/**
+ * @fileoverview En-tête de la section footer
+ * @description Composant affichant le titre principal du footer avec
+ * animation d'apparition et design responsive
+ * @author Raphael Fremont
+ * @version 1.0.0
+ */
+
 import { motion } from 'framer-motion';
 
+/**
+ * Composant en-tête de la section footer
+ * @description Affiche le titre principal du footer avec :
+ * - Animation d'apparition fluide
+ * - Design responsive avec tailles adaptatives
+ * - Police Clash Display personnalisée
+ * - Texte centré avec espacement optimisé
+ * - Mise en évidence du mot "BONJOUR" en vert
+ * - Accessibilité avec ID unique
+ * 
+ * @returns {JSX.Element} En-tête du footer avec animation
+ * 
+ * @example
+ * <FooterHeader />
+ */
 export const FooterHeader = () => {
   return (
     <motion.h2
@@ -14,8 +37,13 @@ export const FooterHeader = () => {
         fontWeight: 600
       }}
     >
+      {/* Première ligne du titre */}
       <div className="block whitespace-nowrap">DE GRANDE CHOSES</div>
+      
+      {/* Deuxième ligne du titre */}
       <div className="block whitespace-nowrap">PEUVENT NAÎTRE AVEC UN SIMPLE</div>
+      
+      {/* Troisième ligne avec mot mis en évidence */}
       <div className="block whitespace-nowrap">
         <span className="text-[#47D649]">BONJOUR</span>
       </div>

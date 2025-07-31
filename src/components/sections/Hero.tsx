@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Section Hero principale du portfolio
+ * @description Composant principal de la section Hero avec layout responsive
+ * et optimisations pour mobile et desktop
+ * @author Raphael Fremont
+ * @version 1.0.0
+ */
+
 import '../../styles/fonts.css';
 import { TextMarquee } from '../hero/TextMarquee';
 import { HeroTopBar } from '../hero/HeroTopBar';
@@ -6,6 +14,23 @@ import { HeroTerminal } from '../hero/HeroTerminal';
 import { HeroSkipLink } from '../hero/HeroSkipLink';
 import { MobileOptimizedAnimation } from '../hero/MobileOptimizedAnimation';
 
+/**
+ * Composant section Hero principale
+ * @description Affiche la section Hero avec :
+ * - Layout responsive optimisé (mobile/desktop)
+ * - Barre supérieure avec version et contact
+ * - Titre principal avec variantes mobile/desktop
+ * - Terminal interactif avec variantes
+ * - Animation de texte défilant
+ * - Lien de saut pour l'accessibilité
+ * - Optimisations de performance (LCP, FID)
+ * - Accessibilité complète
+ * 
+ * @returns {JSX.Element} Section Hero complète
+ * 
+ * @example
+ * <Hero />
+ */
 export const Hero = () => {
   return (
     <section 
@@ -13,18 +38,18 @@ export const Hero = () => {
       className="overflow-hidden relative h-screen pb-4 md:pb-0"
       aria-label="Hero section"
     >
-      {/* Top bar with version and contact */}
+      {/* Barre supérieure avec version et contact */}
       <HeroTopBar />
 
-      {/* Main content */}
+      {/* Contenu principal */}
       <div className="container px-4 mx-auto h-full">
         <div className="flex relative flex-col items-center h-full">
-          {/* Mobile Layout - Only for mobile */}
+          {/* Layout Mobile - Uniquement pour mobile */}
           <div className="flex flex-col justify-center items-center -mt-8 w-full h-full md:hidden">
-            {/* 1. H1 first - Optimized for mobile LCP */}
+            {/* 1. H1 en premier - Optimisé pour le LCP mobile */}
             <HeroTitle variant="mobile" />
 
-            {/* TextMarquee for mobile */}
+            {/* TextMarquee pour mobile */}
             <MobileOptimizedAnimation
               animation="fadeIn"
               duration={0.5}
@@ -33,17 +58,17 @@ export const Hero = () => {
               <TextMarquee />
             </MobileOptimizedAnimation>
 
-            {/* 2. Terminal in the middle */}
+            {/* 2. Terminal au milieu */}
             <HeroTerminal variant="mobile" />
           </div>
 
-          {/* Desktop Layout - Right side terminal (only visible on md screens and up) */}
+          {/* Layout Desktop - Terminal côté droit (visible uniquement sur md et plus) */}
           <HeroTerminal variant="desktop" />
 
-          {/* Center content - Only for desktop */}
+          {/* Contenu central - Uniquement pour desktop */}
           <HeroTitle variant="desktop" />
 
-          {/* TextMarquee for desktop */}
+          {/* TextMarquee pour desktop */}
           <MobileOptimizedAnimation
             animation="fadeIn"
             duration={0.5}
@@ -54,7 +79,7 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* Skip to main content link - hidden visually but available for screen readers */}
+      {/* Lien de saut vers le contenu principal - caché visuellement mais disponible pour les lecteurs d'écran */}
       <HeroSkipLink />
     </section>
   );

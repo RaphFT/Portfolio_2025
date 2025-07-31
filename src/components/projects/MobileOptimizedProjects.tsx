@@ -1,9 +1,21 @@
+/**
+ * @fileoverview Composant d'affichage des projets optimisé pour mobile
+ * @description Version mobile du carrousel de projets avec animations simplifiées
+ * et optimisations pour les petits écrans
+ * @author Raphael Fremont
+ * @version 1.0.0
+ */
+
 import { useState, useCallback } from 'react';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import { CodeBracketIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import { useMobileOptimization } from '../hero/hooks/useMobileOptimization';
 
+/**
+ * Interface définissant la structure d'un projet
+ * @interface Project
+ */
 interface Project {
   title: string;
   meta: string;
@@ -14,6 +26,10 @@ interface Project {
   tags: string[];
 }
 
+/**
+ * Interface des props du composant MobileOptimizedProjects
+ * @interface MobileOptimizedProjectsProps
+ */
 interface MobileOptimizedProjectsProps {
   projects: Project[];
   colors?: {
@@ -31,30 +47,60 @@ interface MobileOptimizedProjectsProps {
   };
 }
 
+/**
+ * Composant d'affichage des projets optimisé pour mobile
+ * @description Affiche les projets dans un carrousel simplifié optimisé pour les petits écrans
+ * avec des animations réduites et une interface tactile adaptée
+ * 
+ * @param {MobileOptimizedProjectsProps} props - Props du composant
+ * @param {Project[]} props.projects - Array des projets à afficher
+ * @param {Object} [props.colors] - Configuration des couleurs
+ * @param {Object} [props.fontSizes] - Configuration des tailles de police
+ * 
+ * @returns {JSX.Element | null} Composant de carrousel mobile ou null si pas sur mobile
+ * 
+ * @example
+ * <MobileOptimizedProjects 
+ *   projects={projectsData}
+ *   colors={{ title: "#000", meta: "#666" }}
+ *   fontSizes={{ title: "1.25rem", description: "1rem" }}
+ * />
+ */
 export const MobileOptimizedProjects = ({
   projects,
   colors = {},
   fontSizes = {}
 }: MobileOptimizedProjectsProps) => {
+  // Hook d'optimisation mobile pour détecter l'appareil et les préférences
   const { isMobile, shouldReduceMotion } = useMobileOptimization();
   
+  // État du composant
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoverPrev, setHoverPrev] = useState(false);
   const [hoverNext, setHoverNext] = useState(false);
 
+  /**
+   * Gestionnaire pour passer au projet suivant
+   * @description Passe au projet suivant avec bouclage au début si fin de liste
+   */
   const handleNext = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % projects.length);
   }, [projects.length]);
 
+  /**
+   * Gestionnaire pour passer au projet précédent
+   * @description Passe au projet précédent avec bouclage à la fin si début de liste
+   */
   const handlePrev = useCallback(() => {
     setActiveIndex((prev) => (prev - 1 + projects.length) % projects.length);
   }, [projects.length]);
 
-  // Only show on mobile
+  // Retourne null si pas sur mobile (pour éviter le rendu inutile)
   if (!isMobile) {
     return null;
   }
 
+  // Configuration des couleurs avec valeurs par défaut
   const colorTitle = colors.title ?? "#000";
   const colorMeta = colors.meta ?? "#6b7280";
   const colorDescription = colors.description ?? "#4b5563";
@@ -62,13 +108,15 @@ export const MobileOptimizedProjects = ({
   const colorArrowFg = colors.arrowForeground ?? "#f1f1f7";
   const colorArrowHoverBg = colors.arrowHoverBackground ?? "#47D649";
   
+  // Configuration des tailles de police avec valeurs par défaut
   const fontSizeTitle = fontSizes.title ?? "1.25rem";
   const fontSizeMeta = fontSizes.meta ?? "0.875rem";
   const fontSizeDescription = fontSizes.description ?? "1rem";
 
+  // Projet actuellement affiché
   const activeProject = projects[activeIndex];
 
-  // Simplified animation variants for mobile
+  // Variantes d'animation simplifiées pour mobile
   const contentVariants = shouldReduceMotion ? {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
@@ -81,14 +129,14 @@ export const MobileOptimizedProjects = ({
 
   return (
     <div className="px-4 py-6 w-full">
-      {/* Compact image section */}
+      {/* Section image compacte */}
       <div className="relative mb-4 h-48 w-full overflow-hidden rounded-xl">
         <img
           src={activeProject.src}
           alt={activeProject.title}
           className="object-cover w-full h-full"
         />
-        {/* Tags overlay */}
+        {/* Overlay des tags */}
         <div className="flex absolute bottom-2 left-2 gap-1 flex-wrap">
           {activeProject.tags.slice(0, 3).map((tag, index) => (
             <span 

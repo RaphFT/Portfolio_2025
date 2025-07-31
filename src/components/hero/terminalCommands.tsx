@@ -1,20 +1,57 @@
+/**
+ * @fileoverview Commandes et données du terminal interactif
+ * @description Ce fichier contient toutes les commandes disponibles dans le terminal
+ * avec leurs réponses, easter eggs et séquence de démarrage
+ * @author Raphael Fremont
+ * @version 1.0.0
+ */
+
+/**
+ * Interface définissant la structure d'une réponse de commande
+ * @interface CommandResponse
+ * @property {string[]} response - Array des lignes de réponse
+ * @property {boolean} [isEasterEgg] - Indique si c'est un easter egg
+ * @property {string} [action] - Action spéciale à exécuter
+ */
 export type CommandResponse = {
   response: string[];
   isEasterEgg?: boolean;
   action?: string;
 };
 
+/**
+ * Type définissant l'objet des commandes disponibles
+ * @type {Record<string, CommandResponse>}
+ */
 export type Commands = Record<string, CommandResponse>;
 
-// Initial boot sequence
+/**
+ * Séquence de démarrage du terminal
+ * @description Messages affichés lors de l'initialisation du terminal
+ * 
+ * @type {Array<{text: string, delay: number}>}
+ * 
+ * @example
+ * [
+ *   { text: '> Initialisation du système...', delay: 400 },
+ *   { text: '> Chargement des données...', delay: 600 }
+ * ]
+ */
 export const bootSequence = [
   { text: '> Initialisation du système...', delay: 400 },
   { text: '> Chargement des données du portfolio...', delay: 600 },
   { text: '> Prêt ! Tapez "help" pour voir les commandes disponibles', delay: 500 }
 ];
 
-// Command definitions with responses
+/**
+ * Définitions des commandes avec leurs réponses
+ * @description Objet contenant toutes les commandes disponibles dans le terminal
+ * incluant les commandes principales et les easter eggs
+ * 
+ * @type {Commands}
+ */
 export const commands: Commands = {
+  // Commandes principales
   'help': {
     response: [
       'Commandes disponibles :',
@@ -76,7 +113,8 @@ export const commands: Commands = {
   'clear': {
     response: []
   },
-  // Easter eggs
+  
+  // Easter eggs - Commandes cachées pour le fun
   'coffee': {
     response: ['Recharge d\'énergie développeur... ☕', 'Prêt pour plus de code !'],
     isEasterEgg: true

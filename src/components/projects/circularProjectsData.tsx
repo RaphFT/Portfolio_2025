@@ -1,3 +1,21 @@
+/**
+ * @fileoverview Données des projets du portfolio
+ * @description Ce fichier contient toutes les données des projets affichés dans la section projets
+ * @author Raphael Fremont
+ * @version 1.0.0
+ */
+
+/**
+ * Interface définissant la structure d'un projet
+ * @interface Project
+ * @property {string} title - Titre du projet
+ * @property {string} meta - Technologies utilisées (affiché sous le titre)
+ * @property {string} description - Description détaillée du projet
+ * @property {string} src - Chemin vers l'image du projet
+ * @property {string} githubUrl - URL du repository GitHub
+ * @property {string} [liveUrl] - URL de la version live (optionnel)
+ * @property {string[]} tags - Tags pour le filtrage et la recherche
+ */
 export interface Project {
   title: string;
   meta: string;
@@ -8,6 +26,23 @@ export interface Project {
   tags: string[];
 }
 
+/**
+ * Données des projets du portfolio
+ * @description Array contenant tous les projets à afficher dans la section projets
+ * Chaque projet suit l'interface Project définie ci-dessus
+ * 
+ * @type {Project[]}
+ * @example
+ * {
+ *   title: "BOOKI",
+ *   meta: "HTML, CSS",
+ *   description: "Intégration responsive...",
+ *   src: "/images/projects/booki.webp",
+ *   githubUrl: "https://github.com/...",
+ *   liveUrl: "https://...",
+ *   tags: ["HTML", "CSS", "Responsive Design"]
+ * }
+ */
 export const circularProjectsData: Project[] = [
   {
     title: "BOOKI",

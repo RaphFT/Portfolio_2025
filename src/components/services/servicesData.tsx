@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Données des services du portfolio
+ * @description Ce fichier contient toutes les données des services offerts
+ * avec leurs icônes, descriptions et configurations d'affichage
+ * @author Raphael Fremont
+ * @version 1.0.0
+ */
+
 import {
   ComputerDesktopIcon,
   ArrowPathIcon,
@@ -5,6 +13,16 @@ import {
   RocketLaunchIcon
 } from '@heroicons/react/24/outline';
 
+/**
+ * Interface définissant la structure d'un service
+ * @interface ServiceItem
+ * @property {string} id - Identifiant unique du service
+ * @property {string} title - Titre du service
+ * @property {string} description - Description détaillée du service
+ * @property {React.ReactNode} icon - Icône du service (Heroicons)
+ * @property {number} delay - Délai d'animation en secondes
+ * @property {number} [colSpan] - Nombre de colonnes à occuper (optionnel)
+ */
 export type ServiceItem = {
   id: string;
   title: string;
@@ -14,6 +32,23 @@ export type ServiceItem = {
   colSpan?: number;
 };
 
+/**
+ * Données des services offerts
+ * @description Array contenant tous les services à afficher dans la section services
+ * Chaque service suit l'interface ServiceItem définie ci-dessus
+ * 
+ * @type {ServiceItem[]}
+ * 
+ * @example
+ * {
+ *   id: 'custom-web-app',
+ *   title: 'APPLICATION WEB SUR-MESURE',
+ *   description: 'CRM, plateforme e-commerce...',
+ *   icon: <ComputerDesktopIcon />,
+ *   delay: 0,
+ *   colSpan: 2
+ * }
+ */
 export const servicesData: ServiceItem[] = [
   {
     id: 'custom-web-app',

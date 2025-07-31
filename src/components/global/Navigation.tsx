@@ -1,6 +1,30 @@
+/**
+ * @fileoverview Navigation globale du portfolio
+ * @description Composant de navigation globale avec animation
+ * d'apparition et positionnement fixe
+ * @author Raphael Fremont
+ * @version 1.0.0
+ */
+
 import { motion } from 'framer-motion';
 import { NavigationContainer } from '../navigation/NavigationContainer';
 
+/**
+ * Composant navigation globale
+ * @description Affiche la navigation globale avec :
+ * - Animation d'apparition depuis le haut
+ * - Position fixe en bas de l'écran
+ * - Centrage horizontal
+ * - Z-index approprié pour la superposition
+ * - Espacement responsive selon l'écran
+ * - Accessibilité avec aria-label et role
+ * - Conteneur de navigation intégré
+ * 
+ * @returns {JSX.Element} Navigation globale animée
+ * 
+ * @example
+ * <Navigation />
+ */
 export const Navigation = () => {
   return (
     <motion.nav

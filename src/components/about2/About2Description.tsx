@@ -1,7 +1,32 @@
+/**
+ * @fileoverview Description de la section about2
+ * @description Composant affichant la description avec animation
+ * d'apparition et effet mix-blend-exclusion
+ * @author Raphael Fremont
+ * @version 1.0.0
+ */
+
 import { motion } from 'framer-motion';
 import { getAbout2Text } from './about2Data';
 
+/**
+ * Composant description de la section about2
+ * @description Affiche la description avec :
+ * - Animation d'apparition fluide avec translation
+ * - Effet mix-blend-exclusion pour l'intégration visuelle
+ * - Design responsive avec tailles et espacements adaptatifs
+ * - Police Clash Display personnalisée
+ * - Largeur maximale adaptative selon l'écran
+ * - Optimisation GPU avec willChange
+ * - Marges et padding optimisés
+ * 
+ * @returns {JSX.Element} Description avec animation
+ * 
+ * @example
+ * <About2Description />
+ */
 export const About2Description = () => {
+  // Récupération de la description depuis les données
   const { description } = getAbout2Text('fr');
 
   return (

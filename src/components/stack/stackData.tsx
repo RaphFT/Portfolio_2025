@@ -1,3 +1,21 @@
+/**
+ * @fileoverview Données de la stack technique
+ * @description Ce fichier contient toutes les données des technologies
+ * utilisées dans la stack technique avec leurs icônes et catégories
+ * @author Raphael Fremont
+ * @version 1.0.0
+ */
+
+/**
+ * Interface définissant la structure d'une technologie
+ * @interface TechItem
+ * @property {string} id - Identifiant unique de la technologie
+ * @property {string} name - Nom de la technologie
+ * @property {string} description - Description courte de la technologie
+ * @property {string} icon - Icône emoji de la technologie
+ * @property {'frontend' | 'backend' | 'database' | 'tools'} category - Catégorie de la technologie
+ * @property {string} color - Classe CSS pour la couleur de fond
+ */
 export type TechItem = {
   id: string;
   name: string;
@@ -7,8 +25,25 @@ export type TechItem = {
   color: string;
 };
 
+/**
+ * Données de la stack technique
+ * @description Array contenant toutes les technologies de la stack
+ * organisées par catégories (MERN Stack, Frontend, Tools)
+ * 
+ * @type {TechItem[]}
+ * 
+ * @example
+ * {
+ *   id: 'react',
+ *   name: 'React',
+ *   description: 'Bibliothèque UI JavaScript',
+ *   icon: '⚛️',
+ *   category: 'frontend',
+ *   color: 'bg-blue-500'
+ * }
+ */
 export const techStackData: TechItem[] = [
-  // MERN Stack
+  // Stack MERN (MongoDB, Express, React, Node.js)
   {
     id: 'mongodb',
     name: 'MongoDB',
@@ -41,7 +76,8 @@ export const techStackData: TechItem[] = [
     category: 'backend',
     color: 'bg-green-600'
   },
-  // Frontend
+  
+  // Technologies Frontend
   {
     id: 'typescript',
     name: 'TypeScript',
@@ -74,7 +110,8 @@ export const techStackData: TechItem[] = [
     category: 'frontend',
     color: 'bg-cyan-500'
   },
-  // Tools
+  
+  // Outils de développement
   {
     id: 'git',
     name: 'Git & GitHub',
@@ -85,4 +122,14 @@ export const techStackData: TechItem[] = [
   }
 ];
 
+/**
+ * Fonction pour récupérer les données de la stack technique
+ * @description Retourne toutes les technologies de la stack
+ * 
+ * @returns {TechItem[]} Array de toutes les technologies
+ * 
+ * @example
+ * const techStack = getStackData();
+ * console.log(techStack.length); // 9 technologies
+ */
 export const getStackData = () => techStackData; 

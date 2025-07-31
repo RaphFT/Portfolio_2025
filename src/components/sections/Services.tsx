@@ -1,6 +1,32 @@
+/**
+ * @fileoverview Section Services du portfolio
+ * @description Composant de la section Services avec présentation
+ * des services offerts et animations sophistiquées
+ * @author Raphael Fremont
+ * @version 1.0.0
+ */
+
 import { ServicesHeader } from '../services/ServicesHeader';
 import { ServicesGrid } from '../services/ServicesGrid';
 
+/**
+ * Composant section Services
+ * @description Affiche la section Services avec :
+ * - Hauteur minimale adaptée à l'écran
+ * - Layout centré horizontalement, aligné en haut
+ * - Arrière-plan blanc
+ * - En-tête avec titre et badge
+ * - Grille des services avec cartes animées
+ * - Padding responsive optimisé
+ * - Container avec espacement adaptatif
+ * - Espacement adaptatif entre les éléments
+ * - Accessibilité avec aria-labelledby
+ * 
+ * @returns {JSX.Element} Section Services complète
+ * 
+ * @example
+ * <Services />
+ */
 export const Services = () => {
   return (
     <section 

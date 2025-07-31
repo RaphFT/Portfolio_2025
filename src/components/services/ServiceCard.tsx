@@ -1,10 +1,41 @@
+/**
+ * @fileoverview Carte de service individuelle
+ * @description Composant affichant une carte de service avec animations
+ * sophistiquées et effets de hover
+ * @author Raphael Fremont
+ * @version 1.0.0
+ */
+
 import { motion } from 'framer-motion';
 import { type ServiceItem } from './servicesData';
 
+/**
+ * Interface des props du composant ServiceCard
+ * @interface ServiceCardProps
+ */
 type ServiceCardProps = {
   service: ServiceItem;
 };
 
+/**
+ * Composant carte de service
+ * @description Affiche une carte de service avec :
+ * - Animations d'apparition fluides
+ * - Effets de hover sophistiqués (desktop uniquement)
+ * - Particules vertes flottantes
+ * - Bordure animée
+ * - Gradient de fond au hover
+ * - Design responsive
+ * - Police Clash Display personnalisée
+ * 
+ * @param {ServiceCardProps} props - Props du composant
+ * @param {ServiceItem} props.service - Service à afficher
+ * 
+ * @returns {JSX.Element} Carte de service avec animations
+ * 
+ * @example
+ * <ServiceCard service={serviceData} />
+ */
 export const ServiceCard = ({ service }: ServiceCardProps) => {
   const { title, description, icon, colSpan } = service;
   
@@ -74,11 +105,14 @@ export const ServiceCard = ({ service }: ServiceCardProps) => {
       
       {/* Contenu avec effet de hover */}
       <div className="relative z-10 flex flex-col h-full">
+        {/* Icône du service */}
         <div className="flex-shrink-0 mb-2 sm:mb-3">
           {icon}
         </div>
         
+        {/* Contenu textuel */}
         <div className="flex flex-col flex-1">
+          {/* Titre du service */}
           <motion.h3 
             className="text-sm sm:text-lg lg:text-xl tracking-tight font-clash mb-1 sm:mb-2"
             style={{
@@ -93,6 +127,7 @@ export const ServiceCard = ({ service }: ServiceCardProps) => {
             {title}
           </motion.h3>
           
+          {/* Description du service */}
           <motion.p 
             className="text-gray-600 text-xs sm:text-xs lg:text-base font-clash leading-relaxed"
             style={{

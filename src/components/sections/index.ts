@@ -14,4 +14,5 @@ export { Stack } from './Stack';
 
 // Sections de contenu et contact
 export { Services } from './Services';
+export { Parcours } from '../parcours/Parcours';
 export { Footer } from './Footer'; 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { LoadingScreen } from './components/global/LoadingScreen';
 import { Navigation } from './components/global/Navigation';
-import { Hero, About, About2, Stack, Services, Footer } from './components/sections';
+import { Hero, About, About2, Stack, Services, Parcours, Footer } from './components/sections';
 import { ProjectsCircular } from './components/projects/ProjectsCircular';
 
 import { ScrollProgress } from './components/global/ScrollProgress';
@@ -41,6 +41,7 @@ function App() {
         <Stack />
         <ProjectsCircular />
         <Services />
+        <Parcours />
       </main>
 
       <Footer />
